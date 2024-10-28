@@ -5,6 +5,15 @@
   "homepage.subtitle": {
     "message": "Welcome to Aquamarine's Homepage"
   },
+  "homepage.tutorial-link": {
+    "message": "Go To Tutorial Page"
+  },
+  "homepage.feature1.title": {
+    "message": "D3 Data Visualization"
+  },
+  "homepage.feature1.description": {
+    "message": "D3 数据可视化"
+  },
   "theme.ErrorPageContent.title": {
     "message": "This page crashed.",
     "description": "The title of the fallback page when the page crashed"

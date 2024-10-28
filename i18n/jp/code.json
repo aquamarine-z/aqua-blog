@@ -5,6 +5,15 @@
   "homepage.subtitle": {
     "message": "欢迎来到Aquamarine的个人主页"
   },
+    "homepage.tutorial-link": {
+    "message": "前往教程页面"
+  },
+    "homepage.feature1.title": {
+    "message": "D3 数据可视化"
+  },
+  "homepage.feature1.description": {
+    "message": "D3 数据可视化"
+  },
   "theme.ErrorPageContent.title": {
     "message": "This page crashed.",
     "description": "The title of the fallback page when the page crashed"
