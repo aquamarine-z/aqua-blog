@@ -15,8 +15,9 @@ const config: Config = {
 
     // GitHub pages deployment config.
     // If you aren't using GitHub pages, you don't need these.
-    organizationName: 'facebook', // Usually your GitHub org/user name.
+    organizationName: 'aquamarine-z', // Usually your GitHub org/user name.
     projectName: 'aqua-blog', // Usually your repo name.
+    deploymentBranch:"gh-pages",
 
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
