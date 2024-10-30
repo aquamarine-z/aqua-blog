@@ -47,6 +47,11 @@ export default function Home(): JSX.Element {
       description="Description will go into a meta tag in <head />">
       <HomepageHeader />
       <main>
+          <h1 style={{width:"100%",textAlign:"center",marginTop:"50px",fontSize:"40px",color:"var(--ifm-color-primary-darker)"}}>
+              <Translate id={"homepage.features.title"}>
+                  Now learning
+              </Translate>
+          </h1>
         <HomepageFeatures />
       </main>
     </Layout>

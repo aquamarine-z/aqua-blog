@@ -27,10 +27,15 @@ const config: Config = {
     // may want to replace "en" with "zh-Hans".
     i18n: {
         defaultLocale: 'zh-cn',
-        locales: ['en', 'zh-cn',"jp"],
+        locales: [
+            //'en',
+            'zh-cn',
+            //"jp",
+        ],
         localeConfigs: {
             en: {
                 htmlLang: 'en-GB',
+
             },
             "zh-cn":{
                 label:"简体中文",
@@ -40,6 +45,7 @@ const config: Config = {
             }
             // 如果不需要重写默认值，可以忽略 locale (例如 fr)
         },
+
     },
 
     presets: [
@@ -80,6 +86,11 @@ const config: Config = {
     themeConfig: {
         // Replace with your project's social card
         image: 'img/avatar-aqua.png',
+        colorMode: {
+            defaultMode: 'light',
+            disableSwitch: true, // 关闭颜色模式切换开关
+            respectPrefersColorScheme: false,
+        },
         navbar: {
 
             hideOnScroll:true,

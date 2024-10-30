@@ -20,26 +20,26 @@ const FeatureList: FeatureItem[] = [
       </Translate>
     ),
   },
-  {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    {
+        title: translate({
+            id: "homepage.feature2.title"
+        }),
+        Svg: require('@site/static/img/features/react-logo.svg').default,
     description: (
-      <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
-      </>
+        <Translate id={"homepage.feature2.description"}>
+        </Translate>
     ),
   },
-  {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
-    description: (
-      <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
-      </>
-    ),
-  },
+    {
+        title: translate({
+            id: "homepage.feature3.title"
+        }),
+        Svg: require('@site/static/img/features/japanese-hiragana-logo.svg').default,
+        description: (
+            <Translate id={"homepage.feature3.description"}>
+            </Translate>
+        ),
+    },
 ];
 
 function Feature({title, Svg, description}: FeatureItem) {

@@ -1,4 +1,5 @@
 {
+
   "homepage.title": {
     "message": "Aquamarine的个人主页"
   },
@@ -8,11 +9,26 @@
   "homepage.tutorial-link": {
     "message": "前往教程页面"
   },
+  "homepage.features.title": {
+    "message": "当前学习内容"
+  },
   "homepage.feature1.title": {
     "message": "D3 数据可视化"
   },
   "homepage.feature1.description": {
     "message": "正在学习数据可视化相关内容(D3.js)等"
+  },
+  "homepage.feature2.title": {
+    "message": "React"
+  },
+  "homepage.feature2.description": {
+    "message": "学习React框架开发前端应用"
+  },
+  "homepage.feature3.title": {
+    "message": "日语"
+  },
+  "homepage.feature3.description": {
+    "message": "学习日语中(目前N3水平)"
   },
   "theme.ErrorPageContent.title": {
     "message": "页面已崩溃。",
