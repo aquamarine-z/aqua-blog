@@ -1,7 +1,5 @@
 import {VisualizationDisplay} from "@site/src/components/VisualizationDisplay/VisualizationDisplay";
 import * as d3 from "d3"
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import {docco} from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import {ReactNode} from "react";
 
 export function VisualizationDisplayTest({children}: { children:any}) {

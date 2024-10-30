@@ -31,7 +31,7 @@ export function VisualizationDisplay({
         {
             key: 'code',
             label: '代码',
-            children:<div style={{userSelect:"text"}}>{codeComponent}</div> ,
+            children:<div className={styles["code-container"]}>{codeComponent}</div> ,
         },
         {
             key: 'svg',
