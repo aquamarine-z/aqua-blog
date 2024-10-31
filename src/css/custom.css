@@ -35,3 +35,9 @@
 [data-theme='dark'] .invert {
       filter: invert(100%);
   }
+.footer__title{
+  @apply tw-text-center;
+}
+.footer__items{
+  @apply tw-flex tw-items-center tw-flex-col;
+}
