@@ -6,13 +6,12 @@ const config: Config = {
     title: 'Aquamarine',
     tagline: "Aquamarine's Homepage",
     favicon: 'img/aqua-avatar-round.ico',
-
     // Set the production url of your site here
     url: 'https://your-docusaurus-site.example.com',
     // Set the /<baseUrl>/ pathname under which your site is served
     // For GitHub pages deployment, it is often '/<projectName>/'
     baseUrl: '/',
-
+    plugins: ['docusaurus-plugin-sass'],
     // GitHub pages deployment config.
     // If you aren't using GitHub pages, you don't need these.
     organizationName: 'aquamarine-z', // Usually your GitHub org/user name.

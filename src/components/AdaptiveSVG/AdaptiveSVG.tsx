@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from "react";
-import styles from "./style.module.css";
+import styles from "./AdaptiveSVG.module.scss";
 
 export interface AdaptiveSVGProps {
     onInitialize?: (svg: SVGSVGElement) => void,
@@ -39,8 +39,8 @@ export function AdaptiveSVG({
             }}
         />
         <div className={styles["diagram-info"]}>
-            <p>实际宽高 {actualWidth}:{actualHeight}</p>
-            <p>图像ViewBox宽高 {viewBoxWidth}:{viewBoxHeight} </p>
+            <p className={styles["info"]}>实际宽高 {actualWidth}:{actualHeight}</p>
+            <p className={styles["info"]}>图像ViewBox宽高 {viewBoxWidth}:{viewBoxHeight} </p>
         </div>
 
     </div>

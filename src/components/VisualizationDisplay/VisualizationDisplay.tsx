@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from "react";
 import {Collapse, CollapseProps} from "antd";
-import styles from "./style.module.css"
+import styles from "./VisualizationDisplay.module.scss"
 import {AdaptiveSVG} from "@site/src/components/AdaptiveSVG/AdaptiveSVG";
 export interface VisualizationDisplayProps {
     onInitialize?: (svg: SVGSVGElement) => void,
@@ -43,6 +43,7 @@ export function VisualizationDisplay({
                                    width={width}
                                    height={height}
             ></AdaptiveSVG>
+
         },
     ];
 
