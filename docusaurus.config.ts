@@ -7,7 +7,7 @@ const config: Config = {
     tagline: "Aquamarine's Homepage",
     favicon: 'img/aqua-avatar-round.ico',
     // Set the production url of your site here
-    url: 'https://aquamarine-z.github.io/aqua-blog/',
+    url: 'https://aquamarine-z.github.io',
     // Set the /<baseUrl>/ pathname under which your site is served
     // For GitHub pages deployment, it is often '/<projectName>/'
     baseUrl: '/aqua-blog/',
