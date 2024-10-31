@@ -15,6 +15,7 @@ const config: Config = {
         'docusaurus-plugin-sass',
 
     ],
+
     // GitHub pages deployment config.
     // If you aren't using GitHub pages, you don't need these.
     organizationName: 'aquamarine-z', // Usually your GitHub org/user name.
@@ -79,7 +80,11 @@ const config: Config = {
                     onUntruncatedBlogPosts: 'warn',
                 },
                 theme: {
-                    customCss: './src/css/custom.css',
+
+                    customCss: [
+                        './src/css/custom.css',
+                        "./src/css/tailwind.scss"
+                    ],
                 },
             } satisfies Preset.Options,
         ],
@@ -93,6 +98,7 @@ const config: Config = {
             disableSwitch: false, // 关闭颜色模式切换开关
             respectPrefersColorScheme: false,
         },
+
         navbar: {
 
             hideOnScroll:true,
