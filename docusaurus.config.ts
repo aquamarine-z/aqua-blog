@@ -83,7 +83,7 @@ const config: Config = {
 
                     customCss: [
                         './src/css/custom.css',
-                        "./src/css/tailwind.scss"
+                        //"./src/css/tailwind.scss"
                     ],
                 },
             } satisfies Preset.Options,
