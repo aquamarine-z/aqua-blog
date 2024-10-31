@@ -13,7 +13,16 @@ const config: Config = {
     baseUrl: '/aqua-blog/',
     plugins: [
         'docusaurus-plugin-sass',
-
+        async function myPlugin(context, options) {
+        return {
+            name: 'docusaurus-tailwindcss',
+            configurePostCss(postcssOptions) {
+                postcssOptions.plugins.push(require('tailwindcss'));
+                postcssOptions.plugins.push(require('autoprefixer'));
+                return postcssOptions;
+            },
+        };
+    },
     ],
 
     // GitHub pages deployment config.
@@ -83,7 +92,7 @@ const config: Config = {
 
                     customCss: [
                         './src/css/custom.css',
-                        //"./src/css/tailwind.scss"
+                        "./src/css/tailwind.css"
                     ],
                 },
             } satisfies Preset.Options,
@@ -91,7 +100,7 @@ const config: Config = {
     ],
 
     themeConfig: {
-        // Replace with your project's social card
+        //Replace with your project's social card
         image: 'img/avatar-aqua.png',
         colorMode: {
             defaultMode: 'light',
