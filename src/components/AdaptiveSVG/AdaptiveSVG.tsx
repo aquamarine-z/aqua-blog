@@ -28,10 +28,10 @@ export function AdaptiveSVG({
     const [viewBoxHeight, setViewBoxHeight] = useState(endY - startY)
     const [actualWidth, setActualWidth] = useState(0)
     const [actualHeight, setActualHeight] = useState(0)
-    const svgElement = <div>
+    const svgElement = <div className={styles["svg-container"]}>
         <svg
             preserveAspectRatio={"xMidYMid meet"}
-            className={styles["diagram"]}
+            className={styles["diagram"]+` invert`}
             viewBox={viewBox}
             ref={svgRef}
             onResize={(event) => {

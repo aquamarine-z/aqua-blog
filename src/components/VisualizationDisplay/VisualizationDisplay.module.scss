@@ -1,12 +1,13 @@
-div.display-block{
-    padding: 20px;
 
+div.display-block{
+    padding: 20px 0 20px 0;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-
+    margin-left: 0;
     user-select: none;
-    width: 90%;
+    width: 100%;
+
     div.code-container{
         & *{
             text-align: left;
@@ -15,13 +16,37 @@ div.display-block{
         user-select: text;
     }
     h1.title{
-        width: 90% ;
+        width: 100% ;
         text-align: center;
         color: var(--ifm-color-primary);
         font-size: clamp(1rem, 0.636rem + 1.82vw, 2rem);
     }
     .display-collapse{
-        width: 90%;
+        width: 100%;
+
+        :global .ant-collapse-header-text {
+            color: var(--ifm-color-primary);
+            font-weight: 500;
+            font-size: 16px
+        }
+
+        :global .ant-collapse-header {
+            background: var(--component-background);
+        }
+
+        :global .ant-collapse-content-box {
+            background: var(--component-background);
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        :global .ant-collapse-expand-icon svg {
+            color: var(--ifm-color-primary)
+        }
+
+        :global .ant-collapse {
+            border: none;
+        }
     }
     div.svg-container{
         width: 100%;

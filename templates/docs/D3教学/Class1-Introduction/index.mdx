@@ -3,7 +3,6 @@ title: Class1-Introduction
 ---
 
 import diagrams from "./diagrams/Diagrams"
-import img1 from "./img/data.png"
 
 # 数据可视化工具 D3.js 介绍
 ## D3.js简略介绍
@@ -241,8 +240,7 @@ rects.attr('x',(d,i)=>i*50).attr('y',20).attr('width',40).attr('height',(d)=>10*
 ### 数据绑定中 enter update exit 三个部分的区别解释
 在数据绑定中，D3.js会将数据数组中的每个元素与DOM元素进行匹配，这通常被称为数据绑定。在绑定过程中，D3.js会将数据数组中的元素映射到DOM元素上，以便我们可以根据数据的变化动态更新DOM元素。在数据绑定中，D3.js会将数据数组中的元素映射到DOM元素上，以便我们可以根据数据的变化动态更新DOM元素。在数据绑定中，D3.js会将数据数组中的元素映射到DOM元素上，以便我们可以根据数据的变化动态更新DOM元素。
 #### enter update exit的图解(图片来源于 https://www.bookstack.cn/read/d3wiki/enterexit.md )
-<img className={"invert"} src={`${img1}`} alt={"图标未加载"}/>
-
+![enter update exit的图解释](img/data.png)
 #### enter()
 enter()函数用于处理新数据项，这些数据项在数据绑定之前并不存在于DOM中。当数据数组中的元素数量增加时，D3.js会调用enter()函数来创建新的DOM元素，并将这些元素与新增的数据项进行绑定。
 #### update()

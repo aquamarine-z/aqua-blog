@@ -11,7 +11,10 @@ const config: Config = {
     // Set the /<baseUrl>/ pathname under which your site is served
     // For GitHub pages deployment, it is often '/<projectName>/'
     baseUrl: '/aqua-blog/',
-    plugins: ['docusaurus-plugin-sass'],
+    plugins: [
+        'docusaurus-plugin-sass',
+
+    ],
     // GitHub pages deployment config.
     // If you aren't using GitHub pages, you don't need these.
     organizationName: 'aquamarine-z', // Usually your GitHub org/user name.
@@ -87,7 +90,7 @@ const config: Config = {
         image: 'img/avatar-aqua.png',
         colorMode: {
             defaultMode: 'light',
-            disableSwitch: true, // 关闭颜色模式切换开关
+            disableSwitch: false, // 关闭颜色模式切换开关
             respectPrefersColorScheme: false,
         },
         navbar: {

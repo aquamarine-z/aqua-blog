@@ -1,18 +1,23 @@
 svg.diagram {
     border-radius: 10px!important;
     border: 2px solid black!important;
-    width: 90%!important;
+    width: 96% !important;
     height: auto!important;
+    min-width: 200px;
+
 }
 div.svg-container{
-        width: 90%;
-        height: 100%;
-        margin:20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
+  width: 100%;
+  padding: 0;
+  height: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: auto;
+}
 div.diagram-info{
     width: 100%;
     padding-top: 20px;
