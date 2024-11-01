@@ -2,21 +2,31 @@ import React, {useEffect, useRef, useState} from "react";
 import styles from "./AdaptiveSVG.module.scss";
 
 export interface AdaptiveSVGProps {
-    onInitialize?: (svg: SVGSVGElement) => void,
-    onUpdate?: (svg: SVGSVGElement) => void,
+    onInitialize?: (svg?: SVGSVGElement,data?:any) => void,
+    onUpdate?: (svg?: SVGSVGElement,data?:any) => void,
     x?: number,
     y?: number,
     width?: number,
-    height?: number,
-}
+    height?: number
+    data?:any,
 
+    playable?:boolean,
+    onPlay?: (svg: SVGSVGElement,data?:any) => void,
+}
+function TitleBar(){
+    return <div></div>
+}
 export function AdaptiveSVG({
-                                onInitialize,
-                                onUpdate,
-                                x,
-                                y,
-                                width,
-                                height,
+                                onInitialize=()=>{},
+                                onUpdate=()=>{},
+                                x=0,
+                                y=0,
+                                width=1024,
+                                height=768,
+                                data=undefined,
+                                playable=false,
+                                onPlay=()=>{},
+
                             }: AdaptiveSVGProps) {
     const svgRef = useRef<SVGSVGElement>()
     const startX = x ?? 0
@@ -28,6 +38,8 @@ export function AdaptiveSVG({
     const [viewBoxHeight, setViewBoxHeight] = useState(endY - startY)
     const [actualWidth, setActualWidth] = useState(0)
     const [actualHeight, setActualHeight] = useState(0)
+
+
     const svgElement = <div className={styles["svg-container"]}>
         <svg
             preserveAspectRatio={"xMidYMid meet"}
@@ -45,10 +57,12 @@ export function AdaptiveSVG({
 
     </div>
     useEffect(() => {
+        onUpdate(svgRef.current,data);
+    }, [data]);
+    useEffect(() => {
         if(onInitialize){
             onInitialize(svgRef.current)
         }
-
     }, []);
     useEffect(() => {
 
