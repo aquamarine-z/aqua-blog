@@ -2,30 +2,41 @@ import React, {useEffect, useRef, useState} from "react";
 import styles from "./AdaptiveSVG.module.scss";
 
 export interface AdaptiveSVGProps {
-    onInitialize?: (svg?: SVGSVGElement,data?:any) => void,
-    onUpdate?: (svg?: SVGSVGElement,data?:any) => void,
+    onInitialize?: (svg?: SVGSVGElement, data?: any) => void,
+    onUpdate?: (svg?: SVGSVGElement, data?: any) => void,
     x?: number,
     y?: number,
     width?: number,
     height?: number
-    data?:any,
+    data?: any,
 
-    playable?:boolean,
-    onPlay?: (svg: SVGSVGElement,data?:any) => void,
+    canMaximize?: boolean,
+
+    showInformation?: boolean,
+
+    playable?: boolean,
+    onPlay?: (svg: SVGSVGElement, data?: any) => void,
 }
-function TitleBar(){
-    return <div></div>
-}
+
+
 export function AdaptiveSVG({
-                                onInitialize=()=>{},
-                                onUpdate=()=>{},
-                                x=0,
-                                y=0,
-                                width=1024,
-                                height=768,
-                                data=undefined,
-                                playable=false,
-                                onPlay=()=>{},
+                                onInitialize = () => {
+                                },
+                                onUpdate = () => {
+                                },
+                                x = 0,
+                                y = 0,
+                                width = 1024,
+                                height = 768,
+                                data = undefined,
+
+                                canMaximize = true,
+
+                                showInformation = true,
+
+                                playable = false,
+                                onPlay = () => {
+                                },
 
                             }: AdaptiveSVGProps) {
     const svgRef = useRef<SVGSVGElement>()
@@ -38,29 +49,35 @@ export function AdaptiveSVG({
     const [viewBoxHeight, setViewBoxHeight] = useState(endY - startY)
     const [actualWidth, setActualWidth] = useState(0)
     const [actualHeight, setActualHeight] = useState(0)
-
+    const showTitleBar=canMaximize
 
     const svgElement = <div className={styles["svg-container"]}>
+
+        {showTitleBar ? <div className={styles["title-bar"]}>
+
+        </div> : <div style={{width: "100%", height: "20px"}}/>}
         <svg
             preserveAspectRatio={"xMidYMid meet"}
-            className={styles["diagram"]+` invert`}
+            className={styles["diagram"] + ` invert`}
             viewBox={viewBox}
             ref={svgRef}
             onResize={(event) => {
 
             }}
         />
-        <div className={styles["diagram-info"]}>
+        {showInformation && <div className={styles["diagram-info"]}>
             <p className={styles["info"]}>实际宽高 {actualWidth}:{actualHeight}</p>
             <p className={styles["info"]}>图像ViewBox宽高 {viewBoxWidth}:{viewBoxHeight} </p>
         </div>
+        }
+
 
     </div>
     useEffect(() => {
-        onUpdate(svgRef.current,data);
+        onUpdate(svgRef.current, data);
     }, [data]);
     useEffect(() => {
-        if(onInitialize){
+        if (onInitialize) {
             onInitialize(svgRef.current)
         }
     }, []);

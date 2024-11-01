@@ -1,0 +1,6 @@
+.footer__title{
+  @apply text-center;
+}
+.footer__items{
+  @apply flex items-center flex-col;
+}

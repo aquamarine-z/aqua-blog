@@ -30,14 +30,10 @@ div.display-block{
             font-size: 16px
         }
 
-        :global .ant-collapse-header {
-            background: var(--component-background);
-        }
 
         :global .ant-collapse-content-box {
             background: var(--component-background);
-            padding-left: 0;
-            padding-right: 0;
+            padding: 0;
         }
 
         :global .ant-collapse-expand-icon svg {

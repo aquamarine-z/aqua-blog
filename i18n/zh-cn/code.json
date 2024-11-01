@@ -30,6 +30,7 @@
   "homepage.feature3.description": {
     "message": "学习日语中(目前N3水平)"
   },
+
   "theme.ErrorPageContent.title": {
     "message": "页面已崩溃。",
     "description": "The title of the fallback page when the page crashed"

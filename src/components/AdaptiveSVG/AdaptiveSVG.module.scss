@@ -1,36 +1,52 @@
 svg.diagram {
-    border-radius: 10px!important;
-    border: 2px solid black!important;
-    width: 96% !important;
-    height: auto!important;
-    min-width: 200px;
+  border-radius: 10px !important;
+  border: 2px solid black !important;
+  width: 96% !important;
+  height: auto !important;
+  min-width: 200px;
 
 }
-div.svg-container{
+
+div.svg-container {
   width: 100%;
   padding: 0;
   height: 100%;
-  margin-top: 20px;
-  margin-bottom: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   overflow: auto;
-}
-div.diagram-info{
-    width: 100%;
-    padding-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    border-radius: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    gap:40px;
-    p.info{
-        color: var(--ifm-color-primary);
-        font-size: clamp(0.75rem, 0.659rem + 0.45vw, 1rem);
-        font-weight: 600;
+  border: 1px solid gray !important;
+  border-radius: 5px;
 
-    }
+  div.title-bar {
+    margin-top: 0;
+    width: 100%;
+    margin-bottom: 20px;
+    height: 50px;
+
+    @apply flex items-center flex-row justify-end gap-2 border border-solid;
+    border-color: var(--docusaurus-highlighted-code-line-bg);
+
+  }
+
+
+}
+
+div.diagram-info {
+  width: 100%;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  gap: 40px;
+
+  p.info {
+    color: var(--ifm-color-primary);
+    font-size: clamp(0.75rem, 0.659rem + 0.45vw, 1rem);
+    font-weight: 600;
+
+  }
 }
