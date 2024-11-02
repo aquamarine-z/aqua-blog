@@ -24,7 +24,8 @@ div.svg-container {
     width: 100%;
     margin-bottom: 20px;
     height: 50px;
-
+    padding-left: 30px;
+    padding-right: 30px;
     @apply flex items-center flex-row justify-end gap-2 border border-solid;
     border-color: var(--docusaurus-highlighted-code-line-bg);
 
@@ -47,6 +48,25 @@ div.diagram-info {
     color: var(--ifm-color-primary);
     font-size: clamp(0.75rem, 0.659rem + 0.45vw, 1rem);
     font-weight: 600;
+
+  }
+}
+img.title-bar{
+  width:35px;
+  height: 35px;
+  border: var(--docusaurus-highlighted-code-line-bg) 1px solid;
+  border-radius: 5px;
+  transition:0.2s ease-in-out;
+  padding: 5px;
+  [data-theme='dark'] &{
+    border-color:gray;
+  }
+  [data-theme='dark'] &:hover{
+    background: #505050;
+  }
+  &:hover{
+    cursor: pointer;
+    background: #d0d0d0;
 
   }
 }

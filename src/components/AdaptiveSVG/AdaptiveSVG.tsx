@@ -1,6 +1,9 @@
 import React, {useEffect, useRef, useState} from "react";
 import styles from "./AdaptiveSVG.module.scss";
-
+// @ts-ignore
+import playImage from "/static/icon/MdiPlay.png"
+// @ts-ignore
+import maxImage from "/static/icon/SolarMaximizeLinear.png"
 export interface AdaptiveSVGProps {
     onInitialize?: (svg?: SVGSVGElement, data?: any) => void,
     onUpdate?: (svg?: SVGSVGElement, data?: any) => void,
@@ -18,7 +21,12 @@ export interface AdaptiveSVGProps {
     onPlay?: (svg: SVGSVGElement, data?: any) => void,
 }
 
-
+function TitleBarButton({imageUrl,onClick}:{
+    imageUrl:string,
+    onClick:()=>void
+}){
+    return <img src={imageUrl} className={styles['title-bar']} onClick={onClick}/>
+}
 export function AdaptiveSVG({
                                 onInitialize = () => {
                                 },
@@ -54,7 +62,8 @@ export function AdaptiveSVG({
     const svgElement = <div className={styles["svg-container"]}>
 
         {showTitleBar ? <div className={styles["title-bar"]}>
-
+            <TitleBarButton imageUrl={playImage} onClick={()=>{}}></TitleBarButton>
+            <TitleBarButton imageUrl={maxImage} onClick={()=>{}}></TitleBarButton>
         </div> : <div style={{width: "100%", height: "20px"}}/>}
         <svg
             preserveAspectRatio={"xMidYMid meet"}
