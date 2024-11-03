@@ -1,9 +1,7 @@
 .footer__title{
-  text-align: center;
+    @apply text-center
 }
-.footer__items{
-  display: flex;
-  align-items: center;
-  flex-direction: column;
 
+.footer__items{
+    @apply flex flex-col items-center;
 }

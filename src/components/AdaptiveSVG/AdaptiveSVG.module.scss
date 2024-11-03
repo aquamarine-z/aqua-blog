@@ -49,6 +49,7 @@ div.diagram-info {
 
   }
 }
+
 img.title-bar-button {
   width: 35px;
   height: 35px;
@@ -82,18 +83,20 @@ div.maximize-background {
   top: 0;
   left: 0;
   z-index: 2147483647;
-  background: rgba(0,0,0,0);
+  background: rgba(0, 0, 0, 0);
   backdrop-filter: blur(10px);
   display: flex;
   justify-content: center;
   align-items: center;
-  div.maximize-container{
+
+  div.maximize-container {
     [data-theme="dark"] &{
       background: var(--ifm-background-color);
     }
     &{
       background: var(--ifm-color-white);
     }
+
     width: 90%;
     height: 90%;
   }
