@@ -5,7 +5,7 @@ title: Lab3
 # 实验三 Task1(八皇后) 代码参考
 ## 需要改动的三个文件
 ### application.cpp
-```c++
+```cpp
 #include "application.h"
 #include <iostream>
 bool (*board)[8];
@@ -96,12 +96,12 @@ Position Application::Iterator::getNextPosition() {
 ```
 
 ### position.cpp
-```c++
+```cpp
 #include "position.h"
 ```
 
 ### position.h
-```c++
+```cpp
 class Position {
 public:
     int row;
@@ -118,7 +118,7 @@ public:
 
 ## 按题目要求 禁止改动的文件
 ### application.h
-```c++
+```cpp
 #ifndef APPLICATION_H
 #define APPLICATION_H
 #include "position.cpp"
@@ -158,7 +158,7 @@ public:
 #endif
 ```
 ### backtrack.cpp
-```c++
+```cpp
 #include "backtrack.h"
 
 #include <iostream>
@@ -199,7 +199,7 @@ bool BackTrack::backTrack(const Position& currPos)
 }
 ```
 ### backtrack.h
-```c++
+```cpp
 #ifndef BACKTRACK_H
 #define BACKTRACK_H
 
@@ -220,7 +220,7 @@ private:
 #endif
 ```
 ### main.cpp
-```c++
+```cpp
 // main.cpp : This file contains the 'main' function. Program execution begins and ends there.
 
 #include "backtrack.h"
