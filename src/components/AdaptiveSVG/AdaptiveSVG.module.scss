@@ -9,7 +9,6 @@ svg.diagram {
 
 div.svg-container {
   width: 100%;
-  padding: 0;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -18,17 +17,16 @@ div.svg-container {
   overflow: auto;
   border: 1px solid gray !important;
   border-radius: 5px;
+  padding: 0 0 20px;
 
   div.title-bar {
     margin-top: 0;
     width: 100%;
     margin-bottom: 20px;
     height: 50px;
-    padding-left: 30px;
-    padding-right: 30px;
-    @apply flex items-center flex-row justify-end gap-2 border border-solid;
+    @apply flex items-center flex-row justify-end gap-2 border border-solid ;
     border-color: var(--docusaurus-highlighted-code-line-bg);
-
+    padding: 5px 30px;
   }
 
 
@@ -51,22 +49,52 @@ div.diagram-info {
 
   }
 }
-img.title-bar{
-  width:35px;
+img.title-bar-button {
+  width: 35px;
   height: 35px;
   border: var(--docusaurus-highlighted-code-line-bg) 1px solid;
   border-radius: 5px;
-  transition:0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
   padding: 5px;
-  [data-theme='dark'] &{
-    border-color:gray;
+
+  [data-theme='dark'] & {
+    border-color: gray;
   }
-  [data-theme='dark'] &:hover{
+
+  [data-theme='dark'] &:hover {
     background: #505050;
   }
-  &:hover{
+
+  &:hover {
     cursor: pointer;
     background: #d0d0d0;
+  }
 
+  &:active {
+    scale: 0.95;
+  }
+}
+
+div.maximize-background {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2147483647;
+  background: rgba(0,0,0,0);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  div.maximize-container{
+    [data-theme="dark"] &{
+      background: var(--ifm-background-color);
+    }
+    &{
+      background: var(--ifm-color-white);
+    }
+    width: 90%;
+    height: 90%;
   }
 }
