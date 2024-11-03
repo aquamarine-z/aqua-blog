@@ -1,7 +1,16 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
-
+function customPostCssPlugin() {
+  return {
+    name: "custom-postcss",
+    configurePostCss(options) {
+      // Append new PostCSS plugins here.
+      options.plugins.push(require("postcss-preset-env")); // allow newest CSS syntax
+      return options;
+    }
+  };
+}
 const config: Config = {
     title: 'Aquamarine',
     tagline: "Aquamarine's Homepage",
@@ -21,6 +30,7 @@ const config: Config = {
                 postcssOptions.plugins.push(require('autoprefixer'));
                 return postcssOptions;
             },
+            customPostCssPlugin,
         };
     },
     ],
@@ -33,6 +43,7 @@ const config: Config = {
 
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
+
 
     // Even if you don't use internationalization, you can use this field to set
     // useful metadata like html lang. For example, if your site is Chinese, you
@@ -94,7 +105,6 @@ const config: Config = {
                         './src/css/custom.css',
                         './src/css/tailwind.css',
                         './src/css/fix-footer.css',
-
                     ],
                 },
             } satisfies Preset.Options,
