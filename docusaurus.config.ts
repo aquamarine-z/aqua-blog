@@ -92,7 +92,9 @@ const config: Config = {
 
                     customCss: [
                         './src/css/custom.css',
-                        "./src/css/tailwind.css"
+                        './src/css/tailwind.css',
+                        './src/css/fix-footer.css',
+
                     ],
                 },
             } satisfies Preset.Options,

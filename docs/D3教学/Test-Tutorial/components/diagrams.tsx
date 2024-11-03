@@ -15,7 +15,7 @@ function UpdateTest(){
     return(
         <>
             <button onClick={()=>{setCount(count+1)}}>click to update</button>
-            <VisualizationDisplay data={
+            <VisualizationDisplay canMaximize={true} data={
                 count
             } onUpdate={(svg,data)=>{
                 console.log(`update: ${data}`);

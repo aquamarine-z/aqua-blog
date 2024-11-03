@@ -9,6 +9,6 @@ corePlugins: {
     },
     plugins: [],
     purge: ['./src/**/*.{js,jsx,ts,tsx}'],
-    prefix: "tw-",
+    prefix: "",
 }
 
