@@ -107,7 +107,7 @@ export function AdaptiveSVG(props: AdaptiveSVGProps) {
         {titleBar}
         <svg
             preserveAspectRatio={"xMidYMid meet"}
-            className={styles["diagram"] + ` invert`}
+            className={styles["diagram"] + ` invert-color`}
             viewBox={viewBox}
             ref={svgRef}
             onResize={(event) => {

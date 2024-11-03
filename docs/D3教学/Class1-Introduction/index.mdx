@@ -71,7 +71,7 @@ attr可以操作元素的属性 也就是html元素写在开头括号里面的�
 
 ### SVG元素的基本组件以及语法
 #### Rect组件(矩形)
-```html
+```markup
 <rect
   x="x-coordinate"        <!-- 矩形左上角的 x 坐标 -->
   y="y-coordinate"        <!-- 矩形左上角的 y 坐标 -->
@@ -96,7 +96,7 @@ attr可以操作元素的属性 也就是html元素写在开头括号里面的�
 </diagrams.DiagramRect>
 
 #### Circle组件(圆形)
-```html
+```markup
 <circle
   cx="x-coordinate"      <!-- 圆心的 x 坐标 -->
   cy="y-coordinate"      <!-- 圆心的 y 坐标 -->
@@ -116,7 +116,7 @@ attr可以操作元素的属性 也就是html元素写在开头括号里面的�
 </diagrams.DiagramCircle>
 
 #### Line组件(线段)
-```html
+```markup
 <line
   x1="x1-coordinate"     <!-- 起点的 x 坐标 -->
   y1="y1-coordinate"     <!-- 起点的 y 坐标 -->
@@ -136,7 +136,7 @@ attr可以操作元素的属性 也就是html元素写在开头括号里面的�
 </diagrams.DiagramLine>
 
 #### Path组件(路径)
-```html
+```markup
 <path
   d="path-data"            <!-- 定义路径的路径数据 -->
   fill="fill-color"        <!-- 路径的填充颜色 -->
@@ -169,7 +169,7 @@ d 属性定义了路径的路径数据，即路径命令序列。
 </diagrams.DiagramPath>
 
 #### Text组件(文本)
-```html
+```markup
 <text
   x="x-coordinate"          <!-- 文本左上角的 x 坐标 -->
   y="y-coordinate"          <!-- 文本左上角的 y 坐标 -->
@@ -241,7 +241,7 @@ rects.attr('x',(d,i)=>i*50).attr('y',20).attr('width',40).attr('height',(d)=>10*
 ### 数据绑定中 enter update exit 三个部分的区别解释
 在数据绑定中，D3.js会将数据数组中的每个元素与DOM元素进行匹配，这通常被称为数据绑定。在绑定过程中，D3.js会将数据数组中的元素映射到DOM元素上，以便我们可以根据数据的变化动态更新DOM元素。在数据绑定中，D3.js会将数据数组中的元素映射到DOM元素上，以便我们可以根据数据的变化动态更新DOM元素。在数据绑定中，D3.js会将数据数组中的元素映射到DOM元素上，以便我们可以根据数据的变化动态更新DOM元素。
 #### enter update exit的图解(图片来源于 https://www.bookstack.cn/read/d3wiki/enterexit.md )
-<img className={"invert"} src={`${img1}`} alt={"图标未加载"}/>
+<img className={"invert-color"} src={`${img1}`} alt={"图标未加载"}/>
 
 #### enter()
 enter()函数用于处理新数据项，这些数据项在数据绑定之前并不存在于DOM中。当数据数组中的元素数量增加时，D3.js会调用enter()函数来创建新的DOM元素，并将这些元素与新增的数据项进行绑定。

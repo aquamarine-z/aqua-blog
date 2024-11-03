@@ -31,6 +31,6 @@
 
 }
 
-[data-theme='dark'] .invert {
+[data-theme='dark'] .invert-color {
     filter: invert(100%);
 }
