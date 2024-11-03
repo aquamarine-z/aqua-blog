@@ -299,7 +299,7 @@ function Diagram17({children}: { children: any }) {
         y={0}
         width={600}
         height={400}
-        diagramName={"图16:绘制数据点"}
+        diagramName={"图17:绘制数据文字"}
         onInitialize={(svg) => {
             const data = [12, 10, 19, 10, 4, 3, 4, 5, 6, 7]
             const xScale = d3.scaleLinear().domain([0, data.length - 1]).range([50, 550])
