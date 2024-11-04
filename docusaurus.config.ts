@@ -199,6 +199,7 @@ const config: Config = {
             additionalLanguages:['java','cpp',"bash","plant-uml","markup"]
         },
     } satisfies Preset.ThemeConfig,
+
 };
 
 export default config;
