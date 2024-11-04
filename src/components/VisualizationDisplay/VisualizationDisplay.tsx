@@ -10,14 +10,11 @@ export interface VisualizationDisplayProps extends AdaptiveSVGProps {
 }
 
 export function VisualizationDisplay(props: VisualizationDisplayProps) {
-
     const codeComponent = typeof props.children === "string" ? <code>{props.children}</code> : props.children
-
     let items: CollapseProps['items'] = [{
         key: 'svg',
         label: 'SVG效果',
-        children: <AdaptiveSVG {...props}
-        ></AdaptiveSVG>
+        children: <AdaptiveSVG {...props}/>
 
     }]
     if (props.children) {
@@ -27,7 +24,6 @@ export function VisualizationDisplay(props: VisualizationDisplayProps) {
                 label: '代码',
                 children: <div className={styles["code-container"]}>{codeComponent}</div>,
             },...items,
-
         ];
     }
 
