@@ -30,7 +30,15 @@
   "homepage.feature3.description": {
     "message": "学习日语中(目前N3水平)"
   },
-
+  "friends.title": {
+    "message": "友情链接"
+  },
+  "friends.labels.friend": {
+    "message": "朋友"
+  },
+  "friends.labels.schoolmate": {
+    "message": "同学"
+  },
   "theme.ErrorPageContent.title": {
     "message": "页面已崩溃。",
     "description": "The title of the fallback page when the page crashed"

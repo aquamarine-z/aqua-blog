@@ -137,6 +137,11 @@ const config: Config = {
                     label: 'Tutorial',
                 },
                 {to: '/blog', label: 'Blog', position: 'left'},
+                 {
+                    to:'/friends',
+                    label: 'Friends',
+                    position: 'right'
+                },
                 {
                     href: 'https://github.com/aquamarine-z',
                     label: 'GitHub',
@@ -146,6 +151,7 @@ const config: Config = {
                     type: 'localeDropdown',
                     position: 'left',
                 },
+
             ],
         },
         footer: {
@@ -189,7 +195,7 @@ const config: Config = {
                             href: 'https://github.com/aquamarine-z',
                         },
                     ],
-                },
+                }
             ],
             copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
         },

@@ -14,7 +14,6 @@ function clickEffect() {
     const pointer = document.createElement("span");
     pointer.classList.add("pointer");
     document.body.appendChild(pointer);
-
     if (canvas.getContext && window.addEventListener) {
         ctx = canvas.getContext("2d");
         updateSize();
