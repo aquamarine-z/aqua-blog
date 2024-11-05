@@ -29,6 +29,10 @@ const friendsList = [
                 name: 'Blog',
                 icon: logoBlog,
                 link: "https://aquamarine-z.github.io/aqua-blog/"
+            },{
+                name:'Line',
+                icon: undefined,
+                link: "https://line.me/ti/p/6fcWHiO0vg"
             }
         ]
     },

@@ -169,6 +169,14 @@ const config: Config = {
                 {
                     title: 'Community',
                     items: [
+                        {
+                            label:'Line',
+                            href: "https://line.me/ti/p/6fcWHiO0vg",
+                        },
+                        {
+                            label: 'Github',
+                            href: 'https://github.com/aquamarine-z'
+                        }
                         /*{
                             label: 'Stack Overflow',
                             href: 'https://stackoverflow.com/questions/tagged/docusaurus',
@@ -189,10 +197,6 @@ const config: Config = {
                         {
                             label: 'Blog',
                             to: '/blog',
-                        },
-                        {
-                            label: 'GitHub',
-                            href: 'https://github.com/aquamarine-z',
                         },
                     ],
                 }
