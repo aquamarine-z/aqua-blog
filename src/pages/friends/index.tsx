@@ -68,7 +68,10 @@ const friendsList = [
 const labelDefaultColors = {
     friend: "#95fce3",
     schoolmate:"#5aacfa",
-    common: "#8f72ee"
+    teacher:"#fdffa0",
+    lover:"#f5d0ff",
+    family:'#9bf3b3',
+    common: "#8f72ee",
 }
 
 interface FriendViewProps {
