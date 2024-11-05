@@ -18,5 +18,9 @@
   "item.label.GitHub": {
     "message": "GitHub",
     "description": "Navbar item with label GitHub"
+  },
+  "item.label.Friends": {
+    "message": "友情链接",
+    "description": "Link to Friends Page"
   }
 }
