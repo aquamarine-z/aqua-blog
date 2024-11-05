@@ -150,7 +150,9 @@ div.friend-view-container {
       }
       .link-link{
         font-size: 20px;
-        color:white;
+        color: var(--ifm-hero-text-color);
+        letter-spacing: 0.2px;
+        opacity: 0.7;
       }
     }
   ;

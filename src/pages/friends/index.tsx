@@ -66,7 +66,7 @@ const friendsList = [
     }
 ]
 const labelDefaultColors = {
-    friend: "#95fce3",
+    friend: "#5ef5d2",
     schoolmate:"#5aacfa",
     teacher:"#fdffa0",
     lover:"#f5d0ff",
