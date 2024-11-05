@@ -17,6 +17,22 @@ import logoBlog from "@site/static/icon/Fa6SolidBlog.png"
 import  logoLink from "@site/static/icon/MaterialSymbolsLink.png"
 const friendsList = [
     {
+        name: "Aquamarine",
+        avatar: "https://github.com/aquamarine-z.png",
+        labels: ['self',"前端","数据可视化",'React'],
+        links: [
+            {
+                name: 'Github',
+                icon: logoGithub,
+                link: "https://github.com/aquamarine-z"
+            }, {
+                name: 'Blog',
+                icon: logoBlog,
+                link: "https://aquamarine-z.github.io/aqua-blog/"
+            }
+        ]
+    },
+    {
         name: "Apricityx",
         avatar: avatarApricityx,
         labels: ['friend','schoolmate'],
@@ -63,7 +79,7 @@ const friendsList = [
                 link: "https://40404.site/"
             }
         ]
-    }
+    },
 ]
 const labelDefaultColors = {
     friend: "#5ef5d2",
@@ -71,6 +87,7 @@ const labelDefaultColors = {
     teacher:"#fdffa0",
     lover:"#f5d0ff",
     family:'#9bf3b3',
+    self: '#ce79ff',
     common: "#8f72ee",
 }
 
