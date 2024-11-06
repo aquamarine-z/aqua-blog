@@ -46,7 +46,7 @@ export const Comment = forwardRef<HTMLDivElement>((_props, ref) => {
                         strict="1"
                         reactionsEnabled="1"
                         emitMetadata="0"
-                        inputPosition="bottom"
+                        inputPosition="top"
                         lang="zh-CN"
                         loading={"eager"}
                         {...giscus}
