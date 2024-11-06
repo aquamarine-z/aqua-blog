@@ -145,11 +145,20 @@ const config: Config = {
                     label: 'Tutorial',
                 },
                 {to: '/blog', label: 'Blog', position: 'left'},
+                {
+                    label: "Learning",
+                    position: "right",
+                    items: [
+                        {to: 'docs/%E7%B1%BB%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/', label: 'DSA'},
+                        {to: 'docs/日语学习笔记/', label: "Japanese"}
+                    ]
+                },
                  {
                     to:'/friends',
                     label: 'Friends',
                     position: 'right'
                 },
+
                 {
                     href: 'https://github.com/aquamarine-z',
                     label: 'GitHub',
@@ -159,6 +168,7 @@ const config: Config = {
                     type: 'localeDropdown',
                     position: 'left',
                 },
+
 
             ],
         },
