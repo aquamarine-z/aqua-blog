@@ -15,6 +15,7 @@ import logoBlog from "@site/static/icon/Fa6SolidBlog.png"
 
 // @ts-ignore
 import  logoLink from "@site/static/icon/MaterialSymbolsLink.png"
+import Comment from "@site/src/components/comment";
 const friendsList = [
     {
         name: "Aquamarine",
@@ -156,6 +157,7 @@ export default function Friends() {
                     })}
                 </div>
             </div>
+
         </main>
     </Layout>
 }
