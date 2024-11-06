@@ -125,7 +125,7 @@ const config: Config = {
             category: 'Announcements',
             categoryId: 'DIC_kwDONLC_u84CkA5u',
             theme: 'light',
-            darkTheme: 'dark'
+            darkTheme: 'dark_dimmed'
         },
 
         navbar: {
