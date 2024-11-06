@@ -110,7 +110,7 @@ const config: Config = {
             } satisfies Preset.Options,
         ],
     ],
-
+    clientModules: [require.resolve('./src/clientModules/routeModules.ts')],
     themeConfig: {
         //Replace with your project's social card
         image: 'img/avatar-aqua.png',
@@ -118,6 +118,14 @@ const config: Config = {
             defaultMode: 'light',
             disableSwitch: false, // 关闭颜色模式切换开关
             respectPrefersColorScheme: false,
+        },
+        giscus: {
+            repo: 'aquamarine-z/aqua-blog-discussion',
+            repoId: 'R_kgDONLC_uw',
+            category: 'Announcements',
+            categoryId: 'DIC_kwDONLC_u84CkA5u',
+            theme: 'light',
+            darkTheme: 'dark'
         },
 
         navbar: {
