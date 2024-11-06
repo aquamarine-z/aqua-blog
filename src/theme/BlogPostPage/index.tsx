@@ -14,7 +14,7 @@ import TOC from '@theme/TOC';
 import ContentVisibility from '@theme/ContentVisibility';
 import type {Props} from '@theme/BlogPostPage';
 import type {BlogSidebar} from '@docusaurus/plugin-content-blog';
-import Comment from '../../components/comment';
+import Comment from '../../components/Comment';
 
 function BlogPostPageContent({
                                  sidebar,
