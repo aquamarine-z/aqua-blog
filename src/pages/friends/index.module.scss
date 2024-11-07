@@ -62,10 +62,11 @@ div.background {
 div.friend-view-container {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(8px);
-  height: 400px;
-  width: 300px;
   border-radius: 10px;
   border: 1px rgba(255, 255, 255, 0.2) solid;
+  height: 400px;
+  width: 300px;
+
   min-width: 300px;
 
   transition: 1s;
