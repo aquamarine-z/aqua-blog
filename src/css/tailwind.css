@@ -9,3 +9,27 @@
   @tailwind utilities;
   @tailwind screens;
 
+.glass{
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px rgba(255, 255, 255, 0.2) solid;
+}
+
+.hover-float{
+  transition: all 0.3s ease-in-out;
+  transform: translateY(0px) scale(1);
+  &:hover{
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  }
+  cursor: pointer;
+}
+[data-theme='dark'].text-adaptive{
+   color: var(--ifm-hero-text-color);
+
+}
+.text-adaptive{
+  color:white;
+  opacity: .7;
+}
