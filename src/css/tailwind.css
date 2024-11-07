@@ -19,12 +19,15 @@
 .hover-float{
   transition: all 0.3s ease-in-out;
   transform: translateY(0px) scale(1);
-  &:hover{
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  }
+
   cursor: pointer;
 }
+
+.hover-float:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
 [data-theme='dark'].text-adaptive{
    color: var(--ifm-hero-text-color);
 
