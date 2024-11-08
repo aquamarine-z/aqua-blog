@@ -26,19 +26,20 @@
   //background-image: url("@site/static/background-image/homepage-dark.png");
   background: radial-gradient(
                   circle at 50% 0,
-                  rgba(143, 16, 255, 0.76),
+                  rgba(143, 16, 255, 0.2),
                   rgba(255, 0, 0, 0) 70.71%
   ),
   radial-gradient(
                   circle at 6.7% 75%,
-                  rgb(0, 184, 252),
+                  rgba(181, 144, 255, 0.66),
                   rgba(146, 130, 253, 0.81) 50.71%
   ),
   radial-gradient(
                   circle at 93.3% 75%,
-                  rgb(110, 194, 241),
+                  rgba(110, 194, 241,0.2),
                   rgba(0, 255, 0, 0) 70.71%
   );
+
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
@@ -57,17 +58,17 @@
   //background-image: url("@site/static/background-image/homepage-light-3.png");
   background: radial-gradient(
                   circle at 50% 0,
-                  rgba(255, 194, 232, 0.76),
+                  rgba(255, 172, 223, 0.5),
                   rgba(255, 0, 0, 0) 70.71%
   ),
   radial-gradient(
                   circle at 6.7% 75%,
-                  rgb(179, 253, 247),
-                  rgba(157, 183, 250, 0.81) 50.71%
+                  rgba(248, 192, 212, 0.78),
+                  rgba(234, 203, 255, 0.81) 50.71%
   ),
   radial-gradient(
                   circle at 93.3% 75%,
-                  rgb(255, 191, 241),
+                  rgba(250, 192, 236, 0.4),
                   rgba(0, 255, 0, 0) 70.71%
   );
   background-attachment: fixed;

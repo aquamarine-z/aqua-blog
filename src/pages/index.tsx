@@ -1,3 +1,4 @@
+'use client'
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -7,36 +8,40 @@ import Heading from '@theme/Heading';
 
 import styles from './index.module.scss';
 import Translate, {translate} from "@docusaurus/Translate";
+import {useEffect, useRef, useState} from "react";
+import * as THREE from 'three'//导入样式
+import RINGS from "vanta/src/vanta.rings"
+//import NET from "vanta/src/vanta.net"
 
 function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
-  return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
-        <Heading as="h1" className="hero__title">
-            <Translate id={"homepage.title"} description={"Title of the homepage"}>
-                 {siteConfig.title}
-            </Translate>
+    const {siteConfig} = useDocusaurusContext();
+    return (
+        <header className={clsx('hero hero--primary', styles.heroBanner)}>
+            <div className="container">
+                <Heading as="h1" className="hero__title">
+                    <Translate id={"homepage.title"} description={"Title of the homepage"}>
+                        {siteConfig.title}
+                    </Translate>
 
-        </Heading>
-        <p className="hero__subtitle">
-            <Translate id={"homepage.subtitle"} description={"Subtitle of the homepage"}>
-                 {siteConfig.tagline}
-            </Translate>
+                </Heading>
+                <p className="hero__subtitle">
+                    <Translate id={"homepage.subtitle"} description={"Subtitle of the homepage"}>
+                        {siteConfig.tagline}
+                    </Translate>
 
-        </p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro">
-            <Translate id={'homepage.tutorial-link'}>
-                Go To Tutorial Page
-            </Translate>
-          </Link>
-        </div>
-      </div>
-    </header>
-  );
+                </p>
+                <div className={styles.buttons}>
+                    <Link
+                        className="button button--secondary button--lg"
+                        to="/docs/intro">
+                        <Translate id={'homepage.tutorial-link'}>
+                            Go To Tutorial Page
+                        </Translate>
+                    </Link>
+                </div>
+            </div>
+        </header>
+    );
 }
 
 /*
@@ -60,64 +65,91 @@ export default function Home(): JSX.Element {
 }
 
  */
-function NewHomepageHeader(){
+function NewHomepageHeader() {
     const {siteConfig} = useDocusaurusContext();
-  return (
-      <header className={' glass flex flex-col justify-start items-center padding--lg hover-float' } style={{maxWidth: '90%'}}>
+    return (
+        <header className={' glass flex flex-col justify-start items-center padding--lg hover-float'}
+                style={{maxWidth: '90%'}}>
 
-          <div className="container">
-              <Heading as="h1" className="hero__title opacity-85 text--center select-none text-adaptive">
-                  <Translate id={"homepage.title"} description={"Title of the homepage"}>
-                      {siteConfig.title}
-                  </Translate>
+            <div className="container">
+                <Heading as="h1" className="hero__title opacity-85 text--center select-none text-adaptive">
+                    <Translate id={"homepage.title"} description={"Title of the homepage"}>
+                        {siteConfig.title}
+                    </Translate>
 
-              </Heading>
-              <p className="hero__subtitle text--center opacity-70 select-none transition-none text-adaptive">
-                  <Translate id={"homepage.subtitle"} description={"Subtitle of the homepage"}>
-                      {siteConfig.tagline}
-                  </Translate>
+                </Heading>
+                <p className="hero__subtitle text--center opacity-70 select-none transition-none text-adaptive">
+                    <Translate id={"homepage.subtitle"} description={"Subtitle of the homepage"}>
+                        {siteConfig.tagline}
+                    </Translate>
 
-              </p>
-              <div className={`${styles.buttons}`}>
-                  <Link
-                      className={`select-none glass padding--sm text-black text-opacity-80 font-medium ${styles['link-button']} text-adaptive`}
-                      to="/docs/intro">
-                      <Translate id={'homepage.tutorial-link'}>
-                          Go To Tutorial Page
-                      </Translate>
-                  </Link>
-              </div>
-          </div>
-      </header>
+                </p>
+                <div className={`${styles.buttons}`}>
+                    <Link
+                        className={`select-none glass padding--sm text-black text-opacity-80 font-medium ${styles['link-button']} text-adaptive`}
+                        to="/docs/intro">
+                        <Translate id={'homepage.tutorial-link'}>
+                            Go To Tutorial Page
+                        </Translate>
+                    </Link>
+                </div>
+            </div>
+        </header>
 
-  );
+    );
 }
 
 export default function Home(): JSX.Element {
     const {siteConfig} = useDocusaurusContext();
+    const backgroundRef = useRef()
+    const [vantaEffect, setVantaEffect] = useState(null)
+
+    useEffect(() => {
+        if (!vantaEffect) {
+            const effect = RINGS({
+                el: document.body,
+                THREE:THREE,
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: false,
+                minHeight: 200.00,
+                minWidth: 200.00,
+                scale: 1.00,
+                scaleMobile: 1.00
+            })
+            let canvas=document.body.getElementsByClassName('vanta-canvas')
+            if(canvas){
+                // @ts-ignore
+                canvas.item(0)!.style.position="fixed"
+            }
+            setVantaEffect(effect)
+
+        }
+        return () => {
+            if (vantaEffect) vantaEffect.destroy()
+        }
+    }, [vantaEffect])
     return (
         <Layout
             title={`${translate({id: "homepage.title"})}`}
             description="Description will go into a meta tag in <head />">
-            <div className={`${styles["background"]} gap-4`}>
+            <div className={`${styles["background"]} gap-4`} ref={backgroundRef}>
 
                 <NewHomepageHeader/>
 
 
+                <h1 style={{
+                    width: "100%",
+                    textAlign: "center",
+                    marginTop: "50px",
+                    fontSize: "40px",
 
-                    <h1 style={{
-                        width: "100%",
-                        textAlign: "center",
-                        marginTop: "50px",
-                        fontSize: "40px",
-
-                    }} className={'opacity-85 select-none text-adaptive'}>
-                        <Translate id={"homepage.features.title"}>
-                            Now learning
-                        </Translate>
-                    </h1>
-                    <HomepageFeatures/>
-
+                }} className={'opacity-85 select-none text-adaptive'}>
+                    <Translate id={"homepage.features.title"}>
+                        Now learning
+                    </Translate>
+                </h1>
+                <HomepageFeatures/>
             </div>
 
         </Layout>
