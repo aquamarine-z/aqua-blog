@@ -46,8 +46,11 @@ export default function DocItemLayout({children}: Props): JSX.Element {
     //@ts-ignore
     const {hide_comment: hideComment} = frontMatter;
     const {metadata} = useDoc();
+    // min-h-[90vh]是为了让页面在markdown过短的时候至少有一个90%的高度 不然感觉不好看
     return (
-        <div className="row">
+
+        <div className={"row" + " min-h-[90vh]"}>
+
             <div className={clsx('col', !docTOC.hidden && styles.docItemCol)}>
                 <ContentVisibility metadata={metadata}/>
                 <DocVersionBanner/>
