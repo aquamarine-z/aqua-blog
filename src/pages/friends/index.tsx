@@ -167,7 +167,7 @@ export default function Friends() {
                 scale: 1.00,
                 scaleMobile: 1.00,
                 color: 0xB593FF,
-                backgroundColor: 0x8466ca,
+                backgroundColor: 0x000000,
                 points: 12.00,
                 spacing: 14.00,
             })

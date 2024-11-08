@@ -14,12 +14,12 @@ export default function DocRootLayout({children}: Props): JSX.Element {
     const sidebar = useDocsSidebar();
     const [hiddenSidebarContainer, setHiddenSidebarContainer] = useState(false);
     const [vantaEffect, setVantaEffect] = useState(null)
-    const backgroundRef=useRef()
+    const backgroundRef = useRef()
     useEffect(() => {
         if (!vantaEffect) {
             const effect = GLOBE({
                 el: backgroundRef.current,
-                THREE:THREE,
+                THREE: THREE,
                 mouseControls: true,
                 touchControls: true,
                 gyroControls: false,
@@ -27,7 +27,8 @@ export default function DocRootLayout({children}: Props): JSX.Element {
                 minWidth: 200.00,
                 scale: 1.00,
                 scaleMobile: 1.00,
-                color2: 0xf7f7f7
+                color2: 0xf7f7f7,
+                backgroundColor: 0x00000000,
             })
             //@ts-ignore
             let canvas = backgroundRef.current.getElementsByClassName('vanta-canvas')
@@ -49,6 +50,7 @@ export default function DocRootLayout({children}: Props): JSX.Element {
                 <div className={styles.docsWrapper}>
                     <BackToTopButton/>
                     <div className={styles.docRoot}>
+
                         {sidebar && (
                             <DocRootLayoutSidebar
                                 sidebar={sidebar.items}
@@ -56,9 +58,13 @@ export default function DocRootLayout({children}: Props): JSX.Element {
                                 setHiddenSidebarContainer={setHiddenSidebarContainer}
                             />
                         )}
+
                         <DocRootLayoutMain hiddenSidebarContainer={hiddenSidebarContainer}>
                             {children}
+
                         </DocRootLayoutMain>
+
+
                     </div>
                 </div>
             </div>
