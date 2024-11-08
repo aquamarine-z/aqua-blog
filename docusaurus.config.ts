@@ -20,6 +20,16 @@ const config: Config = {
     // Set the /<baseUrl>/ pathname under which your site is served
     // For GitHub pages deployment, it is often '/<projectName>/'
     baseUrl: '/aqua-blog/',
+    future: {
+        experimental_faster: {
+            swcJsLoader: true,
+            swcJsMinimizer: true,
+            swcHtmlMinimizer: true,
+            lightningCssMinimizer: true,
+            rspackBundler: true,
+            mdxCrossCompilerCache: true,
+        },
+    },
     plugins: [
         'docusaurus-plugin-sass',
         async function myPlugin(context, options) {
@@ -149,8 +159,8 @@ const config: Config = {
                     label: "Learning",
                     position: "right",
                     items: [
-                        {to: 'docs/%E7%B1%BB%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/', label: 'DSA'},
-                        {to: 'docs/日语学习笔记/', label: "Japanese"}
+                        {to: 'docs/DSA/', label: 'DSA'},
+                        {to: 'docs/Japanese/', label: "Japanese"}
                     ]
                 },
                  {
