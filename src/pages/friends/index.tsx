@@ -153,10 +153,11 @@ function FriendView(props: FriendViewProps) {
 export default function Friends() {
     const backgroundRef = useRef()
     const [vantaEffect, setVantaEffect] = useState(null)
+    const vantaRef=useRef()
     useEffect(() => {
         if (!vantaEffect) {
             const effect = NET({
-                el: document.body,
+                el: vantaRef.current,
                 THREE:THREE,
                 mouseControls: true,
                 touchControls: true,
@@ -170,7 +171,8 @@ export default function Friends() {
                 points: 12.00,
                 spacing: 14.00,
             })
-            let canvas = document.body.getElementsByClassName('vanta-canvas')
+            //@ts-ignore
+            let canvas = vantaRef.current.getElementsByClassName('vanta-canvas')
             if (canvas) {
                 // @ts-ignore
                 canvas.item(0)!.style.position = "fixed"
@@ -186,6 +188,7 @@ export default function Friends() {
         title={`${translate({id: "friends.title"})}`}
         description="Description will go into a meta tag in <head />">
         <main>
+            <div className={'vanta'} ref={vantaRef}></div>
             <div className={styles["background"]}>
                 <div className={styles['content']}>
                     {friendsList.map((it, index) => {

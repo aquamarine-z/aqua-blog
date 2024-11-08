@@ -107,7 +107,7 @@ export default function Home(): JSX.Element {
     useEffect(() => {
         if (!vantaEffect) {
             const effect = RINGS({
-                el: document.body,
+                el: backgroundRef.current,
                 THREE:THREE,
                 mouseControls: true,
                 touchControls: true,
@@ -117,7 +117,8 @@ export default function Home(): JSX.Element {
                 scale: 1.00,
                 scaleMobile: 1.00
             })
-            let canvas=document.body.getElementsByClassName('vanta-canvas')
+            //@ts-ignore
+            let canvas=backgroundRef.current.getElementsByClassName('vanta-canvas')
             if(canvas){
                 // @ts-ignore
                 canvas.item(0)!.style.position="fixed"
@@ -133,7 +134,8 @@ export default function Home(): JSX.Element {
         <Layout
             title={`${translate({id: "homepage.title"})}`}
             description="Description will go into a meta tag in <head />">
-            <div className={`${styles["background"]} gap-4`} ref={backgroundRef}>
+            <div className={'vanta'} ref={backgroundRef}></div>
+            <div className={`${styles["background"]} gap-4`} >
 
                 <NewHomepageHeader/>
 
