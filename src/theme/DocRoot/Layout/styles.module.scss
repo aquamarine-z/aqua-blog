@@ -1,0 +1,58 @@
+.docRoot {
+  display: flex;
+  width: 100%;
+}
+
+.docsWrapper {
+  display: flex;
+  flex: 1 0 auto;
+}
+[data-theme='dark'] .background {
+  //background-image: url("@site/static/background-image/homepage-dark.png");
+  background: radial-gradient(
+                  circle at 50% 0,
+                  rgba(143, 16, 255, 0.2),
+                  rgba(255, 0, 0, 0) 70.71%
+  ),
+  radial-gradient(
+                  circle at 6.7% 75%,
+                  rgba(181, 144, 255, 0.66),
+                  rgba(146, 130, 253, 0.81) 50.71%
+  ),
+  radial-gradient(
+                  circle at 93.3% 75%,
+                  rgba(110, 194, 241,0.2),
+                  rgba(0, 255, 0, 0) 70.71%
+  );
+
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: fit-content;
+  min-height: 100vh;
+}
+
+.background {
+  //background-image: url("@site/static/background-image/homepage-light-3.png");
+  background: radial-gradient(
+                  circle at 50% 0,
+                  rgba(178, 250, 233, 0.4),
+                  rgba(255, 0, 0, 0) 70.71%
+  ),
+  radial-gradient(
+                  circle at 6.7% 75%,
+                  rgba(190, 255, 211, 0.6),
+                  rgba(99, 255, 199, 0.81) 50.71%
+  ),
+  radial-gradient(
+                  circle at 93.3% 75%,
+                  rgba(190, 246, 238, 0.4),
+                  rgba(0, 255, 0, 0) 70.71%
+  );
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: fit-content;
+  min-height: 100vh;
+}

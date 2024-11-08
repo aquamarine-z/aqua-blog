@@ -52,6 +52,7 @@ export default function DocItemLayout({children}: Props): JSX.Element {
                 <ContentVisibility metadata={metadata}/>
                 <DocVersionBanner/>
                 <div className={styles.docItemContainer}>
+
                     <article>
                         <DocBreadcrumbs/>
                         <DocVersionBadge/>

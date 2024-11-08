@@ -232,8 +232,8 @@ const config: Config = {
             copyright: `Copyright © ${new Date().getFullYear()} Aqua-Blog, Inc. Built with Docusaurus.`,
         },
         prism: {
-            theme: prismThemes.github,
-            darkTheme: prismThemes.dracula,
+            theme: prismThemes.oneLight,
+            darkTheme: prismThemes.gruvboxMaterialDark,
             additionalLanguages:['java','cpp',"bash","plant-uml","markup"]
         },
     } satisfies Preset.ThemeConfig,
