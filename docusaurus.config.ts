@@ -232,7 +232,7 @@ const config: Config = {
             copyright: `Copyright © ${new Date().getFullYear()} Aqua-Blog, Inc. Built with Docusaurus.`,
         },
         prism: {
-            theme: prismThemes.oneLight,
+            theme: prismThemes.vsLight,
             darkTheme: prismThemes.gruvboxMaterialDark,
             additionalLanguages:['java','cpp',"bash","plant-uml","markup"]
         },

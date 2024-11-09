@@ -1,0 +1,16 @@
+.background{
+  height: 110vh;
+  position: fixed;
+  pointer-events: none;
+  left: 0;
+  right: 0;
+  top: 0;
+
+  z-index: -1;
+}
+[data-theme='dark'] .background{
+background: rgba(155, 75, 255, 0.9);
+}
+.background{
+  background: rgba(166, 121, 255, 0.73);
+}

@@ -115,7 +115,8 @@ export default function Home(): JSX.Element {
                 minHeight: 200.00,
                 minWidth: 200.00,
                 scale: 1.00,
-                scaleMobile: 1.00
+                scaleMobile: 2.00,
+                backgroundAlpha:0.2,
             })
             //@ts-ignore
             let canvas=backgroundRef.current.getElementsByClassName('vanta-canvas')
