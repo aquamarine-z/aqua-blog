@@ -15,8 +15,6 @@ div.background {
 
 
   div.content {
-    padding-top: 20px;
-    padding-bottom: 20px;
     height: 80%;
     width: 60%;
     display: flex;
@@ -26,6 +24,7 @@ div.background {
     overflow-y: scroll;
     justify-content: center;
     min-width: min-content;
+    padding: 20px 50px;
 
     &::-webkit-scrollbar {
       display: none;
