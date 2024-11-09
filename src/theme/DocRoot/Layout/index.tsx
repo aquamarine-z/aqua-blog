@@ -30,6 +30,7 @@ export default function DocRootLayout({children}: Props): JSX.Element {
                 scaleMobile: 1.00,
                 color2: 0xf7f7f7,
                 backgroundColor: 0x00000000,
+                backgroundAlpha:0.9,
             })
             //@ts-ignore
             let canvas = backgroundRef.current.getElementsByClassName('vanta-canvas')
