@@ -25,8 +25,13 @@
 
   .sidebarViewport {
     top: 0;
+    //top:var(--ifm-navbar-height) !important;
     position: sticky;
     height: 100%;
     max-height: 100vh;
+  }
+  .aside-margin{
+    margin-top: 0!important;
+
   }
 }

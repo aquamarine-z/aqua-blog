@@ -47,7 +47,8 @@ export default function DocRootLayoutSidebar({
         ThemeClassNames.docs.docSidebarContainer,
         styles.docSidebarContainer,
         hiddenSidebarContainer && styles.docSidebarContainerHidden,
-          'glass'
+          'glass',
+          styles['aside-margin']
       )}
       onTransitionEnd={(e) => {
         if (!e.currentTarget.classList.contains(styles.docSidebarContainer!)) {
@@ -64,6 +65,7 @@ export default function DocRootLayoutSidebar({
             styles.sidebarViewport,
             hiddenSidebar && styles.sidebarViewportHidden,
           )}>
+
           <DocSidebar
             sidebar={sidebar}
             path={pathname}
