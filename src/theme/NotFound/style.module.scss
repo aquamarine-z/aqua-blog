@@ -1,0 +1,15 @@
+.background{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120vh;
+  z-index: -1;
+
+}
+.background{
+  background: rgba(129, 205, 253, 0.88);
+}
+[data-theme='dark'] .background{
+background: rgba(179, 139, 255, 0.77);
+}
