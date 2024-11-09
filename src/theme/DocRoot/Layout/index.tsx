@@ -13,8 +13,9 @@ import * as THREE from "three";
 export default function DocRootLayout({children}: Props): JSX.Element {
     const sidebar = useDocsSidebar();
     const [hiddenSidebarContainer, setHiddenSidebarContainer] = useState(false);
-    const [vantaEffect, setVantaEffect] = useState(null)
+
     const backgroundRef = useRef()
+    const [vantaEffect, setVantaEffect] = useState(null)
     useEffect(() => {
         if (!vantaEffect) {
             const effect = GLOBE({

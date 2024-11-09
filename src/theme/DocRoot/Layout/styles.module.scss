@@ -9,21 +9,7 @@
 }
 [data-theme='dark'] .background {
   //background-image: url("@site/static/background-image/homepage-dark.png");
-  background: radial-gradient(
-                  circle at 50% 0,
-                  rgba(143, 16, 255, 0.2),
-                  rgba(255, 0, 0, 0) 70.71%
-  ),
-  radial-gradient(
-                  circle at 6.7% 75%,
-                  rgba(181, 144, 255, 0.66),
-                  rgba(146, 130, 253, 0.81) 50.71%
-  ),
-  radial-gradient(
-                  circle at 93.3% 75%,
-                  rgba(110, 194, 241,0.2),
-                  rgba(0, 255, 0, 0) 70.71%
-  );
+  background: rgba(127, 81, 250, 0.84);
 
   background-attachment: fixed;
   background-size: cover;
@@ -35,21 +21,7 @@
 
 .background {
   //background-image: url("@site/static/background-image/homepage-light-3.png");
-  background: radial-gradient(
-                  circle at 50% 0,
-                  rgba(178, 203, 250, 0.4),
-                  rgba(255, 0, 0, 0) 70.71%
-  ),
-  radial-gradient(
-                  circle at 6.7% 75%,
-                  rgba(168, 188, 255, 0.83),
-                  rgba(121, 204, 255, 0.92) 50.71%
-  ),
-  radial-gradient(
-                  circle at 93.3% 75%,
-                  rgba(190, 199, 246, 0.4),
-                  rgba(0, 255, 0, 0) 70.71%
-  );
+  background: rgba(146, 198, 255, 0.75);
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;

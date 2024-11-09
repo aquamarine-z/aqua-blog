@@ -50,7 +50,13 @@ function BlogPostPageContent({
             {(nextItem || prevItem) && (
                 <BlogPostPaginator nextItem={nextItem} prevItem={prevItem}/>
             )}
-            {!hideComment && <Comment />}
+            {!hideComment &&
+                <div className={'opacity-70'}>
+                    <Comment/>
+                </div>
+            }
+
+
         </BlogLayout>
     );
 }

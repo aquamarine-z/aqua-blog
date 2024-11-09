@@ -166,10 +166,12 @@ export default function Friends() {
                 minWidth: 200.00,
                 scale: 1.00,
                 scaleMobile: 1.00,
-                color: 0xB593FF,
+                color: 0xffffff,
                 backgroundColor: 0x000000,
                 points: 12.00,
                 spacing: 14.00,
+
+                backgroundAlpha:0.5,
             })
             //@ts-ignore
             let canvas = vantaRef.current.getElementsByClassName('vanta-canvas')
