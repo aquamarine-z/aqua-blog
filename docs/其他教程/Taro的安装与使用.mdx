@@ -1,0 +1,156 @@
+---
+title: Taro的安装与使用
+---
+# Taro.js 入门教程
+
+## 配置环境与项目初始化
+
+### 1. 安装Taro.js
+
+```Bash
+npm install taro -g
+```
+
+### 2. WebStorm新建项目
+
+### 3. Taro init创建Taro项目
+
+```Bash
+taro init <ProjectName> //ProjectName为项目名称
+```
+
+项目介绍随意<br />
+框架选择:根据喜好<br />
+是否使用TypeScript:根据喜好 (y/n)<br />
+CSS预处理器:根据喜好<br />
+编译工具:Webpack 5<br />
+包管理工具:根据喜好<br />
+模板源:建议Gitee<br />
+模板:建议默认模板<br />
+
+### 4. 安装依赖
+
+```Bash
+cd <ProjectName>
+cnpm install
+```
+
+### 5. 修改默认缩进空格数(若本身就为2空格则忽略)
+
+"项目名/.editorconfig" 文件
+
+```
+indent_size = 4
+```
+
+### 6.安装并启用插件
+
+#### 安装插件
+
+控制台:
+
+```Bash
+   yarn add @tarojs/plugin-html //允许在weapp中使用html元素的插件
+   yarn add @tarojs/plugin-less //处理less文件的插件
+```
+
+#### 启用插件
+
+项目名/config/index.ts
+
+```typescript
+const baseConfig: UserConfigExport = {
+    plugins: [
+        '@tarojs/plugin-html',
+        '@tarojs/plugin-less',
+    ],
+}
+```
+
+### 7. 启用CSS Modules
+
+项目名/config/index.ts
+
+```Typescript
+const baseConfig: UserConfigExport = {
+     mini:{
+         postcss:{
+              cssModules: {
+                  enable: true, // 默认为 false，如需使用 css modules 功能，则设为 true
+              }
+         }
+     },
+     h5:{
+         postcss:{
+              cssModules: {
+                  enable: true, // 默认为 false，如需使用 css modules 功能，则设为 true
+              }
+         }
+     },
+     rn: {
+          appName: 'taroDemo',
+          postcss: {
+              cssModules: {
+                  enable: true, // 默认为 false，如需使用 css modules 功能，则设为 true
+              }
+          }
+     }
+}
+```
+### 8. H5同源问题解决
+项目名/config/index.ts
+```Typescript
+const baseConfig: UserConfigExport = {
+     h5:{
+         devServer: {
+             host: 'localhost',
+             port: 10086,
+             proxy: {
+                 '/api/v1': {
+                     target: 'http://localhost:1145',  // 服务端地址
+                     changeOrigin: true
+                 }
+             }
+         },
+     },
+}
+```
+### 9. 打包路径配置
+项目名/config/index.ts
+```typescript
+const baseConfig: UserConfigExport = {
+    outputRoot: `dist/${process.env.TARO_ENV}`,
+}
+```
+### 10. 打包与调试
+```Bash
+npm run dev:h5 //启动H5端的调试
+npm run dev:weapp //启动微信小程序端的调试
+npm run build:h5 //打包构建H5端的项目
+npm run build:weapp //打包构建微信小程序项目
+```
+## 路由配置
+项目名/src/app.config.ts
+```typescript
+export default defineAppConfig({
+    pages: [
+        'pages/home/home' //page的第一个为主页
+    ],
+    window: {
+        backgroundTextStyle: 'light',
+        navigationBarBackgroundColor: '#fff',
+        navigationBarTitleText: 'WeChat',
+        navigationBarTextStyle: 'black'
+    }
+})
+```
+## 其他
+### 微信小程序Title栏透明化
+pages/xxx.config.ts
+```typescript
+export default definePageConfig({
+    navigationStyle: "custom"
+})
+
+```
+
