@@ -231,6 +231,10 @@ const config: Config = {
             ],
             copyright: `Copyright © ${new Date().getFullYear()} Aqua-Blog, Inc. Built with Docusaurus.`,
         },
+
+        docs:{
+
+        },
         prism: {
             theme: prismThemes.vsLight,
             darkTheme: prismThemes.gruvboxMaterialDark,
