@@ -1,0 +1,267 @@
+---
+title: Electron项目的创建与打包
+---
+# Electron+React配置与打包
+## 项目初始化
+新建一个Vite+React项目
+```Bash
+npm init vite
+```
+下载所有依赖项
+```Bash
+npm install
+cnpm install electron --save
+npm install -g electron
+```
+新建main.cjs文件
+```Javascript
+// 引入electron并创建一个Browserwindow
+const {app, BrowserWindow} = require('electron')
+const path = require('path')
+const url = require('url')
+// 保持window对象的全局引用,避免JavaScript对象被垃圾回收时,窗口被自动关闭.
+let mainWindow
+function createWindow () {
+//创建浏览器窗口,宽高自定义具体大小你开心就好
+    mainWindow = new BrowserWindow({width: 800, height: 600})
+    /*
+    * 加载应用----- electron-quick-start中默认的加载入口
+    mainWindow.loadURL(url.format({
+    pathname: path.join(__dirname, 'index.html'),
+    protocol: 'file:',
+    slashes: true
+    }))
+    */
+    // 加载应用----react 打包
+    mainWindow.loadURL(url.format({
+        pathname: path.join(__dirname, './dist/index.html'),
+        protocol: 'file:',
+        slashes: true
+    }))
+    // 加载应用----适用于 react 开发时项目
+    // mainWindow.loadURL('http://localhost:3000/');
+
+
+    // 打开开发者工具，默认不打开
+    // mainWindow.webContents.openDevTools()
+    // 关闭window时触发下列事件.
+    mainWindow.on('closed', function () {
+        mainWindow = null
+    })
+}
+// 当 Electron 完成初始化并准备创建浏览器窗口时调用此方法
+app.on('ready', createWindow)
+// 所有窗口关闭时退出应用.
+app.on('window-all-closed', function () {
+    // macOS中除非用户按下 `Cmd + Q` 显式退出,否则应用与菜单栏始终处于活动状态.
+    if (process.platform !== 'darwin') {
+        app.quit()
+    }
+})
+app.on('activate', function () {
+    // macOS中点击Dock图标时没有已打开的其余应用窗口时,则通常在应用中重建一个窗口
+    if (mainWindow === null) {
+        createWindow()
+    }
+})
+```
+使用preload.js建立渲染器和主进程沟通桥梁
+在main.cjs同级目录下 新建preload.cjs
+```Javascript
+const { contextBridge } = require('electron')
+const koffi=require("koffi")
+const user32=koffi.load("user32.dll")
+const sendMessage=user32.func("MessageBoxA","int",["int","string","string","int"])
+function sendMessageJs(title,content){
+    sendMessage(0,title,content,0)
+}
+contextBridge.exposeInMainWorld('myAPI', {
+    desktop: true,
+    sendMessage:sendMessageJs
+})
+```
+在main.cjs中导入预加载脚本
+```Javascript
+    mainWindow = new BrowserWindow({
+        width: 800,
+        height: 600,
+        frame:true,
+        webPreferences: {
+            preload: path.join(__dirname, 'preload.cjs'),
+            nodeIntegration:true,
+            contextIsolation:true,
+        }
+    })
+```
+编辑package.json
+
+```JSON
+{
+  "name": "vite_react_electron",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "main.cjs", //主函数的入口
+  "homepage":".",
+  "build": {
+    "appId": "xxx",
+    "copyright": "xxx",
+    "productName": "xxx",
+    "icon": "xxx",
+    "win": {
+      "target": [
+        "portable"
+      ]
+    },
+    "directories": {
+      "output": "build"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "electron-start": "electron ." //electron的调试
+  },
+  "dependencies": {
+    "electron": "^29.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "vite": "^5.0.8"
+  }
+}
+
+```
+修改vite服务器端口与base路径
+vite.config.js
+```Javascript
+export default defineConfig({
+  plugins: [react()],
+  base: "./",
+  server:{
+    port:3000 //端口号修改为3000
+  }
+})
+```
+## 调试项目
+分别在两个控制台输入以上内容
+```Bash
+npm run dev
+```
+```Bash
+npm run electron-start
+```
+## 打包
+安装electron-builder
+```Bash
+npm install electron-builder -g
+```
+在package.json中写入:
+```JSON
+"build": {
+    "appId": "xxx",
+    "copyright":"xxx",
+    "productName":"xxx",// 软件名
+    "icon": "xxx",// 图标
+    "win": {
+      "target": [
+        "portable"// 写这个参数就可以打包成单个exe文件了
+      ]
+    }
+
+```
+打包
+```Bash
+electron-builder
+```
+### 报错处理
+#### electron包体下载失败
+⨯ Get "https://github.com/electron/electron/releases/download/v29.1.0/electron-v29.1.0-win32-x64.zip": proxyconnect tcp: dial tcp :0: connectex: The requested address is not valid in its context.
+前往 https://github.com/electron/electron/releases/download/v29.1.0/electron-v29.1.0-win32-x64.zip
+手动下载zip后放入 C>用户>用户名>AppData>Local>electron>Cache
+#### winCodeSign下载失败
+手动下载后解压放入 C>用户>用户名>AppData>Local>electron-builder>Cache>>winCodeSign>winCodeSign-2.6.0(版本号) 文件夹中
+#### nsis 下载失败
+手动下载后解压放入 C>用户>用户名>AppData>Local>electron-builder>Cache>>nsis>nsis-3.0.4.1(版本号) 文件夹中
+#### nsis resource下载失败
+手动下载后解压放入 C>用户>用户名>AppData>Local>electron-builder>Cache>>nsis>nsis-resources-3.4.1(版本号) 文件夹中
+## 附带内容
+### Node.js调用dll
+使用库koffi
+```Bash
+npm install koffi --save
+```
+在预加载脚本或main函数中调用dll
+```Javascript
+const koffi=require('koffi')
+const user32=require('user32.dll')
+const sendMessage=user32.func("MessageBoxA","int",["int","string","string","int"])
+function sendMessageJs(title,content){
+    sendMessage(0,title,content,0)
+}
+contextBridge.exposeInMainWorld('myAPI', {
+    desktop: true,
+    sendMessage:sendMessageJs
+})
+```
+## Chapter 2 使用TypeScript
+### 安装TypeScript
+```Bash
+npm install typescript -g
+npm install @types/node --save-dev
+```
+### 移动文件
+将main.cjs改名为main.ts 移动到src/electron 目录下
+将preload.cjs改名为preload.ts 移动到src/electron 目录下
+### 改名tsconfig.json
+新建tsconfig.electron.json 输入
+```Bash
+{
+  "compilerOptions": {
+    // 其他必要的编译选项...
+    "outDir": "./src/electron",
+    // 设置输出目录为 ./electron
+    "rootDir": "./src/electron",
+    // 设置源文件目录为 ./electron
+    "incremental": true,
+    // 可选，启用增量编译以提高编译速度（如果适用）
+    "composite": true,
+    // 可选，允许项目作为项目引用的一部分被编译（如果适用）
+    "declaration": true,
+    // 可选，生成对应的 `.d.ts` 类型声明文件
+    "sourceMap": true
+    // 可选，生成对应的 `.map` 调试源映射文件
+  },
+  "include": [
+    "./src/electron/**/*"
+  ],
+  "exclude": [
+  ]
+}
+```
+### 新的package.json
+```JSON
+{
+  "type": "commonjs",
+  "main": "src/electron/main.js",
+  "scripts": {
+    "dev": "vite",
+    "compile-renderer": "tsc -p tsconfig.json && vite build",
+    "compile-electron": "tsc -p tsconfig.electron.json",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "electron-run": "npm run compile-electron&& npm run compile-renderer && electron .",
+    "electron-build": "npm run compile-electron&& npm run compile-renderer && electron-builder"
+  }
+}
+```
