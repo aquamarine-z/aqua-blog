@@ -1,0 +1,243 @@
+---
+title: Lab3
+---
+
+# 实验三 Task1(八皇后) 代码参考
+## 需要改动的三个文件
+### application.cpp
+```cpp
+#include "application.h"
+#include <iostream>
+bool (*board)[8];
+void Application::initialize() {
+    board=new bool[8][8]{false};
+}
+
+Position Application::getStartPosition() {
+    initialize();
+    auto position=Position(0,0);
+    return position;
+}
+
+bool Application::isValid(const Position &p) {
+    int row=p.row;
+    int column=p.col;
+    for(int i=0;i<row;i++) {
+        if(board[i][column]) return false;
+    }
+    auto i=row-1;
+    auto j=column-1;
+    while(i>=0&&j>=0) {
+        if(board[i][j]) return false;
+        i--;
+        j--;
+    }
+    i=row-1;
+    j=column+1;
+    while(i>=0&&j<8) {
+        if(board[i][j]==1) return false;
+        i--;
+        j++;
+    }
+    return true;
+}
+
+void Application::progress(const Position &p) {
+    int row=p.row;
+    int column=p.col;
+    board[row][column]=true;
+}
+void Application::print() {
+    for(int i=0;i<8;i++) {
+        for(int j=0;j<8;j++) {
+            if(board[i][j]) std::cout<<"1 ";
+            else std::cout<<"0 ";
+        }
+        std::cout<< std::endl;
+    }
+    std::cout<< std::endl;
+}
+bool Application::success(const Position& p) {
+
+    return p.row>=7;
+}
+
+void Application::goBack(const Position& p) {
+    int row=p.row;
+    int column=p.col;
+    board[row][column]=false;
+}
+Application::Iterator::Iterator() {
+    this->currItrPosPtr=new Position(0,0);
+
+}
+Application::Iterator::Iterator(const Position& currP) {
+    auto p=new Position(currP.row,currP.col);
+    p->col=0;
+    p->row=currP.row;
+    this->currItrPosPtr=(void*)p;
+
+}
+Application::Iterator::~Iterator() {
+    auto position=static_cast<Position *>(this->currItrPosPtr);
+}
+bool Application::Iterator::noNextPosition() {
+    auto position=static_cast<Position *>(this->currItrPosPtr);
+    return position->col>=8;
+}
+
+Position Application::Iterator::getNextPosition() {
+    auto position=static_cast<Position *>(this->currItrPosPtr);
+    auto result=position->col;
+    position->col++;
+    this->currItrPosPtr=position;
+    return Position(position->row+1,result);
+}
+```
+
+### position.cpp
+```cpp
+#include "position.h"
+```
+
+### position.h
+```cpp
+class Position {
+public:
+    int row;
+    int col;
+    Position():Position(0,0) {
+
+    }
+    Position(int row,int col) {
+        this->col=col;
+        this->row=row;
+    }
+};
+```
+
+## 按题目要求 禁止改动的文件
+### application.h
+```cpp
+#ifndef APPLICATION_H
+#define APPLICATION_H
+#include "position.cpp"
+class Application
+{
+public:
+	void initialize(); //intialization
+
+	Position getStartPosition(); //get the start position
+
+	bool isValid(const Position& p); //check whether the position p is valid
+
+	void progress(const Position& p); //extend by including position p
+
+	bool success(const Position& p); //check whether a successful solution is obtained at p
+
+	void goBack(const Position& p); //go back one step from p
+
+	void print(); //print the configuration of the application
+
+	class Iterator //inner class
+	{
+	public:
+		Iterator(); //default constructor
+		Iterator(const Position& currP); //constructor with an input position
+		~Iterator();
+
+		Position getNextPosition(); //get next possible posible position
+		bool noNextPosition(); //check whether all the possible next are tried
+
+	private:
+		void *currItrPosPtr; //additional information to find next
+	};
+};
+
+
+#endif
+```
+### backtrack.cpp
+```cpp
+#include "backtrack.h"
+
+#include <iostream>
+
+
+BackTrack::BackTrack() {}
+
+BackTrack::BackTrack(const Application& thisApp)
+{
+	this->app = thisApp;
+}
+
+bool BackTrack::backTrack(const Position& currPos)
+{
+	app.progress(currPos);
+
+	if (app.success(currPos))
+		return true;
+	else
+	{
+
+		Application::Iterator itr(currPos);
+
+		Position nextPos;
+		while (!itr.noNextPosition())
+		{
+			nextPos = itr.getNextPosition();
+
+			if (app.isValid(nextPos) && backTrack(nextPos)) //recursive call if valid
+			{
+				return true;
+			}
+		}
+		//cannot reach goal from currPos
+		app.goBack(currPos); //backtrack
+		return false; //from currPos, no solution
+	}
+}
+```
+### backtrack.h
+```cpp
+#ifndef BACKTRACK_H
+#define BACKTRACK_H
+
+#include "application.h"
+
+
+class BackTrack
+{
+public:
+	BackTrack();
+	BackTrack(const Application& thisApp);
+
+	bool backTrack(const Position& currPos);
+private:
+	Application app;
+};
+
+#endif
+```
+### main.cpp
+```cpp
+// main.cpp : This file contains the 'main' function. Program execution begins and ends there.
+
+#include "backtrack.h"
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	Application app;
+	BackTrack btr(app);
+
+	if (btr.backTrack(app.getStartPosition()))
+		app.print();
+	else
+		cout << "Problem has no solution!" << endl;
+
+	return 0;
+}
+
+```

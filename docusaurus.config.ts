@@ -20,6 +20,16 @@ const config: Config = {
     // Set the /<baseUrl>/ pathname under which your site is served
     // For GitHub pages deployment, it is often '/<projectName>/'
     baseUrl: '/aqua-blog/',
+    /*future: {
+        experimental_faster: {
+            swcJsLoader: true,
+            swcJsMinimizer: true,
+            swcHtmlMinimizer: true,
+            lightningCssMinimizer: true,
+            rspackBundler: true,
+            mdxCrossCompilerCache: true,
+        },
+    },*/
     plugins: [
         'docusaurus-plugin-sass',
         async function myPlugin(context, options) {
@@ -145,11 +155,20 @@ const config: Config = {
                     label: 'Tutorial',
                 },
                 {to: '/blog', label: 'Blog', position: 'left'},
+                {
+                    label: "Learning",
+                    position: "right",
+                    items: [
+                        {to: 'docs/DSA/', label: 'DSA'},
+                        {to: 'docs/Japanese/', label: "Japanese"}
+                    ]
+                },
                  {
                     to:'/friends',
                     label: 'Friends',
                     position: 'right'
                 },
+
                 {
                     href: 'https://github.com/aquamarine-z',
                     label: 'GitHub',
@@ -159,6 +178,7 @@ const config: Config = {
                     type: 'localeDropdown',
                     position: 'left',
                 },
+
 
             ],
         },
@@ -209,11 +229,11 @@ const config: Config = {
                     ],
                 }
             ],
-            copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+            copyright: `Copyright © ${new Date().getFullYear()} Aqua-Blog, Inc. Built with Docusaurus.`,
         },
         prism: {
-            theme: prismThemes.github,
-            darkTheme: prismThemes.dracula,
+            theme: prismThemes.vsLight,
+            darkTheme: prismThemes.gruvboxMaterialDark,
             additionalLanguages:['java','cpp',"bash","plant-uml","markup"]
         },
     } satisfies Preset.ThemeConfig,

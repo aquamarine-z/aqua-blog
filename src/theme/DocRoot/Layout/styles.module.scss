@@ -1,0 +1,30 @@
+.docRoot {
+  display: flex;
+  width: 100%;
+}
+
+.docsWrapper {
+  display: flex;
+  flex: 1 0 auto;
+}
+[data-theme='dark'] .background {
+  //background-image: url("@site/static/background-image/homepage-dark.png");
+  background: rgba(127, 81, 250, 0.84);
+
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: fit-content;
+  min-height: 100vh;
+}
+
+.background {
+  //background-image: url("@site/static/background-image/homepage-light-3.png");
+  background: rgba(125, 242, 255, 0.78);
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: fit-content;
+  min-height: 100vh;
+}

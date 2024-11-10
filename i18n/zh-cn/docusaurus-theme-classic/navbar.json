@@ -22,5 +22,14 @@
   "item.label.Friends": {
     "message": "友情链接",
     "description": "Link to Friends Page"
+  },
+  "item.label.Learning": {
+    "message": "学习内容"
+  },
+  "item.label.DSA": {
+    "message": "类库与数据结构"
+  },
+  "item.label.Japanese": {
+    "message": "日语"
   }
 }

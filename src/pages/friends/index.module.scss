@@ -1,7 +1,10 @@
+[data-theme='dark'] div.background{
+  background: linear-gradient(to bottom, rgba(4, 136, 159, 0.4), rgba(2, 39, 152, 0.4));
+}
 div.background {
   height: 100vh;
   width: 100%;
-  background: linear-gradient(to bottom, rgb(255, 196, 254), rgb(159, 102, 250));
+  background: linear-gradient(to bottom, rgba(255, 196, 254,0.4), rgba(209, 183, 255, 0.4));
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,8 +15,6 @@ div.background {
 
 
   div.content {
-    padding-top: 20px;
-    padding-bottom: 20px;
     height: 80%;
     width: 60%;
     display: flex;
@@ -23,6 +24,7 @@ div.background {
     overflow-y: scroll;
     justify-content: center;
     min-width: min-content;
+    padding: 20px 50px;
 
     &::-webkit-scrollbar {
       display: none;
@@ -62,10 +64,11 @@ div.background {
 div.friend-view-container {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(8px);
-  height: 400px;
-  width: 300px;
   border-radius: 10px;
   border: 1px rgba(255, 255, 255, 0.2) solid;
+  height: 400px;
+  width: 300px;
+
   min-width: 300px;
 
   transition: 1s;

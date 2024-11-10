@@ -44,13 +44,13 @@ const FeatureList: FeatureItem[] = [
 
 function Feature({title, Svg, description}: FeatureItem) {
   return (
-    <div className={clsx('col col--4')}>
+    <div className={clsx('col col--4','glass w-fit hover-float ')} style={{maxWidth:'320px'}}>
       <div className="text--center">
         <Svg className={styles.featureSvg} role="img" />
       </div>
       <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
+        <Heading as="h3"  className={'opacity-85 select-none text-adaptive'}>{title}</Heading>
+        <p className={'opacity-85 select-none text-adaptive'}>{description}</p>
       </div>
     </div>
   );
@@ -58,9 +58,9 @@ function Feature({title, Svg, description}: FeatureItem) {
 
 export default function HomepageFeatures(): JSX.Element {
   return (
-    <section className={styles.features}>
-      <div className="container">
-        <div className="row">
+    <section className={`${styles.features} w-full`} >
+      <div className="container flex w-full justify-center items-center">
+        <div className="row gap-4 flex w-full items-stretch justify-center">
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
           ))}

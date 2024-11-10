@@ -1,0 +1,99 @@
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+.heroBanner {
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 2rem;
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[data-theme='dark'] .background {
+  //background-image: url("@site/static/background-image/homepage-dark.png");
+  background: radial-gradient(
+                  circle at 50% 0,
+                  rgba(143, 16, 255, 0.2),
+                  rgba(255, 0, 0, 0) 70.71%
+  ),
+  radial-gradient(
+                  circle at 6.7% 75%,
+                  rgba(181, 144, 255, 0.66),
+                  rgba(146, 130, 253, 0.81) 50.71%
+  ),
+  radial-gradient(
+                  circle at 93.3% 75%,
+                  rgba(110, 194, 241,0.2),
+                  rgba(0, 255, 0, 0) 70.71%
+  );
+
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  padding-top: 5%;
+  min-height: 100vh;
+}
+
+.background {
+  //background-image: url("@site/static/background-image/homepage-light-3.png");
+  background: radial-gradient(
+                  circle at 50% 0,
+                  rgba(255, 172, 223, 0.6),
+                  rgba(255, 0, 0, 0) 70.71%
+  ),
+  radial-gradient(
+                  circle at 6.7% 75%,
+                  rgba(248, 192, 212, 0.6),
+                  rgba(198, 166, 255, 0.8) 50.71%
+  ),
+  radial-gradient(
+                  circle at 93.3% 75%,
+                  rgba(250, 192, 236, 0.3),
+                  rgba(0, 255, 0, 0) 70.71%
+  );
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  padding-top: 5%;
+  min-height: 100vh;
+}
+
+.link-button {
+  transition: .3s;
+
+  &:hover {
+    transform: scale(1.05);
+    text-underline: none;
+    color:black;
+    opacity: 0.4;
+  }
+}

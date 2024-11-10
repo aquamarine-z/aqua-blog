@@ -1,5 +1,5 @@
 import styles from "./index.module.scss"
-import React, {MouseEvent, MouseEventHandler, useEffect, useRef} from "react";
+import React, {MouseEvent, MouseEventHandler, useEffect, useRef, useState} from "react";
 import Layout from "@theme/Layout";
 import Translate, {translate} from "@docusaurus/Translate";
 // @ts-ignore
@@ -14,13 +14,17 @@ import logoGithub from "@site/static/icon/MdiGithub.png"
 import logoBlog from "@site/static/icon/Fa6SolidBlog.png"
 
 // @ts-ignore
-import  logoLink from "@site/static/icon/MaterialSymbolsLink.png"
-import Comment from "@site/src/components/comment";
+import logoLink from "@site/static/icon/MaterialSymbolsLink.png"
+
+import * as THREE from 'three'//导入样式
+//import RINGS from "vanta/src/vanta.rings"
+import NET from "vanta/src/vanta.net"
+
 const friendsList = [
     {
         name: "Aquamarine",
         avatar: "https://github.com/aquamarine-z.png",
-        labels: ['self',"前端","数据可视化",'React'],
+        labels: ['self', "前端", "数据可视化", 'React'],
         links: [
             {
                 name: 'Github',
@@ -30,8 +34,8 @@ const friendsList = [
                 name: 'Blog',
                 icon: logoBlog,
                 link: "https://aquamarine-z.github.io/aqua-blog/"
-            },{
-                name:'Line',
+            }, {
+                name: 'Line',
                 icon: undefined,
                 link: "https://line.me/ti/p/6fcWHiO0vg"
             }
@@ -40,7 +44,7 @@ const friendsList = [
     {
         name: "Apricityx",
         avatar: avatarApricityx,
-        labels: ['friend','schoolmate'],
+        labels: ['friend', 'schoolmate'],
         links: [
             {
                 name: 'Github',
@@ -56,7 +60,7 @@ const friendsList = [
     {
         name: "Winston Chen",
         avatar: avatarWinstonChen,
-        labels: ['friend','schoolmate'],
+        labels: ['friend', 'schoolmate'],
         links: [
             {
                 name: 'Github',
@@ -72,7 +76,7 @@ const friendsList = [
     {
         name: "Syan Wang",
         avatar: avatarSyanWang,
-        labels: ['friend','schoolmate'],
+        labels: ['friend', 'schoolmate'],
         links: [
             {
                 name: 'Github',
@@ -88,10 +92,10 @@ const friendsList = [
 ]
 const labelDefaultColors = {
     friend: "#5ef5d2",
-    schoolmate:"#5aacfa",
-    teacher:"#fdffa0",
-    lover:"#f5d0ff",
-    family:'#9bf3b3',
+    schoolmate: "#5aacfa",
+    teacher: "#fdffa0",
+    lover: "#f5d0ff",
+    family: '#9bf3b3',
     self: '#ce79ff',
     common: "#8f72ee",
 }
@@ -104,6 +108,7 @@ interface FriendViewProps {
 }
 
 function FriendView(props: FriendViewProps) {
+
     useEffect(() => {
 
     }, []);
@@ -116,7 +121,7 @@ function FriendView(props: FriendViewProps) {
         </div>
         <div className={styles["label-view"]}>
             {
-                props.labels.map((it,index) => {
+                props.labels.map((it, index) => {
                     return <p key={index} className={styles["label"]}
                               style={{background: labelDefaultColors[it] ?? labelDefaultColors["common"]}}>
 
@@ -129,7 +134,7 @@ function FriendView(props: FriendViewProps) {
         </div>
         <div className={styles["link-list"]}>
             {
-                props.links.map((it,index) => {
+                props.links.map((it, index) => {
                     return <div key={index} className={styles['link-view']}>
                         <img className={styles['link-img']} src={it.icon ?? logoLink} alt={""}/>
                         <a className={styles['link-link']} href={it.link} onClick={(e) => {
@@ -146,18 +151,54 @@ function FriendView(props: FriendViewProps) {
 }
 
 export default function Friends() {
+    const backgroundRef = useRef()
+    const [vantaEffect, setVantaEffect] = useState(null)
+    const vantaRef=useRef()
+    useEffect(() => {
+        if (!vantaEffect) {
+            const effect = NET({
+                el: vantaRef.current,
+                THREE:THREE,
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: false,
+                minHeight: 200.00,
+                minWidth: 200.00,
+                scale: 1.00,
+                scaleMobile: 1.00,
+                color: 0xffffff,
+                backgroundColor: 0x000000,
+                points: 12.00,
+                spacing: 14.00,
+
+                backgroundAlpha:0.5,
+            })
+            //@ts-ignore
+            let canvas = vantaRef.current.getElementsByClassName('vanta-canvas')
+            if (canvas) {
+                // @ts-ignore
+                canvas.item(0)!.style.position = "fixed"
+            }
+            setVantaEffect(effect)
+
+        }
+        return () => {
+            if (vantaEffect) vantaEffect.destroy()
+        }
+    }, [vantaEffect])
     return <Layout
         title={`${translate({id: "friends.title"})}`}
         description="Description will go into a meta tag in <head />">
         <main>
+            <div className={'vanta'} ref={vantaRef}></div>
             <div className={styles["background"]}>
                 <div className={styles['content']}>
-                    {friendsList.map((it,index) => {
-                        return <FriendView key={index} avatar={it.avatar} name={it.name} labels={it.labels} links={it.links}/>
+                    {friendsList.map((it, index) => {
+                        return <FriendView key={index} avatar={it.avatar} name={it.name} labels={it.labels}
+                                           links={it.links}/>
                     })}
                 </div>
             </div>
-
         </main>
     </Layout>
 }
