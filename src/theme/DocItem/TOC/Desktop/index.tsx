@@ -7,14 +7,13 @@ import TOC from '@theme/TOC';
 export default function DocItemTOCDesktop(): JSX.Element {
     const {toc, frontMatter} = useDoc();
     return (
-        <div className={'glass w-[15%] fixed'}>
             <TOC
                 toc={toc}
                 minHeadingLevel={frontMatter.toc_min_heading_level}
                 maxHeadingLevel={frontMatter.toc_max_heading_level}
-                className={ThemeClassNames.docs.docTocDesktop}
+                className={`${ThemeClassNames.docs.docTocDesktop} glass`}
             />
-        </div>
+
 
     );
 }
