@@ -1,0 +1,282 @@
+---
+title: Homework3
+---
+## step1
+
+
+```java title="step1/Circle.java"
+package step1;
+
+public class Circle {
+    public Circle() {
+        this.radius = 1.0;
+        count++;
+    }
+    public Circle(double radius){
+        this.radius = radius;
+        count++;
+    }
+    public double area(){
+        return Math.PI*radius*radius;
+    }
+    public double getRadius() {
+        return radius;
+    }
+
+    public void setRadius(double radius) {
+        this.radius = radius;
+    }
+
+    double radius;
+
+    public static int getCount() {
+        return count;
+    }
+
+    static int count;
+}
+```
+
+## step2
+
+
+```java title="step2/Circle.java"
+package step2;
+
+public class Circle {
+    public Circle() {
+        this.radius = 1.0;
+        count++;
+    }
+    public Circle(double radius){
+        this.radius = radius;
+        count++;
+    }
+    public double area(){
+        return Math.PI*radius*radius;
+    }
+    public double getRadius() {
+        return radius;
+    }
+
+    public void setRadius(double radius) {
+        this.radius = radius;
+    }
+
+    double radius;
+
+    public static int getCount() {
+        return count;
+    }
+
+    static int count;
+    public static void change(Circle c1,Circle c2){
+        double temp = c1.radius;
+        c1.radius = c2.radius;
+        c2.radius = temp;
+    }
+}
+```
+
+## step3
+
+
+```java title="step3/PlusSymbol.java"
+package step3;
+
+public class PlusSymbol extends Symbol {
+    @Override
+    public String symbol() {
+        // 完成代码
+        return "+";
+    }
+}
+```
+
+```java title="step3/SubSymbol.java"
+package step3;
+
+public class SubSymbol extends Symbol {
+    @Override
+    public String symbol() {
+        // 完成代码
+        return "-";
+    }
+}
+
+```
+
+```java title="step3/Symbol.java"
+package step3;
+
+
+public class Symbol {
+    private int color; // 颜色代码
+
+    public String symbol() {
+        return "*"; // 默认的符号实现
+    }
+
+    public String line(int length) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < length; i++) {
+            result.append(symbol());
+        }
+        return result.toString();
+    }
+
+    public int getColor() {
+        return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
+    }
+}
+
+```
+
+## step4
+
+
+```java title="step4/Calculator.java"
+package step4;
+
+public class Calculator {
+  public double add(Number x, Number y) {
+    // 提示：转换成double类型计算
+    return x.doubleValue() + y.doubleValue();
+  }
+  public double sub(Number x, Number y) {
+    // 提示：转换成double类型计算
+    return x.doubleValue() - y.doubleValue();
+  }
+  public double mul(Number x, Number y) {
+    // 提示：转换成double类型计算
+    return x.doubleValue() * y.doubleValue();
+  }
+  public double div(Number x, Number y) {
+    // 提示：转换成double类型计算
+    return x.doubleValue() / y.doubleValue();
+  }
+  // sub
+  // div
+  // mul
+}
+
+```
+
+## step5
+
+
+```java title="step5/Test.java"
+package step5;
+
+public class Test {
+    /* Question1
+    public static void main(String[] args) {
+      String s1 = "java";
+      String s2 = "java";
+      String s3 = new String("java");
+      String s4 = new StringBuilder("java").toString();
+      System.out.printf("%b,%b,%b", s1 == s2, s3 == s4, s1.equals(s4));
+    }
+    */
+    /* Question2
+  public static void main(String[] args) {
+    String s1 = "hello";
+    System.out.println(s1.substring(1, 3));
+  }*/
+    public static void main(String[] args) {
+        String s1 = "java";
+        s1 += "123";
+        System.out.println(s1);
+    }
+}
+```
+
+## step6
+
+
+```java title="step6/SortTool.java"
+package step6;
+
+public class SortTool {
+        public static void sort(String[] strList) {
+                // 完成倒序排序代码；提示：strList[i].compareTo()
+        for(int i=0;i<strList.length;i++){
+            for(int j=i+1;j<strList.length;j++){
+                if(strList[i].compareTo(strList[j])<0){
+                    String temp=strList[i];
+                    strList[i]=strList[j];
+                    strList[j]=temp;
+                }
+            }
+        }
+        }
+}
+```
+
+## step7
+
+
+```java title="step7/Task.java"
+package step7;
+
+import java.util.Arrays;
+import java.util.Comparator;
+
+public class Task implements Comparable<Task> {
+    private int priorityLevel = 0; // 数值越大优先级越高
+    private int cost = 0; // 任务消耗的时间
+
+    public Task(int p, int c) {
+        // 待完成
+        priorityLevel = p;
+        cost = c;
+    }
+
+    @Override
+    public int compareTo(Task o) {
+        return -(priorityLevel - o.priorityLevel);
+        // 待完成
+    }
+
+    // 根据优先级排序，优先级高则排列在前
+    public static void sortByPriority(Task[] tasks) {
+        Arrays.sort(tasks);
+
+        // 待完成
+    }
+
+    // 根据消耗排序，消耗越低则排列在前
+    public static void sortByCost(Task[] tasks) {
+        Arrays.sort(tasks, new Comparator<Task>() {
+            @Override
+            public int compare(Task o1, Task o2) {
+                return o1.cost - o2.cost;
+            }
+        });
+
+        // 待完成
+    }
+
+    // 待完成：标准名称胡Getter和Setter方法
+    public int getPriorityLevel() {
+        return priorityLevel;
+    }
+
+    public void setPriorityLevel(int priorityLevel) {
+        this.priorityLevel = priorityLevel;
+    }
+
+    public int getCost() {
+        return cost;
+    }
+
+    public void setCost(int cost) {
+        this.cost = cost;
+    }
+}
+
+```
