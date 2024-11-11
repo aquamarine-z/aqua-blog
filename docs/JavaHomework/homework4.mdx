@@ -1,0 +1,369 @@
+---
+title: Homework4
+---
+## step1
+
+
+```java title="step1/Triangle.java"
+
+package step1;
+
+public class Triangle {
+  private double a;
+  private double b;
+
+  public double getC() {
+    return c;
+  }
+
+  public void setC(double c) {
+    this.c = c;
+  }
+
+  public double getA() {
+    return a;
+  }
+
+  public void setA(double a) {
+    this.a = a;
+  }
+
+  public double getB() {
+    return b;
+  }
+
+  public void setB(double b) {
+    this.b = b;
+  }
+
+  private double c; // 三边
+
+  public Triangle(double a, double b, double c) {
+    this.a = a;
+    this.b = b;
+    this.c = c;
+  }
+
+  public Triangle() {
+    this(1, 1, 1);
+  }
+  public double perimeter() {
+    return a + b + c;
+  }
+}
+
+```
+
+## step2
+
+
+```java title="step2/Triangle.java"
+package step2;
+
+public class Triangle {
+  private double a, b, c; // 三边
+  public Triangle() {
+    setA(1.0);
+    setB(1.0);
+    setC(1.0);
+  }
+  public Triangle(double a, double b, double c) {
+    setA(a);
+    setB(b);
+    setC(c);
+  }
+  public double perimeter() {
+    return a + b + c;
+  }
+  public double getA() {
+    return a;
+  }
+  public void setA(double a) {
+    this.a = a;
+  }
+  public double getB() {
+    return b;
+  }
+  public void setB(double b) {
+    this.b = b;
+  }
+  public double getC() {
+    return c;
+  }
+  public void setC(double c) {
+    this.c = c;
+  }
+  public static boolean checkSides(double a, double b, double c){
+    // 待完成
+      return (a+b>c)&&(a+c>b)&&(b+c>a);
+  }
+}
+
+```
+
+## step3
+
+
+```java title="step3/Triangle.java"
+package step3;
+
+public class Triangle {
+    private double a, b, c; // 三边
+
+    public Triangle() {
+        setA(1.0);
+        setB(1.0);
+        setC(1.0);
+    }
+
+    public Triangle(double a, double b, double c) {
+        checkSides(a, b, c);
+        setA(a);
+        setB(b);
+        setC(c);
+    }
+
+    public double perimeter() {
+        return a + b + c;
+    }
+
+    public double getA() {
+        return a;
+    }
+
+    public void setA(double a) {
+        checkSides(a, b, c);
+        this.a = a;
+    }
+
+    public double getB() {
+        return b;
+    }
+
+    public void setB(double b) {
+        checkSides(a, b, c);
+        this.b = b;
+    }
+
+    public double getC() {
+        return c;
+    }
+
+    public void setC(double c) {
+        checkSides(a, b, c);
+        this.c = c;
+    }
+
+    public void checkSides(double a, double b, double c) {
+        if (a <= 0 || b <= 0 || c <= 0) {
+            throw new TriangleSideException("存在边长小于零");
+        }
+        if ((a + b <= c) || (a + c <= b) || (b + c <= a)) {
+            throw new TriangleSideException("两边之和小于等于第三边");
+        }
+        // 待完成
+    }
+
+    public static Triangle[] fromArray(double[][] a) {
+        Triangle[] tri = new Triangle[a.length];
+        for (int i = 0; i < a.length; i++) {
+            try {
+                tri[i] = new Triangle(a[i][0], a[i][1], a[i][2]);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+
+            // 使用构造器来创建三角形：a[i][0],a[i][1],a[i][2]表示第i个三角形的三边
+            // 使用try-catch来捕获创建三角形可能抛出的异常
+            // 异常捕获之后使用System.out.println打印消息：e.getMessage()
+        }
+        return tri;
+    }
+}
+
+```
+
+```java title="step3/TriangleSideException.java"
+package step3;
+
+public class TriangleSideException extends RuntimeException {
+    // 序列化版本，由IDE提示生成
+    // 参数为消息的有参构造器
+    public TriangleSideException(String message) {
+        super(message);
+    }
+}
+```
+
+## step4
+
+
+```java title="step4/TriangleTest.java"
+package step4;
+
+public class TriangleTest {
+  public static void main(String[] args) throws MyException {
+    method();
+  }
+  public static void method() throws MyException {
+    throw new MyException();
+  }
+}
+class MyException extends Exception {
+  private static final long serialVersionUID = 1L;
+}
+```
+
+## step5
+
+
+```java title="step5/Student.java"
+package step5;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Scanner;
+
+public class Student {
+    private String id; // 学号
+    private int scoreA; // 成绩A
+    private int scoreB; // 成绩B
+    private int scoreC; // 成绩C
+
+    public static Student[] readFromFile(String path, int num) {
+        Scanner scanner = null;
+        try{
+           scanner = new Scanner(new File(path));
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+        }
+
+        ArrayList<Student> students = new ArrayList<Student>();
+        for (int i = 0; i < num; i++) {
+            String line = scanner.nextLine();
+            //System.out.println(line);
+            String[] fields = line.split(",");
+            students.add(new Student(
+                    fields[0],
+                    Integer.parseInt(fields[1]),
+                    Integer.parseInt(fields[2]),
+                    Integer.parseInt(fields[3])
+            ));
+        }
+        scanner.close();
+        return students.toArray(new Student[0]);
+        // 待完成
+    }
+
+    public int totalScore() {
+        return scoreA + scoreB + scoreC;
+        // 待完成
+    }
+
+    public static void sortByTotalScore(Student[] s) {
+        Comparator<Student> c = new Comparator<Student>() {
+            @Override
+            public int compare(Student o1, Student o2) {
+                return o1.totalScore() - o2.totalScore();
+            }
+        };
+        Arrays.sort(s, c);
+        // 待完成
+    }
+
+    public Student(String id, int scoreA, int scoreB, int scoreC) {
+        this.id = id;
+        this.scoreA = scoreA;
+        this.scoreB = scoreB;
+        this.scoreC = scoreC;
+        // 待完成
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public int getScoreA() {
+        return scoreA;
+    }
+
+    public void setScoreA(int scoreA) {
+        this.scoreA = scoreA;
+    }
+
+    public int getScoreB() {
+        return scoreB;
+    }
+
+    public void setScoreB(int scoreB) {
+        this.scoreB = scoreB;
+    }
+
+    public int getScoreC() {
+        return scoreC;
+    }
+
+    public void setScoreC(int scoreC) {
+        this.scoreC = scoreC;
+    }
+
+    public String toString() {
+        return id + "," + scoreA + "," + scoreB + "," + scoreC + "," + totalScore();
+    }
+}
+
+```
+
+## step6
+
+
+```java title="step6/FileTool.java"
+package step6;
+
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.Scanner;
+
+public final class FileTool {
+  public static String read(String path) {
+    try{
+      Scanner scanner = new Scanner(new FileReader(path));
+      StringBuilder sb = new StringBuilder();
+      while(scanner.hasNextLine()){
+        sb.append(scanner.nextLine());
+      }
+      scanner.close();
+      return sb.toString();
+    }catch (Exception e){
+      e.printStackTrace();
+    }
+
+    return null;
+    // 读取文件所有内容
+  }
+  public static void save(String path, String content) {
+    try{
+      FileWriter writer = new FileWriter(path);
+      writer.write(content);
+      writer.close();
+    }catch (Exception e){
+      e.printStackTrace();
+    }
+    // 保存内容到目标文件
+  }
+}
+
+```
