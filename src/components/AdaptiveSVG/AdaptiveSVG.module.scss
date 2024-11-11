@@ -90,12 +90,7 @@ div.maximize-background {
   align-items: center;
 
   div.maximize-container {
-    [data-theme="dark"] &{
-      background: var(--ifm-background-color);
-    }
-    &{
-      background: var(--ifm-color-white);
-    }
+
 
     width: 90%;
     height: 90%;

@@ -39,7 +39,7 @@ function showMaximumImage(component: React.ReactNode) {
         event.stopPropagation()
         onClose()
     }} className={styles["maximize-background"]}>
-        <div className={styles["maximize-container"]} onClick={(e) => {
+        <div className={styles["maximize-container"]+' glass' } onClick={(e) => {
             e.stopPropagation()
         }}>
             {component}
@@ -102,8 +102,7 @@ export function AdaptiveSVG(props: AdaptiveSVGProps) {
         {playable && <TitleBarButton imageUrl={playImage} onClick={() => {
         }}/>}
     </div> : <div style={{width: "100%", height: "20px"}}/>
-    const svgElement = <div className={styles["svg-container"]}>
-
+    const svgElement = <div className={styles["svg-container"]+' glass'}>
         {titleBar}
         <svg
             preserveAspectRatio={"xMidYMid meet"}
