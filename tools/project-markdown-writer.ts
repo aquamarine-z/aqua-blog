@@ -29,7 +29,7 @@ function getFilesSync(dir: string): string[] {
 }
 
 
-//将整个项目编译到一个markdown文件 目前只适配了java作业项目 且只实现了一层文件嵌套
+//将整个项目编译到一个markdown文件 目前只适配了java cpp作业项目 且只实现了一层文件嵌套
 function generateMarkdownJavaHomework() {
     let markdownContent =
         `---
@@ -75,7 +75,7 @@ ${content}
 }
 
 //rootDir要精确到labx这个位置
-function generateMarkdownCppHomework() {
+function generateMarkdownCppExperiment() {
 
     let markdownContent = `---
 title: ${markdownTitle}
@@ -116,7 +116,7 @@ function generateMarkdown(){
         case "java-homework":
             return generateMarkdownJavaHomework()
         case "cpp-homework":
-            return generateMarkdownCppHomework()
+            return generateMarkdownCppExperiment()
     }
 }
 
