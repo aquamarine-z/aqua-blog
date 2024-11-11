@@ -154,6 +154,7 @@ const config: Config = {
                     position: 'left',
                     label: 'Tutorial',
                 },
+
                 {to: '/blog', label: 'Blog', position: 'left'},
                 {
                     label: "Learning",
@@ -161,6 +162,16 @@ const config: Config = {
                     items: [
                         {to: 'docs/DSA/', label: 'DSA'},
                         {to: 'docs/Japanese/', label: "Japanese"}
+                    ]
+                },
+                {
+                    label: '网址导航',
+                    position: 'right',
+                    items: [
+                        {href: 'https://www.educoder.net/', label: '头歌实践教学平台(Java作业)'},
+                        {href: 'https://www.scholat.com/login.html', label: '学者网(数据结构实验)'},
+                        {href: 'https://www.zhihuishu.com/', label: '智慧树'},
+                        {href: 'https://v8.chaoxing.com/', label: '学习通'},
                     ]
                 },
                  {
