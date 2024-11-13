@@ -8,6 +8,7 @@ import ExpandButton from '@theme/DocRoot/Layout/Sidebar/ExpandButton';
 import type {Props} from '@theme/DocRoot/Layout/Sidebar';
 
 import styles from './styles.module.css';
+import {appearanceSettings} from "@site/src/theme-settings/appearance-settings";
 
 // Reset sidebar state when sidebar changes
 // Use React key to unmount/remount the children
@@ -47,7 +48,7 @@ export default function DocRootLayoutSidebar({
         ThemeClassNames.docs.docSidebarContainer,
         styles.docSidebarContainer,
         hiddenSidebarContainer && styles.docSidebarContainerHidden,
-          'glass',
+          (appearanceSettings.docSidebar==='glass'&&'glass'),
           styles['aside-margin']
       )}
       onTransitionEnd={(e) => {

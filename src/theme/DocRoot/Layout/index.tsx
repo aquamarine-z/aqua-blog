@@ -9,6 +9,7 @@ import styles from './styles.module.scss';
 import RINGS from "vanta/src/vanta.rings";
 import GLOBE from "vanta/src/vanta.globe"
 import * as THREE from "three";
+import {backgroundSettings} from "@site/src/theme-settings/background-settings";
 
 export default function DocRootLayout({children}: Props): JSX.Element {
     const sidebar = useDocsSidebar();
@@ -17,6 +18,7 @@ export default function DocRootLayout({children}: Props): JSX.Element {
     const backgroundRef = useRef()
     const [vantaEffect, setVantaEffect] = useState(null)
     useEffect(() => {
+        if (!backgroundSettings.docs.threeBackground.enable) return
         if (!vantaEffect) {
             const effect = GLOBE({
                 el: backgroundRef.current,
@@ -46,33 +48,48 @@ export default function DocRootLayout({children}: Props): JSX.Element {
         }
     }, [vantaEffect])
     return (
-        <>
-            <div className={'vanta'} ref={backgroundRef}></div>
-            <div className={styles['background']}>
-                <div className={styles.docsWrapper}>
-                    <BackToTopButton/>
-                    <div className={styles.docRoot}>
+        (backgroundSettings.docs.threeBackground.enable ? <>
+                <div className={'vanta'} ref={backgroundRef}></div>
+                <div className={styles['background']}>
+                    <div className={styles.docsWrapper}>
+                        <BackToTopButton/>
+                        <div className={styles.docRoot}>
 
-                        {sidebar && (
-                            <DocRootLayoutSidebar
-                                sidebar={sidebar.items}
-                                hiddenSidebarContainer={hiddenSidebarContainer}
-                                setHiddenSidebarContainer={setHiddenSidebarContainer}
-                            />
-                        )}
+                            {sidebar && (
+                                <DocRootLayoutSidebar
+                                    sidebar={sidebar.items}
+                                    hiddenSidebarContainer={hiddenSidebarContainer}
+                                    setHiddenSidebarContainer={setHiddenSidebarContainer}
+                                />
+                            )}
 
-                        <DocRootLayoutMain hiddenSidebarContainer={hiddenSidebarContainer}>
-                            {children}
-
-                        </DocRootLayoutMain>
-
-
+                            <DocRootLayoutMain hiddenSidebarContainer={hiddenSidebarContainer}>
+                                {children}
+                            </DocRootLayoutMain>
+                        </div>
                     </div>
                 </div>
+            </> : <div className={styles.docsWrapper}>
+                <BackToTopButton/>
+                <div className={styles.docRoot}>
+
+                    {sidebar && (
+                        <DocRootLayoutSidebar
+                            sidebar={sidebar.items}
+                            hiddenSidebarContainer={hiddenSidebarContainer}
+                            setHiddenSidebarContainer={setHiddenSidebarContainer}
+                        />
+                    )}
+
+                    <DocRootLayoutMain hiddenSidebarContainer={hiddenSidebarContainer}>
+                        {children}
+
+                    </DocRootLayoutMain>
+
+
+                </div>
             </div>
-
-
-        </>
+        )
 
 
     )

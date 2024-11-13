@@ -3,6 +3,7 @@ import {ThemeClassNames} from '@docusaurus/theme-common';
 import {useDoc} from '@docusaurus/plugin-content-docs/client';
 
 import TOC from '@theme/TOC';
+import {appearanceSettings} from "@site/src/theme-settings/appearance-settings";
 
 export default function DocItemTOCDesktop(): JSX.Element {
     const {toc, frontMatter} = useDoc();
@@ -11,7 +12,7 @@ export default function DocItemTOCDesktop(): JSX.Element {
                 toc={toc}
                 minHeadingLevel={frontMatter.toc_min_heading_level}
                 maxHeadingLevel={frontMatter.toc_max_heading_level}
-                className={`${ThemeClassNames.docs.docTocDesktop} glass`}
+                className={`${ThemeClassNames.docs.docTocDesktop} `+(appearanceSettings.docToc==='glass'&&'glass')}
             />
 
 

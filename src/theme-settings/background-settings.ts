@@ -1,0 +1,27 @@
+export const backgroundSettings={
+    blog:{
+        threeBackground:{
+            enable:true,
+        }
+    },
+    docs:{
+        threeBackground:{
+            enable:true,
+        }
+    },
+    home:{
+        threeBackground:{
+            enable:true,
+        }
+    },
+    friends:{
+        threeBackground:{
+            enable:true,
+        }
+    },
+    notFound:{
+        threeBackground:{
+            enable:true,
+        }
+    }
+}

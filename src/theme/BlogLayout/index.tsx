@@ -14,6 +14,7 @@ import FOG from 'vanta/src/vanta.fog'
 import NET from 'vanta/src/vanta.net'
 import styles from "./style.module.scss"
 import * as THREE from "three";
+import {backgroundSettings} from "@site/src/theme-settings/background-settings";
 
 export default function BlogLayout(props: Props): JSX.Element {
     const {sidebar, toc, children, ...layoutProps} = props;
@@ -22,6 +23,7 @@ export default function BlogLayout(props: Props): JSX.Element {
     const [vantaEffect, setVantaEffect] = useState(null)
     useEffect(() => {
         if (!vantaEffect) {
+            if (!backgroundSettings.blog.threeBackground.enable) return
             const effect = NET({
                 el: vantaRef.current,
                 THREE,
@@ -94,24 +96,44 @@ export default function BlogLayout(props: Props): JSX.Element {
     }, [vantaEffect])
     return (
         <Layout {...layoutProps}>
-            <div className={styles['background']}/>
-            <div className={'vanta' + ''} ref={vantaRef}/>
+            {
+                backgroundSettings.blog.threeBackground.enable ? <>
+                    <div className={styles['background']}/>
+                    <div className={'vanta' + ''} ref={vantaRef}/>
 
-            <div className={"container margin-vert--lg min-h-[100vh]"}>
-                <div className="row">
+                    <div className={"container margin-vert--lg min-h-[100vh]"}>
+                        <div className="row">
 
-                    <BlogSidebar sidebar={sidebar}/>
-                    <main
-                        className={clsx('col', {
-                            'col--7': hasSidebar,
-                            'col--9 col--offset-1': !hasSidebar,
+                            <BlogSidebar sidebar={sidebar}/>
+                            <main
+                                className={clsx('col', {
+                                    'col--7': hasSidebar,
+                                    'col--9 col--offset-1': !hasSidebar,
 
-                        }, )}>
-                        {children}
-                    </main>
-                    {toc && <div className="col col--2">{toc}</div>}
+                                },)}>
+                                {children}
+                            </main>
+                            {toc && <div className="col col--2">{toc}</div>}
+                        </div>
+                    </div>
+                </> : <div className={"container margin-vert--lg min-h-[100vh]"}>
+                    <div className="row">
+
+                        <BlogSidebar sidebar={sidebar}/>
+                        <main
+                            className={clsx('col', {
+                                'col--7': hasSidebar,
+                                'col--9 col--offset-1': !hasSidebar,
+
+                            },)}>
+                            {children}
+                        </main>
+                        {toc && <div className="col col--2">{toc}</div>}
+                    </div>
                 </div>
-            </div>
+            }
+
+
         </Layout>
     );
 }

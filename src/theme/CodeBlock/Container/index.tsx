@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import {ThemeClassNames, usePrismTheme} from '@docusaurus/theme-common';
 import {getPrismCssVariables} from '@docusaurus/theme-common/internal';
 import styles from './styles.module.scss';
+import {appearanceSettings} from "@site/src/theme-settings/appearance-settings";
 
 export default function CodeBlockContainer<T extends 'div' | 'pre'>({
   as: As,
@@ -19,7 +20,7 @@ export default function CodeBlockContainer<T extends 'div' | 'pre'>({
         props.className,
         styles.codeBlockContainer,
         ThemeClassNames.common.codeBlock,
-          'glass'
+          (appearanceSettings.code==='glass'&&'glass')
       )}
     />
   );

@@ -8,8 +8,8 @@
   @tailwind components;
   @tailwind utilities;
   @tailwind screens;
-
-.glass{
+@layer components {
+  .glass {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(4px);
   border-radius: 10px;
@@ -21,6 +21,8 @@
   transform: translateY(0px) scale(1);
 
   cursor: pointer;
+}
+
 }
 
 .hover-float:hover {
@@ -35,4 +37,13 @@
 .text-adaptive{
   color:white;
   opacity: .7;
+}
+nav.paginator-nav-glass {
+  a{
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px rgba(255, 255, 255, 0.2) solid;
+  }
+
 }

@@ -25,7 +25,7 @@ const sidebars: SidebarsConfig = {
       items: ['tutorial-basics/create-a-document'],
     },
   ],
-   */
+  */
 };
 
 export default sidebars;
