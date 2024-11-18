@@ -88,6 +88,21 @@ const friendsList = [
                 link: "https://40404.site/"
             }
         ]
+    }, {
+        name:'Mark',
+        avatar:'https://github.com/pique2233.png',
+        labels: ['friend', 'schoolmate'],
+        links: [
+            {
+                name: 'Github',
+                icon: logoGithub,
+                link: "https://github.com/pique2233"
+            }, {
+                name: 'Blog',
+                icon: logoBlog,
+                link: "https://pique2233.github.io/"
+            }
+        ]
     },
 ]
 const labelDefaultColors = {
