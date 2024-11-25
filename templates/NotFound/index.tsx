@@ -16,12 +16,10 @@ export default function Index(): JSX.Element {
         id: 'theme.NotFound.title',
         message: 'Page Not Found',
     });
-    if (!ExecutionEnvironment.canUseDOM) return
     const [vantaEffect, setVantaEffect] = useState(null)
     const vantaRef = useRef()
     useEffect(() => {
-        
-        if (!vantaEffect) {
+        if (ExecutionEnvironment.canUseDOM&&(!vantaEffect)) {
             const effect = BIRDS({
                 el: vantaRef.current,
                 THREE,
