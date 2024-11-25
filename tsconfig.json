@@ -2,6 +2,12 @@
   // This file is not used in compilation. It is here just for a nice editor experience.
   "extends": "@docusaurus/tsconfig",
   "compilerOptions": {
-    "baseUrl": "."
+    "baseUrl": ".",
+    "moduleResolution": "node",
+    // 确保 TypeScript 能解析模块
+    "esModuleInterop": true,
+    // 支持 ES 模块的导入
+    "skipLibCheck": true
+    // 忽略库的类型检查
   }
 }
