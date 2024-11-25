@@ -1,6 +1,7 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import NodePolyfillPlugin from "node-polyfill-webpack-plugin";
 function customPostCssPlugin() {
   return {
     name: "custom-postcss",
@@ -43,6 +44,16 @@ const config: Config = {
             customPostCssPlugin,
         };
     },
+        function webpackPolyfillPlugin() {
+            return {
+                name: "webpack-polyfill-plugin",
+                configureWebpack(config, isServer, utils) {
+                    return {
+                        plugins: [new NodePolyfillPlugin()],
+                    };
+                },
+            };
+        },
     ],
 
     // GitHub pages deployment config.
@@ -53,6 +64,10 @@ const config: Config = {
 
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
+
+    webpack: {
+
+    },
 
 
     // Even if you don't use internationalization, you can use this field to set
