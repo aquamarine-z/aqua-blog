@@ -1,3 +1,4 @@
+'use client'
 import React, {useEffect, useRef, useState} from 'react';
 import {translate} from '@docusaurus/Translate';
 import {PageMetadata} from '@docusaurus/theme-common';
@@ -7,15 +8,19 @@ import NotFoundContent from '@theme/NotFound/Content';
 import BIRDS from 'vanta/src/vanta.birds'
 import * as THREE from "three";
 import styles from './style.module.scss'
+import BrowserOnly from "@docusaurus/BrowserOnly";
+import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 
 export default function Index(): JSX.Element {
     const title = translate({
         id: 'theme.NotFound.title',
         message: 'Page Not Found',
     });
+    if (!ExecutionEnvironment.canUseDOM) return
     const [vantaEffect, setVantaEffect] = useState(null)
     const vantaRef = useRef()
     useEffect(() => {
+        
         if (!vantaEffect) {
             const effect = BIRDS({
                 el: vantaRef.current,
@@ -42,21 +47,22 @@ export default function Index(): JSX.Element {
                 canvas.item(0)!.style.position = "fixed"
             }
             setVantaEffect(effect)
-
         }
         return () => {
             if (vantaEffect) vantaEffect.destroy()
         }
     }, [vantaEffect])
-    return (
-        <>
-            <div className={styles['background']}></div>
-            <div className={'vanta'} ref={vantaRef}/>
+    const components=()=> <>
+        <div className={styles['background']}></div>
+        <div className={'vanta'} ref={vantaRef}/>
 
-            <PageMetadata title={title}/>
-            <Layout>
-                <NotFoundContent/>
-            </Layout>
-        </>
+        <PageMetadata title={title}/>
+        <Layout>
+            <NotFoundContent/>
+        </Layout></>
+    return (
+        <BrowserOnly>
+            {components}
+        </BrowserOnly>
     );
 }
