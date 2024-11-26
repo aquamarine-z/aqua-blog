@@ -1,4 +1,4 @@
-'use client'
+
 import React, {useEffect, useRef, useState} from 'react';
 import {translate} from '@docusaurus/Translate';
 import {PageMetadata} from '@docusaurus/theme-common';
