@@ -1,4 +1,4 @@
-
+'use client'
 import React from 'react';
 import clsx from 'clsx';
 import Translate from '@docusaurus/Translate';
@@ -39,5 +39,7 @@ export default function NotFoundContent({className}: Props): JSX.Element {
       </div>
     </main>
   </>
-  return content()
+  return <BrowserOnly>
+    {content}
+  </BrowserOnly>
 }
