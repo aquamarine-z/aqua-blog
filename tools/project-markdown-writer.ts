@@ -3,9 +3,9 @@
 import fs from 'fs'
 import * as path from "node:path";
 
-const rootDir: string = 'Z:\\University\\Homework\\2024-DSA-2\\lab4'
+const rootDir: string = 'Z:\\University\\Homework\\2024-DSA-2\\lab6'
 const projectLanguage = 'cpp'
-const markdownTitle = 'Lab4'
+const markdownTitle = 'Lab6'
 const projectType:string = 'cpp-homework'
 
 function getFilesSync(dir: string): string[] {
