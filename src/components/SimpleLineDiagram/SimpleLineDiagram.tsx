@@ -3,7 +3,7 @@ import {VisualizationDisplay} from "@site/src/components/VisualizationDisplay/Vi
 import * as d3 from "d3";
 
 export function SimpleLineDiagram() {
-    const [dataString, setDataString] = useState('');
+    const [dataString, setDataString] = useState(JSON.stringify({points:[{x:1,y:1},{x:2,y:2}]}));
     const [data, setData] = useState(undefined);
 
     function stringToJson(): any {
@@ -15,7 +15,7 @@ export function SimpleLineDiagram() {
 
             <div className={"w-full flex flex-col items-center justify-start gap-4"}>
                 <h1 className={"w-full text-center opacity-70"}>折线图快速生成器</h1>
-                <h2 className={"w-full text-center opacity-70"}>请将data数组以json:{"{\"points\":[{\"x\":number,\"y\":number]\"}"}的形式复制到下面的输入框</h2>
+                <h2 className={"w-full text-center opacity-70"}>请将data数组以json:{"{\"points\":[{\"x\":number,\"y\":number}]}"}的形式复制到下面的输入框</h2>
                 <textarea placeholder={"请复制数据到此位置"} value={dataString}
                           onChange={(e) => setDataString(e.target.value)}
                           className="glass rounded-2xl h-48 w-3/4"
@@ -67,7 +67,7 @@ export function SimpleLineDiagram() {
                                            d3.select(svg).append("path")
                                                .attr("d", pathData) // 设置路径数据
                                                .attr("fill", "none") // 取消填充
-                                               .attr("stroke", "steelblue") // 设置线条颜色
+                                               .attr("stroke", "#c680ff") // 设置线条颜色
                                                .attr("stroke-width", 2)// 设置线条宽度
                                                .attr("class", 'line')
                                        }}
