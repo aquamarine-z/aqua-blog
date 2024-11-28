@@ -7,33 +7,35 @@ export function SimpleLineDiagram() {
     const [data, setData] = useState(undefined);
 
     function stringToJson(): any {
-        return JSON.parse(dataString.toString());
+        try{
+            return JSON.parse(dataString.toString());
+        }catch(e){
+            alert("生成折线图失败:"+e.message)
+            return undefined;
+        }
     }
 
     return (
         <>
 
             <div className={"w-full flex flex-col items-center justify-start gap-4"}>
-                <h1 className={"w-full text-center opacity-70"}>折线图快速生成器</h1>
-                <h2 className={"w-full text-center opacity-70"}>请将data数组以json:{"{\"points\":[{\"x\":number,\"y\":number}]}"}的形式复制到下面的输入框</h2>
+                <h1 className={"w-full text-center "}>折线图快速生成器</h1>
+                <h2 className={"w-full text-center"}>请将data数组以json:{"{\"points\":[{\"x\":number,\"y\":number}]}"}的形式复制到下面的输入框</h2>
                 <textarea placeholder={"请复制数据到此位置"} value={dataString}
                           onChange={(e) => setDataString(e.target.value)}
-                          className="glass rounded-2xl h-48 w-3/4"
+                          className="glass rounded-2xl h-48 w-3/4 text-opacity-80"
                 />
-                <button className={"w-24 h-12 rounded-2xl glass hover-float"}
+                <button className={"w-24 h-12 rounded-2xl glass hover-float active:scale-95"}
                         onClick={() => {
                             setData(stringToJson())
                             //console.log(stringToJson())
                         }}>点我生成
                 </button>
-                {<VisualizationDisplay 
+                <VisualizationDisplay 
                     data={data}
-                    onInitialize={(svg, _) => {
-                    const height = 600
-                    const width = 1000
-                    d3.select(svg).attr("height", height).attr("width", width)
-                }}
-                                       onUpdate={(svg, data) => {
+                    height={600}
+                    width={1000}
+                    onUpdate={(svg, data) => {
                                            const height = 600
                                            const width = 1000
                                            if(data===undefined) return
@@ -67,11 +69,11 @@ export function SimpleLineDiagram() {
                                            d3.select(svg).append("path")
                                                .attr("d", pathData) // 设置路径数据
                                                .attr("fill", "none") // 取消填充
-                                               .attr("stroke", "#c680ff") // 设置线条颜色
+                                               .attr("stroke", "#000000") // 设置线条颜色
                                                .attr("stroke-width", 2)// 设置线条宽度
                                                .attr("class", 'line')
                                        }}
-                />}
+                />
             </div>
 
         </>
