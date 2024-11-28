@@ -57,10 +57,10 @@ img.title-bar-button {
   border-radius: 5px;
   transition: 0.2s ease-in-out;
   padding: 5px;
-  filter:brightness(1) invert(1);
+  filter:brightness(0) opacity(0.6);
   
   [data-theme='dark'] & {
-     filter:brightness(0) invert(1);
+     filter:brightness(0) invert(1) opacity(0.6);
   }
   
 
