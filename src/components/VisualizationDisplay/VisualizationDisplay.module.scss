@@ -18,8 +18,9 @@ div.display-block{
     h1.title{
         width: 100% ;
         text-align: center;
-        color: var(--ifm-color-primary);
         font-size: clamp(1rem, 0.636rem + 1.82vw, 2rem);
+       color: var(--ifm-color-content);
+      opacity: 0.6;
     }
     .display-collapse{
         width: 100%;
@@ -28,9 +29,10 @@ div.display-block{
   border-radius: 10px;
   border: 1px rgba(255, 255, 255, 0.2) solid;
         :global .ant-collapse-header-text {
-            color: var(--ifm-color-primary);
             font-weight: 500;
-            font-size: 16px
+          font-size: 16px;
+          color: var(--ifm-color-content);
+          opacity: 0.6;
         }
 
         :global .ant-collapse-content {
@@ -44,7 +46,6 @@ div.display-block{
         }
 
         :global .ant-collapse-expand-icon svg {
-            color: var(--ifm-color-primary)
         }
 
         :global .ant-collapse {
