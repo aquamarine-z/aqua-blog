@@ -1,16 +1,19 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import fs from 'fs';
+import path from 'path';
 function customPostCssPlugin() {
-  return {
-    name: "custom-postcss",
-    configurePostCss(options) {
-      // Append new PostCSS plugins here.
-      options.plugins.push(require("postcss-preset-env")); // allow newest CSS syntax
-      return options;
-    }
-  };
+    return {
+        name: "custom-postcss",
+        configurePostCss(options) {
+            // Append new PostCSS plugins here.
+            options.plugins.push(require("postcss-preset-env")); // allow newest CSS syntax
+            return options;
+        }
+    };
 }
+
 const config: Config = {
     title: 'Aquamarine',
     tagline: "Aquamarine's Homepage",
@@ -20,7 +23,7 @@ const config: Config = {
     // Set the /<baseUrl>/ pathname under which your site is served
     // For GitHub pages deployment, it is often '/<projectName>/'
     baseUrl: '/aqua-blog/',
-    /*future: {
+    future: {
         experimental_faster: {
             swcJsLoader: true,
             swcJsMinimizer: true,
@@ -29,20 +32,20 @@ const config: Config = {
             rspackBundler: true,
             mdxCrossCompilerCache: true,
         },
-    },*/
+    },
     plugins: [
         'docusaurus-plugin-sass',
-        async function myPlugin(context, options) {
-        return {
-            name: 'docusaurus-tailwindcss',
-            configurePostCss(postcssOptions) {
-                postcssOptions.plugins.push(require('tailwindcss'));
-                postcssOptions.plugins.push(require('autoprefixer'));
-                return postcssOptions;
-            },
-            customPostCssPlugin,
-        };
-    },
+        async function tailwindPlugin(context, options) {
+            return {
+                name: 'docusaurus-tailwindcss',
+                configurePostCss(postcssOptions) {
+                    postcssOptions.plugins.push(require('tailwindcss'));
+                    postcssOptions.plugins.push(require('autoprefixer'));
+                    return postcssOptions;
+                },
+                customPostCssPlugin,
+            };
+        },
         
     ],
 
@@ -50,12 +53,10 @@ const config: Config = {
     // If you aren't using GitHub pages, you don't need these.
     organizationName: 'aquamarine-z', // Usually your GitHub org/user name.
     projectName: 'aqua-blog', // Usually your repo name.
-    deploymentBranch:"gh-pages",
+    deploymentBranch: "gh-pages",
 
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
-
-
 
 
     // Even if you don't use internationalization, you can use this field to set
@@ -63,6 +64,7 @@ const config: Config = {
     // may want to replace "en" with "zh-Hans".
     i18n: {
         defaultLocale: 'zh-cn',
+        path:"i18n",
         locales: [
             //'en',
             'zh-cn',
@@ -73,11 +75,11 @@ const config: Config = {
                 htmlLang: 'en-GB',
 
             },
-            "zh-cn":{
-                label:"简体中文",
+            "zh-cn": {
+                label: "简体中文",
             },
-            jp:{
-                label:"日本語"
+            jp: {
+                label: "日本語"
             }
             // 如果不需要重写默认值，可以忽略 locale (例如 fr)
         },
@@ -93,7 +95,7 @@ const config: Config = {
                     // Please change this to your repo.
                     // Remove this to remove the "edit this page" links.
                     //editUrl:
-                        //'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+                    //'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
                 },
                 blog: {
                     showReadingTime: true,
@@ -143,7 +145,7 @@ const config: Config = {
 
         navbar: {
 
-            hideOnScroll:true,
+            hideOnScroll: true,
             title: 'My Site',
             logo: {
                 alt: 'My Site Logo',
@@ -177,8 +179,8 @@ const config: Config = {
                         {href: 'https://v8.chaoxing.com/', label: '学习通'},
                     ]
                 },
-                 {
-                    to:'/friends',
+                {
+                    to: '/friends',
                     label: 'Friends',
                     position: 'right'
                 },
@@ -212,7 +214,7 @@ const config: Config = {
                     title: 'Community',
                     items: [
                         {
-                            label:'Line',
+                            label: 'Line',
                             href: "https://line.me/ti/p/6fcWHiO0vg",
                         },
                         {
@@ -246,13 +248,11 @@ const config: Config = {
             copyright: `Copyright © ${new Date().getFullYear()} Aqua-Blog, Inc. Built with Docusaurus.`,
         },
 
-        docs:{
-
-        },
+        docs: {},
         prism: {
             theme: prismThemes.vsLight,
             darkTheme: prismThemes.gruvboxMaterialDark,
-            additionalLanguages:['java','cpp',"bash","plant-uml","markup"]
+            additionalLanguages: ['java', 'cpp', "bash", "plant-uml", "markup"]
         },
     } satisfies Preset.ThemeConfig,
 

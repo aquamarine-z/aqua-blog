@@ -5,7 +5,6 @@ import styles from "./AdaptiveSVG.module.scss";
 import playImage from "/static/icon/MdiPlay.png"
 // @ts-ignore
 import maxImage from "/static/icon/SolarMaximizeLinear.png"
-import {createPortal, render} from "react-dom";
 import {createRoot} from "react-dom/client";
 import {style} from "d3";
 
@@ -39,11 +38,13 @@ function showMaximumImage(component: React.ReactNode) {
         event.stopPropagation()
         onClose()
     }} className={styles["maximize-background"]}>
-        <div className={styles["maximize-container"]+' glass' } onClick={(e) => {
-            e.stopPropagation()
-        }}>
-            {component}
-        </div>
+        
+            <div className={styles["maximize-container"] + ' glass'} onClick={(e) => {
+                e.stopPropagation()
+            }}>
+                {component}
+            </div>
+
     </div>
     const div = document.createElement("div")
 
@@ -77,8 +78,10 @@ export function AdaptiveSVG(props: AdaptiveSVGProps) {
         playable = false,
         onInitialize = () => {
         },
-        onUpdate=()=>{},
-        onPlay=()=>{},
+        onUpdate = () => {
+        },
+        onPlay = () => {
+        },
     } = props
     const svgRef = useRef<SVGSVGElement>()
     const startX = x ?? 0
@@ -102,7 +105,7 @@ export function AdaptiveSVG(props: AdaptiveSVGProps) {
         {playable && <TitleBarButton imageUrl={playImage} onClick={() => {
         }}/>}
     </div> : <div style={{width: "100%", height: "20px"}}/>
-    const svgElement = <div className={styles["svg-container"]+' glass'}>
+    const svgElement = <div className={styles["svg-container"] + ' glass'}>
         {titleBar}
         <svg
             preserveAspectRatio={"xMidYMid meet"}
