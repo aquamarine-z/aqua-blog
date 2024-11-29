@@ -16,7 +16,7 @@
   
     border-radius: 10px;
     border: 1px rgba(255, 255, 255, 0.2) solid;
-    scrollbar-color: rgba(127, 127, 127, 0.7) transparent;
+    scrollbar-color: var(--ifm-color-content) transparent;
 }
 
 .hover-float {
