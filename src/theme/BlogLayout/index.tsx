@@ -33,7 +33,7 @@ export default function BlogLayout(props: Props): JSX.Element {
                 scale: 1.00,
                 scaleMobile: 1.00,
                 color: 0xd7c4fc,
-                backgroundColor: 0x1c0946,
+                backgroundColor: 0x7a7a7a,
                 points: 15.00,
                 maxDistance: 13.00,
                 spacing: 16.00

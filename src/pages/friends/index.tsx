@@ -184,9 +184,9 @@ export default function Friends() {
                 color: 0xffffff,
                 backgroundColor: 0x000000,
                 points: 12.00,
-                spacing: 14.00,
+                spacing: 18.00,
 
-                backgroundAlpha:0.5,
+                backgroundAlpha:0.7,
             })
             //@ts-ignore
             let canvas = vantaRef.current.getElementsByClassName('vanta-canvas')

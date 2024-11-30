@@ -1,9 +1,11 @@
 import React, {type ReactNode} from 'react';
 import clsx from 'clsx';
 import {HtmlClassNameProvider, ThemeClassNames} from '@docusaurus/theme-common';
+
 import {
     BlogPostProvider,
     useBlogPost,
+    // @ts-ignore
 } from '@docusaurus/plugin-content-blog/client';
 import BlogLayout from '@theme/BlogLayout';
 import BlogPostItem from '@theme/BlogPostItem';
