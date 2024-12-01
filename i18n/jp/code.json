@@ -360,5 +360,20 @@
   },
   "components.visualization_display.header.image": {
     "message": "イメージ"
+  },
+  "components.simple_line_diagram.generate_error": {
+    "message": "イメージの創造することは失敗です"
+  },
+  "components.simple_line_diagram.title": {
+    "message": "簡単な折れ線グラフのジェネレーター"
+  },
+  "components.simple_line_diagram.description": {
+    "message": "データをJSON{'points':[{'x':number,'y':number},{'x':number,'y':number},...]}のフォーマットとして下のインプットに入力してください"
+  },
+  "components.simple_line_diagram.placeholder": {
+    "message": "データを入力して下さい"
+  },
+   "components.simple_line_diagram.button": {
+    "message": "ジェネレート"
   }
 }

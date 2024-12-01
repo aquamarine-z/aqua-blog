@@ -1,11 +1,12 @@
 import React, {forwardRef, useEffect, useState} from 'react';
 import BrowserOnly from '@docusaurus/BrowserOnly';
-import Giscus, {GiscusProps} from '@giscus/react';
+import Giscus, {AvailableLanguage, GiscusProps} from '@giscus/react';
 import {
     useThemeConfig,
     useColorMode,
     ThemeConfig
 } from '@docusaurus/theme-common';
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 interface CustomThemeConfig extends ThemeConfig {
     giscus: GiscusProps & { darkTheme: string };
@@ -17,7 +18,10 @@ export const Comment = forwardRef<HTMLDivElement>((_props, ref) => {
     const {theme = 'light', darkTheme = 'dark_dimmed'} = giscus;
     const giscusTheme = colorMode === 'dark' ? darkTheme : theme;
     const [routeDidUpdate, setRouteDidUpdate] = useState(false);
-
+    const docusaurusConfig=useDocusaurusContext()
+    let language=docusaurusConfig.i18n.currentLocale
+    if(language==="zh-cn") language="zh-CN"
+    if(language==="jp") language="ja"
     useEffect(() => {
         function eventHandler(e) {
             setRouteDidUpdate(true);
@@ -47,7 +51,7 @@ export const Comment = forwardRef<HTMLDivElement>((_props, ref) => {
                         reactionsEnabled="1"
                         emitMetadata="0"
                         inputPosition="top"
-                        lang="zh-CN"
+                        lang={language as AvailableLanguage}
                         loading={"eager"}
                         {...giscus}
                         theme={giscusTheme}

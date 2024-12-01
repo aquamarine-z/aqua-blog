@@ -348,5 +348,20 @@
   },
   "components.visualization_display.header.image": {
     "message": "Image"
+  },
+  "components.simple_line_diagram.generate_error": {
+    "message": "Failed to generate line chart"
+  },
+  "components.simple_line_diagram.title": {
+    "message": "Simple Line Chart Generator"
+  },
+  "components.simple_line_diagram.description": {
+    "message": "Please copy the data array in the following format into the input box: json:{'points':[{'x':number,'y':number},{'x':number,'y':number},...]}"
+  },
+  "components.simple_line_diagram.placeholder": {
+    "message": "Enter data"
+  },
+  "components.simple_line_diagram.button": {
+    "message": "Generate"
   }
 }

@@ -363,5 +363,20 @@
   },
   "components.visualization_display.header.image": {
     "message": "图像"
+  },
+  "components.simple_line_diagram.generate_error": {
+    "message": "生成折线图失败"
+  },
+  "components.simple_line_diagram.title": {
+    "message": "简单折线图生成器"
+  },
+  "components.simple_line_diagram.description": {
+    "message": "请将data数组以json:{'points':[{'x':number,'y':number},{'x':number,'y':number},...]}的形式复制到下面的输入框"
+  },
+  "components.simple_line_diagram.placeholder": {
+    "message": "请输入数据"
+  },
+  "components.simple_line_diagram.button": {
+    "message": "生成"
   }
 }

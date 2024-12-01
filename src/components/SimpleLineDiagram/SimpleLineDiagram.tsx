@@ -1,6 +1,7 @@
 import {useState} from "react";
 import {VisualizationDisplay} from "@site/src/components/VisualizationDisplay/VisualizationDisplay";
 import * as d3 from "d3";
+import Translate, {translate} from "@docusaurus/Translate";
 
 export function SimpleLineDiagram() {
     const [dataString, setDataString] = useState(JSON.stringify({points:[{x:1,y:1},{x:2,y:2}]}));
@@ -10,7 +11,7 @@ export function SimpleLineDiagram() {
         try{
             return JSON.parse(dataString.toString());
         }catch(e){
-            alert("生成折线图失败:"+e.message)
+            alert(translate({id:"components.simple_line_diagram.generate_error"})+":"+e.message)
             return undefined;
         }
     }
@@ -19,9 +20,12 @@ export function SimpleLineDiagram() {
         <>
 
             <div className={"w-full flex flex-col items-center justify-start gap-4"}>
-                <h1 className={"w-full text-center "}>折线图快速生成器</h1>
-                <h2 className={"w-full text-center"}>请将data数组以json:{"{\"points\":[{\"x\":number,\"y\":number}]}"}的形式复制到下面的输入框</h2>
-                <textarea placeholder={"请复制数据到此位置"} value={dataString}
+                <h1 className={"w-full text-center "}><Translate id={"components.simple_line_diagram.title"}>Simple Line Diagram Generator</Translate></h1>
+                <h2 className={"w-full text-center"}>
+                    <Translate id={"components.simple_line_diagram.description"}></Translate>
+                    
+                </h2>
+                <textarea placeholder={translate({id:"components.simple_line_diagram.placeholder"})} value={dataString}
                           onChange={(e) => setDataString(e.target.value)}
                           className="glass rounded-2xl h-48 w-3/4 text-opacity-80"
                 />
@@ -29,7 +33,7 @@ export function SimpleLineDiagram() {
                         onClick={() => {
                             setData(stringToJson())
                             //console.log(stringToJson())
-                        }}>点我生成
+                        }}><Translate id={"components.simple_line_diagram.button"}>Generate</Translate>
                 </button>
                 <VisualizationDisplay 
                     data={data}
