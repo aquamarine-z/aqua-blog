@@ -1,6 +1,6 @@
 {
   "title": {
-    "message": "My Site",
+    "message": "Aquamarine's Blog",
     "description": "The title in the navbar"
   },
   "logo.alt": {
@@ -18,5 +18,41 @@
   "item.label.GitHub": {
     "message": "GitHub",
     "description": "Navbar item with label GitHub"
+  },
+   "item.label.Friends": {
+    "message": "Friends",
+    "description": "Navbar item with label Friends"
+  },
+  "item.label.Learning": {
+    "message": "Learning",
+    "description": "Navbar item with label Learning"
+  },
+  "item.label.DSA": {
+    "message": "DSA",
+    "description": "Navbar item with label DSA"
+  },
+  "item.label.Japanese": {
+    "message": "Japanese",
+    "description": "Navbar item with label Japanese"
+  },
+  "item.label.网址导航": {
+    "message": "Navigation of websites",
+    "description": "Navbar item with label 网址导航"
+  },
+  "item.label.头歌实践教学平台(Java作业)": {
+    "message": "头歌实践教学平台(Java作业)",
+    "description": "Navbar item with label 头歌实践教学平台(Java作业)"
+  },
+  "item.label.学者网(数据结构实验)": {
+    "message": "学者网(数据结构实验)",
+    "description": "Navbar item with label 学者网(数据结构实验)"
+  },
+  "item.label.智慧树": {
+    "message": "智慧树",
+    "description": "Navbar item with label 智慧树"
+  },
+  "item.label.学习通": {
+    "message": "学习通",
+    "description": "Navbar item with label 学习通"
   }
 }

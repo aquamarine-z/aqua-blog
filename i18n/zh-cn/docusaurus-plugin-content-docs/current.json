@@ -14,5 +14,29 @@
   "sidebar.tutorialSidebar.category.Tutorial - Extras": {
     "message": "Tutorial - Extras",
     "description": "The label for category Tutorial - Extras in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.D3教学": {
+    "message": "D3教学",
+    "description": "The label for category D3教学 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.类库与数据结构": {
+    "message": "类库与数据结构",
+    "description": "The label for category 类库与数据结构 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.日语学习笔记": {
+    "message": "日语学习笔记",
+    "description": "The label for category 日语学习笔记 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.N2语法学习笔记": {
+    "message": "N2语法学习笔记",
+    "description": "The label for category N2语法学习笔记 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Java Homework": {
+    "message": "Java Homework",
+    "description": "The label for category Java Homework in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.其他教程": {
+    "message": "其他教程",
+    "description": "The label for category 其他教程 in sidebar tutorialSidebar"
   }
 }

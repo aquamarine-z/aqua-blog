@@ -1,34 +1,5 @@
 {
-  "homepage.title":{
-    "message": "Aquamarine's Homepage"
-  },
-  "homepage.subtitle": {
-    "message": "Welcome to Aquamarine's Homepage"
-  },
-  "homepage.tutorial-link": {
-    "message": "Go To Tutorial Page"
-  },
-  "homepage.features.title": {
-    "message": "当前学习内容"
-  },
-  "homepage.feature1.title": {
-    "message": "D3 Data Visualization"
-  },
-  "homepage.feature1.description": {
-    "message": "D3 数据可视化"
-  },
-  "homepage.feature2.title": {
-    "message": "React"
-  },
-  "homepage.feature2.description": {
-    "message": "学习React框架开发前端应用"
-  },
-  "homepage.feature3.title": {
-    "message": "日语"
-  },
-  "homepage.feature3.description": {
-    "message": "学习日语中(目前N3水平)"
-  },
+  
   "theme.ErrorPageContent.title": {
     "message": "This page crashed.",
     "description": "The title of the fallback page when the page crashed"
@@ -335,5 +306,47 @@
   "theme.tags.tagsPageTitle": {
     "message": "Tags",
     "description": "The title of the tag list page"
+  },
+  "homepage.title":{
+    "message": "Aquamarine's Homepage"
+  },
+  "homepage.subtitle": {
+    "message": "Welcome to Aquamarine's Homepage"
+  },
+  "homepage.tutorial-link": {
+    "message": "Go To Tutorial Page"
+  },
+  "homepage.features.title": {
+    "message": "Learning now"
+  },
+  "homepage.feature1.title": {
+    "message": "D3 Data Visualization"
+  },
+  "homepage.feature1.description": {
+    "message": "Learning the D3 Data Visualization"
+  },
+  "homepage.feature2.title": {
+    "message": "React"
+  },
+  "homepage.feature2.description": {
+    "message": "Learning the use of React framework to design frontend projects"
+  },
+  "homepage.feature3.title": {
+    "message": "Japanese"
+  },
+  "homepage.feature3.description": {
+    "message": "Learning Japanese(N3 Level)"
+  },
+  "components.adaptive_svg.information.true_size": {
+    "message": "True Size"
+  },
+  "components.adaptive_svg.information.viewbox_size": {
+    "message": "ViewBox Size"
+  },
+  "components.visualization_display.header.code": {
+    "message": "Code"
+  },
+  "components.visualization_display.header.image": {
+    "message": "Image"
   }
 }

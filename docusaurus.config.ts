@@ -66,9 +66,9 @@ const config: Config = {
         defaultLocale: 'zh-cn',
         path:"i18n",
         locales: [
-            //'en',
+            'en',
             'zh-cn',
-            //"jp",
+            "jp",
         ],
         localeConfigs: {
             en: {
