@@ -1,4 +1,4 @@
-.background{
+.background {
   height: 120vh;
   position: fixed;
   pointer-events: none;
@@ -8,9 +8,11 @@
 
   z-index: -1;
 }
-[data-theme='dark'] .background{
-background: rgba(155, 75, 255, 0.75);
+
+[data-theme='dark'] .background {
+  background: linear-gradient(180deg, #b73cff 5%, #7929ff 100%);
 }
-.background{
-  background: rgba(255, 183, 224, 0.75);
+
+.background {
+  background: linear-gradient(180deg, #FFEAF6 0%, rgba(255, 157, 228, 0.84) 100%);
 }
