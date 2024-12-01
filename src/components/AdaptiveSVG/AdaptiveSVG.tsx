@@ -1,4 +1,4 @@
-import React, {ReactDOM, useEffect, useRef, useState} from "react";
+import React, {ReactDOM, startTransition, useEffect, useRef, useState, useTransition} from "react";
 
 import styles from "./AdaptiveSVG.module.scss";
 // @ts-ignore
@@ -7,6 +7,8 @@ import playImage from "/static/icon/MdiPlay.png"
 import maxImage from "/static/icon/SolarMaximizeLinear.png"
 import {createRoot} from "react-dom/client";
 import {style} from "d3";
+import {useTranslation} from "react-i18next";
+import Translate from "@docusaurus/Translate";
 
 export interface AdaptiveSVGProps {
     onInitialize?: (svg?: SVGSVGElement, data?: any) => void,
@@ -93,6 +95,7 @@ export function AdaptiveSVG(props: AdaptiveSVGProps) {
     const [viewBoxHeight, setViewBoxHeight] = useState(endY - startY)
     const [actualWidth, setActualWidth] = useState(0)
     const [actualHeight, setActualHeight] = useState(0)
+    
     const showTitleBar = canMaximize || playable
     //console.log(showTitleBar)
 
@@ -117,8 +120,8 @@ export function AdaptiveSVG(props: AdaptiveSVGProps) {
             }}
         />
         {showInformation && <div className={styles["diagram-info"]}>
-            <p className={styles["info"]}>实际宽高 {actualWidth}:{actualHeight}</p>
-            <p className={styles["info"]}>图像ViewBox宽高 {viewBoxWidth}:{viewBoxHeight} </p>
+            <p className={styles["info"]}><Translate id={"components.adaptive_svg.information.true_size"}>True Size</Translate> {actualWidth}:{actualHeight}</p>
+            <p className={styles["info"]}><Translate id={"components.adaptive_svg.information.viewbox_size"}>ViewBox Size</Translate> {viewBoxWidth}:{viewBoxHeight} </p>
         </div>
         }
 
@@ -132,6 +135,10 @@ export function AdaptiveSVG(props: AdaptiveSVGProps) {
             onInitialize(svgRef.current)
         }
     }, []);
+   
+    
+    
+    
     useEffect(() => {
         const viewBoxObserver = new MutationObserver(mutations => {
             mutations.forEach(mutation => {

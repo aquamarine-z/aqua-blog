@@ -39,9 +39,16 @@
     "message": "GitHub",
     "description": "The label of footer link with label=GitHub linking to https://github.com/facebook/docusaurus"
   },
-
   "copyright": {
     "message": "Copyright © 2024 Aqua Blog, Inc. Built with Docusaurus.",
     "description": "The footer copyright"
+  },
+  "link.item.label.Line": {
+    "message": "Line",
+    "description": "The label of footer link with label=Line linking to https://line.me/ti/p/6fcWHiO0vg"
+  },
+  "link.item.label.Github": {
+    "message": "Github",
+    "description": "The label of footer link with label=Github linking to https://github.com/aquamarine-z"
   }
 }

@@ -1,6 +1,6 @@
 {
   "title": {
-    "message": "My Site",
+    "message": "Aquamarineのブログ",
     "description": "The title in the navbar"
   },
   "logo.alt": {
@@ -8,15 +8,51 @@
     "description": "The alt text of navbar logo"
   },
   "item.label.Tutorial": {
-    "message": "Tutorial",
+    "message": "チュートリアル",
     "description": "Navbar item with label Tutorial"
   },
   "item.label.Blog": {
-    "message": "Blog",
+    "message": "ブログ",
     "description": "Navbar item with label Blog"
   },
   "item.label.GitHub": {
     "message": "GitHub",
     "description": "Navbar item with label GitHub"
+  },
+  "item.label.Friends": {
+    "message": "友達",
+    "description": "Navbar item with label Friends"
+  },
+  "item.label.Learning": {
+    "message": "習っていること",
+    "description": "Navbar item with label Learning"
+  },
+  "item.label.DSA": {
+    "message": "类库与数据结构",
+    "description": "Navbar item with label DSA"
+  },
+  "item.label.Japanese": {
+    "message": "日本語",
+    "description": "Navbar item with label Japanese"
+  },
+  "item.label.网址导航": {
+    "message": "ウェブサイトのナビ",
+    "description": "Navbar item with label 网址导航"
+  },
+  "item.label.头歌实践教学平台(Java作业)": {
+    "message": "头歌实践教学平台(Java作业)",
+    "description": "Navbar item with label 头歌实践教学平台(Java作业)"
+  },
+  "item.label.学者网(数据结构实验)": {
+    "message": "学者网(数据结构实验)",
+    "description": "Navbar item with label 学者网(数据结构实验)"
+  },
+  "item.label.智慧树": {
+    "message": "智慧树",
+    "description": "Navbar item with label 智慧树"
+  },
+  "item.label.学习通": {
+    "message": "学习通",
+    "description": "Navbar item with label 学习通"
   }
 }

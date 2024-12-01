@@ -1,47 +1,4 @@
 {
-
-  "homepage.title": {
-    "message": "Aquamarine的个人主页"
-  },
-  "homepage.subtitle": {
-    "message": "欢迎来到Aquamarine的个人主页"
-  },
-  "homepage.tutorial-link": {
-    "message": "前往教程页面"
-  },
-  "homepage.features.title": {
-    "message": "当前学习内容"
-  },
-  "homepage.feature1.title": {
-    "message": "D3 数据可视化"
-  },
-  "homepage.feature1.description": {
-    "message": "正在学习数据可视化相关内容(D3.js)等"
-  },
-  "homepage.feature2.title": {
-    "message": "React"
-  },
-  "homepage.feature2.description": {
-    "message": "学习React框架开发前端应用"
-  },
-  "homepage.feature3.title": {
-    "message": "日语"
-  },
-  "homepage.feature3.description": {
-    "message": "学习日语中(目前N3水平)"
-  },
-  "friends.title": {
-    "message": "友情链接"
-  },
-  "friends.labels.friend": {
-    "message": "朋友"
-  },
-  "friends.labels.schoolmate": {
-    "message": "同学"
-  },
-  "friends.labels.self": {
-    "message": "自己"
-  },
   "theme.ErrorPageContent.title": {
     "message": "页面已崩溃。",
     "description": "The title of the fallback page when the page crashed"
@@ -348,5 +305,78 @@
   "theme.tags.tagsPageTitle": {
     "message": "标签",
     "description": "The title of the tag list page"
+  },
+  "homepage.title": {
+    "message": "Aquamarine的个人主页"
+  },
+  "homepage.subtitle": {
+    "message": "欢迎来到Aquamarine的个人主页"
+  },
+  "homepage.tutorial-link": {
+    "message": "前往教程页面"
+  },
+  "homepage.features.title": {
+    "message": "当前学习内容"
+  },
+  "homepage.feature1.title": {
+    "message": "D3 数据可视化"
+  },
+  "homepage.feature1.description": {
+    "message": "正在学习数据可视化相关内容(D3.js)等"
+  },
+  "homepage.feature2.title": {
+    "message": "React"
+  },
+  "homepage.feature2.description": {
+    "message": "学习React框架开发前端应用"
+  },
+  "homepage.feature3.title": {
+    "message": "日语"
+  },
+  "homepage.feature3.description": {
+    "message": "学习日语中(目前N3水平)"
+  },
+  "friends.title": {
+    "message": "友情链接"
+  },
+  "friends.labels.friend": {
+    "message": "朋友"
+  },
+  "friends.labels.schoolmate": {
+    "message": "同学"
+  },
+  "friends.labels.self": {
+    "message": "自己"
+  },
+  "theme.blog.author.noPosts": {
+    "message": "This author has not written any posts yet.",
+    "description": "The text for authors with 0 blog post"
+  },
+  "components.adaptive_svg.information.true_size": {
+    "message": "实际宽高"
+  },
+  "components.adaptive_svg.information.viewbox_size": {
+    "message": "ViewBox宽高"
+  },
+  "components.visualization_display.header.code": {
+    "message": "代码"
+  },
+  "components.visualization_display.header.image": {
+    "message": "图像"
+  },
+  "components.simple_line_diagram.generate_error": {
+    "message": "生成折线图失败"
+  },
+  "components.simple_line_diagram.title": {
+    "message": "简单折线图生成器"
+  },
+  "components.simple_line_diagram.description": {
+    "message": "请将data数组以json:{'points':[{'x':number,'y':number},{'x':number,'y':number},...]}的形式复制到下面的输入框"
+  },
+  "components.simple_line_diagram.placeholder": {
+    "message": "请输入数据"
+  },
+  "components.simple_line_diagram.button": {
+    "message": "生成"
   }
 }

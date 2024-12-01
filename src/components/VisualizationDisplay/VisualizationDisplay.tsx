@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from "react";
 import {Collapse, CollapseProps} from "antd";
 import styles from "./VisualizationDisplay.module.scss"
 import {AdaptiveSVG, AdaptiveSVGProps} from "@site/src/components/AdaptiveSVG/AdaptiveSVG";
+import {translate} from "@docusaurus/Translate";
 
 export interface VisualizationDisplayProps extends AdaptiveSVGProps {
     children?: React.ReactNode,
@@ -13,7 +14,7 @@ export function VisualizationDisplay(props: VisualizationDisplayProps) {
     const codeComponent = typeof props.children === "string" ? <code>{props.children}</code> : props.children
     let items: CollapseProps['items'] = [{
         key: 'svg',
-        label: 'SVG效果',
+        label: translate({id:"components.visualization_display.header.image",description:"Image"}),
         children: <AdaptiveSVG {...props}/>
 
     }]
@@ -21,7 +22,7 @@ export function VisualizationDisplay(props: VisualizationDisplayProps) {
         items = [
             {
                 key: 'code',
-                label: '代码',
+                label: translate({id:"components.visualization_display.header.code",description:"Code"}),
                 children: <div className={styles["code-container"]}>{codeComponent}</div>,
             },...items,
         ];
