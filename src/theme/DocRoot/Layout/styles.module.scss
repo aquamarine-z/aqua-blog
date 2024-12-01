@@ -10,7 +10,8 @@
 [data-theme='dark'] .background {
   //background-image: url("@site/static/background-image/homepage-dark.png");
   //background: rgba(127, 81, 250, 0.84);
-  background: linear-gradient(180deg, rgb(194, 140, 252) 10%, rgb(176, 147, 255) 100%);
+  background: linear-gradient(180deg, rgba(140, 96, 255, 0.84) 40%, rgba(90, 41, 255, 0.92) 100%);
+ // background: linear-gradient(180deg, rgb(194, 140, 252) 10%, rgb(176, 147, 255) 100%);
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
