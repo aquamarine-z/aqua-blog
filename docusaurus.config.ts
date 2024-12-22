@@ -5,6 +5,7 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import fs from 'fs';
 import path from 'path';
+
 function customPostCssPlugin() {
     return {
         name: "custom-postcss",
@@ -25,7 +26,7 @@ const config: Config = {
     // Set the /<baseUrl>/ pathname under which your site is served
     // For GitHub pages deployment, it is often '/<projectName>/'
     baseUrl: '/aqua-blog/',
-    
+
     future: {
         experimental_faster: {
             swcJsLoader: true,
@@ -49,7 +50,7 @@ const config: Config = {
                 customPostCssPlugin,
             };
         },
-        
+
     ],
 
     // GitHub pages deployment config.
@@ -67,7 +68,7 @@ const config: Config = {
     // may want to replace "en" with "zh-Hans".
     i18n: {
         defaultLocale: 'zh-cn',
-        path:"i18n",
+        path: "i18n",
         locales: [
             'en',
             'zh-cn',
@@ -192,6 +193,13 @@ const config: Config = {
                         {href: 'https://www.scholat.com/login.html', label: '学者网(数据结构实验)'},
                         {href: 'https://www.zhihuishu.com/', label: '智慧树'},
                         {href: 'https://v8.chaoxing.com/', label: '学习通'},
+                    ]
+                },
+                {
+                    label: '小工具',
+                    position: 'right',
+                    items: [
+                        {to: '/tools/score-calculator', label: '期末考试合格计算器'},
                     ]
                 },
                 {

@@ -7,7 +7,7 @@ corePlugins: {
     theme: {
         extend: {},
     },
-    plugins: [],
+    plugins: [require('tailwind-scrollbar')({ nocompatible: true })], // 使用 scrollbar 插件
     purge: ['./src/**/*.{js,jsx,ts,tsx}'],
     prefix: "",
 }
