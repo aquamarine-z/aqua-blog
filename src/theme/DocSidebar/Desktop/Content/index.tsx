@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {JSX, useState} from 'react';
 import clsx from 'clsx';
 import {ThemeClassNames} from '@docusaurus/theme-common';
 import {
@@ -45,7 +45,7 @@ export default function DocSidebarDesktopContent({
                 styles.menu,
                 showAnnouncementBar && styles.menuWithAnnouncementBar,
                 className,
-                styles['margin']
+                styles['margin'],
             )}>
 
             <ul className={clsx(ThemeClassNames.docs.docSidebarMenu, 'menu__list')}>
