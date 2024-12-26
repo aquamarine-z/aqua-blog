@@ -8,12 +8,12 @@ div.display-block {
   user-select: none;
   width: 100%;
   div.code-container {
+    width: 100%;
+    user-select: text;
     & * {
       text-align: left;
     }
 
-    width: 100%;
-    user-select: text;
   }
 
   h1.title {
