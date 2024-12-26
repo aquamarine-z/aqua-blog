@@ -1,0 +1,212 @@
+---
+title: Rust实现简单链表
+slug: 2024-12-26-1
+authors: [aqua]
+tags: [Rust,数据结构,链表]
+---
+
+```Rust
+use std::cell::RefCell;
+use std::rc::Rc;
+type NodeRef<T> = Rc<RefCell<Node<T>>>;
+#[derive(Clone)]
+struct Node<T: Clone> {
+    data: Option<T>,
+    next: Option<NodeRef<T>>,
+    previous: Option<NodeRef<T>>,
+}
+struct LinkedList<T: Clone> {
+    head: Option<NodeRef<T>>,
+    tail: Option<NodeRef<T>>,
+    pub size: usize,
+}
+impl<T: Clone> LinkedList<T> {
+    fn get_ptr_at(&self, index: usize) -> NodeRef<T> {
+        if index < (self.size / 2) as usize {
+            let head = self.head.clone().unwrap().clone();
+            let mut ptr = head;
+            for i in 0..index+1 {
+                let next = ptr.borrow().next.clone().unwrap();
+                ptr = next;
+            }
+            ptr
+        } else {
+            let tail = self.tail.clone().unwrap().clone();
+            let mut ptr = tail;
+            for i in 0..self.size - index {
+                let prev = ptr.borrow().previous.clone().unwrap();
+                ptr = prev;
+            }
+            ptr
+        }
+    }
+    pub fn is_empty(&self) -> bool {
+        self.head
+            .clone()
+            .unwrap()
+            .borrow()
+            .next
+            .clone()
+            .unwrap()
+            .borrow()
+            .next
+            .is_none()
+            && self
+                .tail
+                .clone()
+                .unwrap()
+                .borrow()
+                .previous
+                .clone()
+                .unwrap()
+                .borrow()
+                .previous
+                .is_none()
+    }
+    fn insert_first(&mut self, value: T) {
+        let new_node = Rc::new(RefCell::new(Node {
+            data: Some(value),
+            next: None,
+            previous: None,
+        }));
+        let new_head = self.head.clone().unwrap();
+        let new_tail = self.tail.clone().unwrap();
+        new_head.borrow_mut().next = Some(Rc::clone(&new_node));
+        new_node.borrow_mut().previous = Some(Rc::clone(&new_head));
+        new_tail.borrow_mut().previous = Some(Rc::clone(&new_node));
+        new_node.borrow_mut().next = Some(Rc::clone(&new_tail));
+        self.tail = Some(new_tail);
+        self.head = Some(new_head);
+    }
+    pub fn new() -> Self {
+        let head = Rc::new(RefCell::new(Node {
+            data: None,
+            next: None,
+            previous: None,
+        }));
+
+        let tail = Rc::new(RefCell::new(Node {
+            data: None,
+            next: None,
+            previous: Some(Rc::clone(&head)),
+        }));
+
+        head.borrow_mut().next = Some(Rc::clone(&tail));
+
+        Self {
+            head: Some(head),
+            tail: Some(tail),
+            size: 0,
+        }
+    }
+
+    pub fn push_back(&mut self, value: T) {
+        if !self.is_empty() {
+            let new_node = Rc::new(RefCell::new(Node {
+                data: Some(value),
+                next: None,
+                previous: None,
+            }));
+            let tail = &self.tail.clone().unwrap();
+            let mut new_tail = tail.clone();
+            let prev = new_tail.borrow().previous.clone().unwrap();
+            prev.borrow_mut().next = Some(Rc::clone(&new_node));
+            new_node.borrow_mut().previous = Some(prev);
+            new_node.borrow_mut().next = Some(new_tail.clone());
+            new_tail.borrow_mut().previous = Some(Rc::clone(&new_node));
+            self.tail = Some(new_tail);
+        } else {
+            self.insert_first(value);
+        }
+        self.size += 1;
+    }
+    pub fn push_front(&mut self, value: T) {
+        if !self.is_empty() {
+            let new_node = Rc::new(RefCell::new(Node {
+                data: Some(value),
+                next: None,
+                previous: None,
+            }));
+            let head = &self.head.clone().unwrap();
+            let mut new_head = head.clone();
+            let next = new_head.borrow().next.clone().unwrap();
+            next.borrow_mut().next = Some(Rc::clone(&new_node));
+            new_head.borrow_mut().next = Some(Rc::clone(&new_node));
+            new_node.borrow_mut().next = Some(next);
+            new_node.borrow_mut().previous = Some(new_head.clone());
+            self.head = Some(new_head);
+        } else {
+            self.insert_first(value);
+        }
+        self.size += 1;
+    }
+    pub fn get(&self, index: usize) -> Result<Option<T>, String> {
+        return if index >= self.size as usize || index < 0 {
+            Err("".to_string())
+        } else {
+            let ptr = self.get_ptr_at(index);
+            let value = ptr.borrow().clone().data;
+            Ok(value)
+        };
+    }
+    pub fn insert_at(&mut self,value:T,index:usize)->Result<(),String>{
+        if self.size==0{
+            self.push_back(value);
+            return Ok(())
+        }
+        if self.size == index{
+            self.push_back(value);
+            return Ok(())
+        }
+        if self.size == 0{
+            self.push_front(value);
+            return Ok(())
+        }
+        let ptr=self.get_ptr_at(index);
+        let new_previous=ptr.borrow().previous.clone().unwrap();
+        let new_node=Rc::new(RefCell::new(Node{
+            data: Some(value),
+            next: Some(ptr.clone()),
+            previous: Some(new_previous.clone()),
+        }));
+        ptr.borrow_mut().previous=Some(Rc::clone(&new_node));
+        new_previous.borrow_mut().next=Some(Rc::clone(&new_node));
+        self.size+=1;
+        Ok(())
+    }
+    pub fn remove_at(&mut self, index: usize) -> Result<Option<T>, String> {
+        return if index >= self.size as usize || index < 0 {
+            Err("".to_string())
+        } else {
+            let ptr = self.get_ptr_at(index);
+            let new_previous = ptr.borrow().clone().previous.unwrap();
+            let new_next = ptr.borrow().clone().next.unwrap();
+            new_previous.borrow_mut().next = Some(new_next.clone());
+            new_next.borrow_mut().previous = Some(new_previous.clone());
+            ptr.borrow().previous.clone().unwrap().borrow_mut().next = Some(new_next.clone());
+            ptr.borrow().next.clone().unwrap().borrow_mut().previous = Some(new_previous.clone());
+            let value = ptr.borrow().clone().data;
+            self.size -= 1;
+            Ok(value)
+        };
+    }
+}
+fn main() {
+    let mut list_i32: LinkedList<i32> = LinkedList::new();
+    for i in 0..100 {
+        list_i32.push_back(i);
+    }
+    list_i32.insert_at(-1, 1).expect("TODO: panic message");
+    list_i32.insert_at(-1, 0).expect("TODO: panic message");
+    list_i32.insert_at(-1, list_i32.size-1).expect("TODO: panic message");
+    list_i32.insert_at(-1, list_i32.size).expect("TODO: panic message");
+    list_i32.insert_at(-1, 50).expect("TODO: panic message");
+    for i in 0..list_i32.size{
+        if let Ok(Some(v))= list_i32.get(i){
+            println!("{}",v);
+        }
+    }
+    return;
+}
+
+```
