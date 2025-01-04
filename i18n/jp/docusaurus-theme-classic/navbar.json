@@ -23,6 +23,10 @@
     "message": "友達",
     "description": "Navbar item with label Friends"
   },
+  "item.label.Settings": {
+    "message": "設置",
+    "description": "Navbar item with label Settings"
+  },
   "item.label.Learning": {
     "message": "習っていること",
     "description": "Navbar item with label Learning"

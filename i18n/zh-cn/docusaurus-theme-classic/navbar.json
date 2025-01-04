@@ -23,6 +23,10 @@
     "message": "友情链接",
     "description": "Navbar item with label Friends"
   },
+  "item.label.Settings": {
+    "message": "设置",
+    "description": "Navbar item with label Settings"
+  },
   "item.label.Learning": {
     "message": "学习内容",
     "description": "Navbar item with label Learning"

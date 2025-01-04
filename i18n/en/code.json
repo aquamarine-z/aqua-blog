@@ -337,6 +337,9 @@
   "homepage.feature3.description": {
     "message": "Learning Japanese(N3 Level)"
   },
+  "settings.title": {
+    "message": "Settings"
+  },
   "components.adaptive_svg.information.true_size": {
     "message": "True Size"
   },

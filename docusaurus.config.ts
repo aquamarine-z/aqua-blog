@@ -207,7 +207,11 @@ const config: Config = {
                     label: 'Friends',
                     position: 'right'
                 },
-
+{
+                    to: '/settings',
+                    label: 'Settings',
+                    position: 'right'
+                },
                 {
                     href: 'https://github.com/aquamarine-z',
                     label: 'GitHub',

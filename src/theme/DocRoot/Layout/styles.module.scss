@@ -7,7 +7,7 @@
   display: flex;
   flex: 1 0 auto;
 }
-[data-theme='dark'] .background {
+[data-theme='dark'] [data-component-style='glass'] .background {
   //background-image: url("@site/static/background-image/homepage-dark.png");
   //background: rgba(127, 81, 250, 0.84);
   background: linear-gradient(180deg, rgba(140, 96, 255, 0.84) 40%, rgba(90, 41, 255, 0.92) 100%);
@@ -20,7 +20,7 @@
   min-height: 100vh;
 }
 
-.background {
+[data-component-style='glass'] .background {
   //background-image: url("@site/static/background-image/homepage-light-3.png");
   //background: rgba(185, 245, 255, 0.85);
   //background-image: linear-gradient(120deg, rgba(161, 196, 253, 0.9) 0%, rgba(194, 233, 251, 0.89) 100%);

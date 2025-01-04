@@ -9,7 +9,7 @@
 @tailwind utilities;
 @tailwind screens;
 
-.glass {
+*[data-component-style='glass'] .glass {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(5px);
     border-radius: 10px;
@@ -20,7 +20,6 @@
     }
     scrollbar-color: var(--ifm-color-content) transparent;
 }
-
 .hover-float {
     transition: all 0.3s ease-in-out;
     transform: translateY(0px) scale(1);
