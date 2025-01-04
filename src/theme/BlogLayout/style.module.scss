@@ -9,10 +9,10 @@
   z-index: -1;
 }
 
-[data-theme='dark'] .background {
+[data-theme='dark'] [data-component-style='glass'] .background {
   background: linear-gradient(180deg, #b73cff 5%, #7929ff 100%);
 }
 
-.background {
+[data-component-style='glass'] .background {
   background: linear-gradient(180deg, #FFEAF6 0%, rgba(255, 157, 228, 0.84) 100%);
 }

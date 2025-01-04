@@ -349,6 +349,9 @@
   "friends.labels.self": {
     "message": "自分"
   },
+   "settings.title": {
+    "message": "設置"
+  },
   "components.adaptive_svg.information.true_size": {
     "message": "実際な広さと高さ"
   },

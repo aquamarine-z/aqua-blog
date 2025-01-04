@@ -1,3 +1,4 @@
+let clickEvent
 function heartEffect(e, t) {
     function r() {
         for (var e = 0; e < s.length; e++) s[e].alpha <= 0 ? (t.body.removeChild(s[e].el), s.splice(e, 1)) : (s[
@@ -9,9 +10,10 @@ function heartEffect(e, t) {
 
     function n() {
         var t = "function" == typeof e.onclick && e.onclick;
-        e.onclick = function (e) {
+        clickEvent=function (e) {
             t && t(), o(e)
         }
+        e,addEventListener("click",clickEvent)
     }
 
     function o(e) {
@@ -56,4 +58,10 @@ export function enableHeartEffect() {
     if (heartEffectEnabled) return
     heartEffectEnabled = true
     heartEffect(window, document)
+}
+export function disEnableHeartEffect(){
+    if(!heartEffectEnabled) return;
+    heartEffectEnabled = false;
+    window.removeEventListener("click",clickEvent)
+    //document.body.removeChild(document.querySelector('.heart'));
 }

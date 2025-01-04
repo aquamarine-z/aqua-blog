@@ -23,6 +23,10 @@
     "message": "Friends",
     "description": "Navbar item with label Friends"
   },
+  "item.label.Settings": {
+    "message": "Settings",
+    "description": "Navbar item with label Settings"
+  },
   "item.label.Learning": {
     "message": "Learning",
     "description": "Navbar item with label Learning"

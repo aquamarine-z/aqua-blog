@@ -23,12 +23,10 @@ div.display-block {
     color: var(--ifm-color-content);
     opacity: 0.6;
   }
-
+  
   .display-collapse {
     width: 100%;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    
     border-radius: 10px;
     border: 1px rgba(255, 255, 255, 0.2) solid;
 
