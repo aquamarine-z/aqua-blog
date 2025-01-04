@@ -7,7 +7,6 @@ import playImage from "/static/icon/MdiPlay.png"
 import maxImage from "/static/icon/SolarMaximizeLinear.png"
 import {createRoot} from "react-dom/client";
 import {style} from "d3";
-import {useTranslation} from "react-i18next";
 import Translate from "@docusaurus/Translate";
 
 export interface AdaptiveSVGProps {

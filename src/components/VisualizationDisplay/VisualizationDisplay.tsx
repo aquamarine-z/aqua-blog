@@ -31,6 +31,6 @@ export function VisualizationDisplay(props: VisualizationDisplayProps) {
     return <div className={styles["display-block"]}>
         <h1 className={styles["title"]}>{props.diagramName ? props.diagramName : ""}</h1>
         <Collapse items={items} defaultActiveKey={props.defaultExpand ?? ['code', 'svg']}
-                  className={styles["display-collapse"]}/>
+                  className={styles["display-collapse"]+ ' glass'}/>
     </div>
 }

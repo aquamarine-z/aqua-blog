@@ -13,10 +13,14 @@ import {useEffect, useRef, useState} from "react";
 import * as THREE from 'three'//导入样式
 // @ts-ignore
 import RINGS from "vanta/src/vanta.rings"
+import {useThemeStore} from "@site/src/store/theme-store";
+import {disEnableHeartEffect, enableHeartEffect} from "@site/src/effects/click-effect-heart";
+import {disEnableFireworkEffect, enableFireworkEffect} from "@site/src/effects/click-effect-firework";
 //import NET from "vanta/src/vanta.net"
 
 function HomepageHeader() {
     const {siteConfig} = useDocusaurusContext();
+
     return (
         <header className={clsx('hero hero--primary', styles.heroBanner)}>
             <div className="container">
@@ -69,6 +73,7 @@ export default function Home(): JSX.Element {
  */
 function NewHomepageHeader() {
     const {siteConfig} = useDocusaurusContext();
+
     return (
         <header className={' glass flex flex-col justify-start items-center padding--lg hover-float'}
                 style={{maxWidth: '90%'}}>
@@ -105,9 +110,36 @@ export default function Home(): JSX.Element {
     const {siteConfig} = useDocusaurusContext();
     const backgroundRef = useRef()
     const [vantaEffect, setVantaEffect] = useState(null)
+    const themeStore = useThemeStore()
+    const theme = {...themeStore.homepageTheme}
+    for (const key in themeStore.generalTheme) {
+        if (themeStore.generalTheme[key] !== undefined) {
+            theme[key] = themeStore.generalTheme[key];
+        }
+    }
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            if (theme.enableClickHeart) {
+                enableHeartEffect()
+            } else {
+                disEnableHeartEffect()
+            }
+            if (theme.enableClickFirework) {
+                enableFireworkEffect()
+            } else {
+                disEnableFireworkEffect()
+            }
+        }
 
+        //enableFairyDust()
+
+    }, []);
     useEffect(() => {
         if (!vantaEffect) {
+            if (!theme.enable3dBackground) {
+                if (vantaEffect) vantaEffect.destroy()
+                return
+            }
             const effect = RINGS({
                 el: backgroundRef.current,
                 THREE:THREE,
@@ -132,30 +164,33 @@ export default function Home(): JSX.Element {
         return () => {
             if (vantaEffect) vantaEffect.destroy()
         }
-    }, [vantaEffect])
+    }, [vantaEffect, theme.enable3dBackground])
     return (
         <Layout
             title={`${translate({id: "homepage.title"})}`}
             description="Description will go into a meta tag in <head />">
-            <div className={'vanta'} ref={backgroundRef}></div>
-            <div className={`${styles["background"]} gap-4`} >
+            <div data-component-style={theme.enable3dBackground ? 'glass' : 'default'}>
+                <div className={'vanta'} ref={backgroundRef}/>
+                <div className={`${styles["background"]} gap-4`}>
 
-                <NewHomepageHeader/>
+                    <NewHomepageHeader/>
 
 
-                <h1 style={{
-                    width: "100%",
-                    textAlign: "center",
-                    marginTop: "50px",
-                    fontSize: "40px",
+                    <h1 style={{
+                        width: "100%",
+                        textAlign: "center",
+                        marginTop: "50px",
+                        fontSize: "40px",
 
-                }} className={'opacity-85 select-none text-adaptive'}>
-                    <Translate id={"homepage.features.title"}>
-                        Now learning
-                    </Translate>
-                </h1>
-                <HomepageFeatures/>
+                    }} className={'opacity-85 select-none text-adaptive'}>
+                        <Translate id={"homepage.features.title"}>
+                            Now learning
+                        </Translate>
+                    </h1>
+                    <HomepageFeatures/>
+                </div>
             </div>
+
 
         </Layout>
     );

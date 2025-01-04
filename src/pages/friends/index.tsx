@@ -19,6 +19,9 @@ import logoLink from "@site/static/icon/MaterialSymbolsLink.png"
 import * as THREE from 'three'//导入样式
 //import RINGS from "vanta/src/vanta.rings"
 import NET from "vanta/src/vanta.net"
+import {useThemeStore} from "@site/src/store/theme-store";
+import {disEnableHeartEffect, enableHeartEffect} from "@site/src/effects/click-effect-heart";
+import {disEnableFireworkEffect, enableFireworkEffect} from "@site/src/effects/click-effect-firework";
 
 const friendsList = [
     {
@@ -123,10 +126,6 @@ interface FriendViewProps {
 }
 
 function FriendView(props: FriendViewProps) {
-
-    useEffect(() => {
-
-    }, []);
     return <div className={styles['friend-view-container']}>
         <div className={styles["heading"]}>
             <img className={styles["avatar"]} src={props.avatar ?? ""} alt={""}/>
@@ -201,6 +200,30 @@ export default function Friends() {
             if (vantaEffect) vantaEffect.destroy()
         }
     }, [vantaEffect])
+    const themeStore = useThemeStore()
+    const theme = {...themeStore.defaultTheme}
+    for (const key in themeStore.generalTheme) {
+        if (themeStore.generalTheme[key] !== undefined) {
+            theme[key] = themeStore.generalTheme[key];
+        }
+    }
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            if (theme.enableClickHeart) {
+                enableHeartEffect()
+            } else {
+                disEnableHeartEffect()
+            }
+            if (theme.enableClickFirework) {
+                enableFireworkEffect()
+            } else {
+                disEnableFireworkEffect()
+            }
+        }
+
+        //enableFairyDust()
+
+    }, [themeStore]);
     return <Layout
         title={`${translate({id: "friends.title"})}`}
         description="Description will go into a meta tag in <head />">
