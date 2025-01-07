@@ -8,7 +8,7 @@ import type {Props} from '@theme/DocRoot/Layout';
 import styles from './styles.module.scss';
 import RINGS from "vanta/src/vanta.rings";
 import GLOBE from "vanta/src/vanta.globe"
-import * as THREE from "three";
+import * as THREE from "three-v121";
 import {useThemeStore} from "@site/src/store/theme-store";
 import {disEnableFireworkEffect, enableFireworkEffect} from "@site/src/effects/click-effect-firework";
 import {disEnableHeartEffect, enableHeartEffect} from "@site/src/effects/click-effect-heart";

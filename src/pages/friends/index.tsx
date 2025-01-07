@@ -16,7 +16,7 @@ import logoBlog from "@site/static/icon/Fa6SolidBlog.png"
 // @ts-ignore
 import logoLink from "@site/static/icon/MaterialSymbolsLink.png"
 
-import * as THREE from 'three'//导入样式
+import * as THREE from "three-v121";
 //import RINGS from "vanta/src/vanta.rings"
 import NET from "vanta/src/vanta.net"
 import {useThemeStore} from "@site/src/store/theme-store";

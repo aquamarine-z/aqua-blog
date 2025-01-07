@@ -4,16 +4,9 @@ import Layout from '@theme/Layout';
 import BlogSidebar from '@theme/BlogSidebar';
 
 import type {Props} from '@theme/BlogLayout';
-//import GLOBE from "vanta/src/vanta.globe";
-import DOTS from "vanta/src/vanta.dots"
-import WAVES from "vanta/src/vanta.waves"
-import BIRDS from 'vanta/src/vanta.birds'
-import CLOUDS2 from 'vanta/src/vanta.clouds2'
-import TOPOLOGY from 'vanta/src/vanta.topology'
-import FOG from 'vanta/src/vanta.fog'
 import NET from 'vanta/src/vanta.net'
 import styles from "./style.module.scss"
-import * as THREE from "three";
+import * as THREE from "three-v121";
 import {useThemeStore} from "@site/src/store/theme-store";
 import {disEnableHeartEffect, enableHeartEffect} from "@site/src/effects/click-effect-heart";
 import {disEnableFireworkEffect, enableFireworkEffect} from "@site/src/effects/click-effect-firework";
