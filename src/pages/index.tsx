@@ -10,7 +10,7 @@ import styles from './index.module.scss';
 import Translate, {translate} from "@docusaurus/Translate";
 import {useEffect, useRef, useState} from "react";
 // @ts-ignore
-import * as THREE from 'three'//导入样式
+import * as THREE from "three-v121";
 // @ts-ignore
 import RINGS from "vanta/src/vanta.rings"
 import {useThemeStore} from "@site/src/store/theme-store";

@@ -6,7 +6,7 @@ import Layout from '@theme/Layout';
 import NotFoundContent from '@theme/NotFound/Content';
 //import NET from "vanta/src/vanta.net";
 //import BIRDS from 'vanta/src/vanta.birds'
-import * as THREE from "three";
+import * as THREE from "three-v121";
 import styles from './style.module.scss'
 import BrowserOnly from "@docusaurus/BrowserOnly";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";

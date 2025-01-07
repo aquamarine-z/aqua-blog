@@ -1,5 +1,5 @@
 .footer__title{
-    @apply text-center
+    @apply text-center;
 }
 
 .footer__items{
