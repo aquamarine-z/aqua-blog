@@ -4,7 +4,6 @@ svg.diagram {
   width: 96% !important;
   height: auto !important;
   min-width: 200px;
-
 }
 
 div.svg-container {
@@ -86,11 +85,12 @@ div.maximize-background {
   display: flex;
   justify-content: center;
   align-items: center;
-
+  
   div.maximize-container {
-
-
+    position:relative;
+    background: var(--component-background);
     width: 90%;
     height: 90%;
+    @apply rounded-lg
   }
 }

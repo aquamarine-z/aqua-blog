@@ -38,6 +38,7 @@ export default function () {
             observer.disconnect();
         };
     }, []); // 如果需要监听属性变化，只执行一次，确保 cleanup
+    
     const themeStore = useThemeStore()
     const generalOptions = [
         {value: 1, label: "开启"},
@@ -72,6 +73,9 @@ export default function () {
         //enableFairyDust()
 
     }, [themeStore]);
+    useEffect(() => {
+        document.documentElement.setAttribute("data-component-style", theme.enable3dBackground ? "glass" : "default")
+    }, [theme]);
     return <Layout
         title={`${translate({id: "settings.title"})}`}
         description="Description will go into a meta tag in <head />">

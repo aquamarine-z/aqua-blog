@@ -39,7 +39,7 @@ function showMaximumImage(component: React.ReactNode) {
         event.stopPropagation()
         onClose()
     }} className={styles["maximize-background"]}>
-        
+            
             <div className={styles["maximize-container"] + ' glass'} onClick={(e) => {
                 e.stopPropagation()
             }}>
