@@ -58,7 +58,6 @@ const config: Config = {
     organizationName: 'aquamarine-z', // Usually your GitHub org/user name.
     projectName: 'aqua-blog', // Usually your repo name.
     deploymentBranch: "gh-pages",
-
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
 
