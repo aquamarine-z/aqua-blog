@@ -1,5 +1,6 @@
 import React from 'react';
 import {PageMetadata} from '@docusaurus/theme-common';
+// @ts-ignore
 import {useBlogPost} from '@docusaurus/plugin-content-blog/client';
 
 export default function BlogPostPageMetadata(): JSX.Element {
