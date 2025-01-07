@@ -7,7 +7,9 @@
     // 确保 TypeScript 能解析模块
     "esModuleInterop": true,
     // 支持 ES 模块的导入
-    "skipLibCheck": true
+    "skipLibCheck": true,
     // 忽略库的类型检查
+    //导入sass支持
+    "types": ["docusaurus-plugin-sass"]
   }
 }

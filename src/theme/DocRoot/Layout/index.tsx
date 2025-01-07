@@ -1,4 +1,5 @@
 import React, {JSX, useEffect, useRef, useState} from 'react';
+// @ts-ignore
 import {useDocsSidebar} from '@docusaurus/plugin-content-docs/client';
 import BackToTopButton from '@theme/BackToTopButton';
 import DocRootLayoutSidebar from '@theme/DocRoot/Layout/Sidebar';

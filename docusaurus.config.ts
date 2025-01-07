@@ -207,7 +207,7 @@ const config: Config = {
                     label: 'Friends',
                     position: 'right'
                 },
-{
+                {
                     to: '/settings',
                     label: 'Settings',
                     position: 'right'
