@@ -9,7 +9,7 @@
   --ifm-color-primary-lighter: #359962;
   --ifm-color-primary-lightest: #3cad6e;
 }*/
-:root {
+:root[data-component-style='glass'] {
 
     /*--ifm-color-primary: #eebcf5;
     --ifm-color-primary-dark: #e496ef;
@@ -28,13 +28,13 @@
     --ifm-color-primary-lightest: #645656;
     --ifm-color-content: rgba(72, 72, 72, 0.8);
     --ifm-heading-color: rgba(72, 72, 72, 0.8);
-    
+
     --component-background: white;
     --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
+:root[data-component-style='glass'][data-theme='dark'] {
     /*--ifm-color-primary: #f0c7e3;
     --ifm-color-primary-dark: #e7a4d2;
     --ifm-color-primary-darker: #e293c9;
@@ -54,6 +54,26 @@
     --ifm-heading-color: rgba(255, 255, 255, 0.9);
     --component-background: #282828;
     --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+:root[data-component-style='default'][data-theme='dark'] {
+    --ifm-color-primary: #f0c7e3;
+    --ifm-color-primary-dark: #e7a4d2;
+    --ifm-color-primary-darker: #e293c9;
+    --ifm-color-primary-darkest: #d45faf;
+    --ifm-color-primary-light: #f9eaf4;
+    --ifm-color-primary-lighter: #fefbfd;
+    --ifm-color-primary-lightest: #ffffff;
+}
+
+:root[data-component-style='default'] {
+    --ifm-color-primary: #eebcf5;
+    --ifm-color-primary-dark: #e496ef;
+    --ifm-color-primary-darker: #e083ed;
+    --ifm-color-primary-darkest: #d14be4;
+    --ifm-color-primary-light: #f8e2fb;
+    --ifm-color-primary-lighter: #fcf5fd;
+    --ifm-color-primary-lightest: #ffffff;
 }
 
 [data-theme='dark'] .invert-color {

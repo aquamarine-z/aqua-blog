@@ -48,6 +48,9 @@ export default function BlogLayout(props: Props): JSX.Element {
 
     }, [themeStore]);
     useEffect(() => {
+        document.documentElement.setAttribute("data-component-style", theme.enable3dBackground ? "glass" : "default")
+    }, [theme]);
+    useEffect(() => {
         if (!theme.enable3dBackground) {
             if (vantaEffect) vantaEffect.destroy()
             return
@@ -123,7 +126,7 @@ export default function BlogLayout(props: Props): JSX.Element {
             if (vantaEffect) vantaEffect.destroy()
         }
     }, [vantaEffect, theme.enable3dBackground])
-    
+
     return (
         <Layout {...layoutProps}>
             <div data-component-style={theme.enable3dBackground ? "glass" : "default"}>

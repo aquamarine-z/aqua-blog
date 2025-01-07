@@ -133,7 +133,10 @@ export default function Home(): JSX.Element {
 
         //enableFairyDust()
 
-    }, []);
+    }, [theme]);
+    useEffect(() => {
+        document.documentElement.setAttribute("data-component-style", theme.enable3dBackground ? "glass" : "default")
+    }, [theme]);
     useEffect(() => {
         if (!vantaEffect) {
             if (!theme.enable3dBackground) {

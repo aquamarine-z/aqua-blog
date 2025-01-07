@@ -43,7 +43,10 @@ export default function DocRootLayout({children}: Props): JSX.Element {
 
         //enableFairyDust()
 
-    }, []);
+    }, [theme]);
+    useEffect(() => {
+        document.documentElement.setAttribute("data-component-style", theme.enable3dBackground ? "glass" : "default")
+    }, [theme]);
     useEffect(() => {
         if (!theme.enable3dBackground) {
             if (vantaEffect) vantaEffect.destroy()
