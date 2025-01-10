@@ -242,7 +242,7 @@ export default {
             const yAxisRight = d3.axisRight(yScale).tickSizeOuter(0).tickFormat(d => "")
             d3.select(svg).append("g").attr("class", "xAxisBottom").attr("transform", `translate(0,${height - padding})`).call(xAxisBottom)
             d3.select(svg).append("g").attr("class", "yAxisLeft").attr("transform", `translate(${padding},0)`).call(yAxisLeft)
-          
+
             //select fontsize to 24px
             d3.select(svg).selectAll(".xAxisBottom text").style("font-size", "24px").style("transform", "translateY(10px)")
             d3.select(svg).selectAll(".yAxisLeft text").style("font-size", "24px").style("transform", "translateX(-10px)")
@@ -316,12 +316,11 @@ export default {
             const xValueScale = d3.scaleLinear().domain([0, d3.max(xNumbers)]).range([0, 150])
             for (let i = 3 + delta / 2; i < 6; i += delta) {
                 const count = data.filter(d => d.x >= i && d.x < i + delta).length
-                const halfWidth = (xScale(delta - gap) - xScale(0))/2;
-                xValueGroup.append("rect").attr("x", xScale(i) - halfWidth).attr("y", padding - xValueScale(count)).attr("width", 2 * halfWidth).attr("height", xValueScale(count)).attr("fill","blue").attr("stroke","black").attr("stroke-width","3")
+                const halfWidth = (xScale(delta - gap) - xScale(0)) / 2;
+                xValueGroup.append("rect").attr("x", xScale(i) - halfWidth).attr("y", padding - xValueScale(count)).attr("width", 2 * halfWidth).attr("height", xValueScale(count)).attr("fill", "blue").attr("stroke", "black").attr("stroke-width", "3")
             }
-            
-            
-            
+
+
             const yValueGroup = d3.select(svg).append("g").attr("class", "y-value-group")
             const yNumbers = []
             for (let i = 3 + delta / 2; i < 6; i += delta) {
@@ -331,37 +330,66 @@ export default {
             const yValueScale = d3.scaleLinear().domain([0, d3.max(yNumbers)]).range([0, 150])
             for (let i = 3 + delta / 2; i < 6; i += delta) {
                 const count = data.filter(d => d.y >= i && d.y < i + delta).length
-                const halfWidth = -(yScale(delta - gap) - yScale(0))/2;
-                yValueGroup.append("rect").attr("x", width-padding).attr("y", yScale(i)-halfWidth).attr("height", 2 * halfWidth).attr("width", yValueScale(count)).attr("fill","blue").attr("stroke","black").attr("stroke-width","3")
+                const halfWidth = -(yScale(delta - gap) - yScale(0)) / 2;
+                yValueGroup.append("rect").attr("x", width - padding).attr("y", yScale(i) - halfWidth).attr("height", 2 * halfWidth).attr("width", yValueScale(count)).attr("fill", "blue").attr("stroke", "black").attr("stroke-width", "3")
             }
-              d3.select(svg).append("g").attr("class", "xAxisTop").attr("transform", `translate(0,${padding})`).call(xAxisTop)
+            d3.select(svg).append("g").attr("class", "xAxisTop").attr("transform", `translate(0,${padding})`).call(xAxisTop)
             d3.select(svg).append("g").attr("class", "yAxisRight").attr("transform", `translate(${width - padding},0)`).call(yAxisRight)
         }}/>
     },
     //颜色+散点图矩阵
-    Diagram6:() => {
+    Diagram6: () => {
         const height = 1920
         const width = 1920
         const padding = 200
-        const data:number[][]=[]
-        for(let i=0;i<15;i++){
-            const array=[]
-            for (let j=0;j<15;j++){
+        const data: number[][] = []
+        for (let i = 0; i < 15; i++) {
+            const array = []
+            for (let j = 0; j < 15; j++) {
                 array.push(-parseFloat(Math.random().toFixed(1)))
             }
             data.push(array)
         }
-        const dataNames=[
-            "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O"
+        console.log(data)
+        const dataNames = [
+            "A11111", "B1111", "C1111", "D1111", "E1111", "F1111", "G1111", "H1111", "I1111", "J1111", "K1111", "L1111", "M1111", "N1111", "O1111"
         ]
         return (<VisualizationDisplay
             showInformation={true}
             height={height}
-            width={width}
+            width={width + 400}
             onInitialize={(svg) => {
-                const xScale=d3.scaleBand().domain(dataNames).range([padding,width-padding])
-                const yScale=d3.scaleBand().domain(dataNames).range([padding,height-padding])
-                
+                const xScale = d3.scaleBand().domain(dataNames).range([padding, width - padding])
+                const yScale = d3.scaleBand().domain(dataNames).range([height - padding, padding])
+                const edge = xScale(dataNames[1]) - xScale(dataNames[0])
+                d3.select(svg).append("g").attr("class", "xAxis").selectAll("text").data(dataNames).enter().append("text").text((d) => d).attr("x", (d) => xScale(d) + edge / 2).attr("y", height - padding + 100).attr("text-anchor", "middle").attr("font-size", "30px").attr("fill", "black").attr("transform", d => `rotate(-90,${xScale(d) + edge / 2},${height - padding + 100})`)
+                d3.select(svg).append("g").attr("class", "yAxis").selectAll("text").data(dataNames).enter().append("text").text((d) => d).attr("x", padding - 100).attr("y", (d) => yScale(d) + edge / 2).attr("text-anchor", "middle").attr("font-size", "30px").attr("fill", "black")
+                data.forEach((row, i) => {
+                    row.forEach((value, j) => {
+                        d3.select(svg).append("rect").attr("x", xScale(dataNames[j])).attr("y", yScale(dataNames[i])).attr("width", edge).attr("height", edge).attr("fill", `rgb(${Math.abs(value) * 255},${Math.abs(value) * 255},255)`).attr("stroke", "white").attr("stroke-width", "3")
+                        d3.select(svg).append("text").text(value).attr("x", xScale(dataNames[j]) + edge / 2).attr("y", yScale(dataNames[i]) + edge / 2 + 12.5).attr("text-anchor", "middle").attr("font-size", "25px").attr("fill", "black")
+                    })
+                })
+                const defs = d3.select(svg).append("defs")
+                const linearGradient = defs.append("linearGradient")
+                    .attr("id", "blue-to-white")
+                    .attr("x1", "0%")
+                    .attr("y1", "100%")
+                    .attr("x2", "0%")
+                    .attr("y2", "0%");
+                linearGradient.append("stop")
+                    .attr("offset", "0%")
+                    .attr("stop-color", "blue");
+
+                linearGradient.append("stop")
+                    .attr("offset", "100%")
+                    .attr("stop-color", "white");
+
+                d3.select(svg).append("rect").attr("class", "legend-color").attr("x", width).attr("y", padding).attr("width", 100).attr("height", height - padding * 2).attr("fill", "url(#blue-to-white)").attr("stroke", "black").attr("stroke-width", "1");
+                const colorLegendScale = d3.scaleLinear().domain([0, 1]).range([padding, height - padding])
+                const colorAxis = d3.axisRight(colorLegendScale).ticks(5).tickSize(14)
+                d3.select(svg).append("g").attr("class", "color-axis").attr("transform", `translate(${width + 100},0)`).call(colorAxis)
+                d3.selectAll(".color-axis text").style("font-size", "24px");
             }}/>)
     },
 }
