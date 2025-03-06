@@ -7,13 +7,17 @@
 }
 
 .dropdown__link {
-    @apply flex flex-row items-center
+    @apply flex flex-row items-center;
 }
+.footer__link-item {
+        @apply flex flex-row items-center;
+    }
+@media screen and (min-width: 996px) {
+
 
 .navbar__link {
-    @apply flex flex-row items-center
+    @apply flex flex-row items-center;
 }
 
-.footer__link-item {
-    @apply flex flex-row items-center
+    
 }
