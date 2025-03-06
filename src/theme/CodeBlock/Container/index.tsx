@@ -19,7 +19,7 @@ export default function CodeBlockContainer<T extends 'div' | 'pre'>({
         props.className,
         styles.codeBlockContainer,
         ThemeClassNames.common.codeBlock,
-          'glass'
+          "glass"
       )}
     />
   );
