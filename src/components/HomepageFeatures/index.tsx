@@ -45,7 +45,7 @@ const FeatureList: FeatureItem[] = [
 function Feature({title, Svg, description}: FeatureItem) {
   return (
     <div className={clsx('col col--4','glass w-fit hover-float ')} style={{maxWidth:'320px'}}>
-      <div className="text--center">
+      <div className="text--center flex flex-col items-center justify-center py-4">
         <Svg className={styles.featureSvg} role="img" />
       </div>
       <div className="text--center padding-horiz--md">
