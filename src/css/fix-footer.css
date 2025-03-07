@@ -13,11 +13,7 @@
         @apply flex flex-row items-center;
     }
 @media screen and (min-width: 996px) {
-
-
 .navbar__link {
     @apply flex flex-row items-center;
 }
-
-    
 }
