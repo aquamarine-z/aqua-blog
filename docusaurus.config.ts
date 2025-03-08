@@ -6,16 +6,6 @@ import rehypeKatex from 'rehype-katex';
 import fs from 'fs';
 import path from 'path';
 
-function customPostCssPlugin() {
-    return {
-        name: "custom-postcss",
-        configurePostCss(options) {
-            // Append new PostCSS plugins here.
-            options.plugins.push(require("postcss-preset-env")); // allow newest CSS syntax
-            return options;
-        }
-    };
-}
 
 const config: Config = {
     title: 'Aquamarine',
@@ -26,7 +16,6 @@ const config: Config = {
     // Set the /<baseUrl>/ pathname under which your site is served
     // For GitHub pages deployment, it is often '/<projectName>/'
     baseUrl: '/aqua-blog/',
-
     future: {
         experimental_faster: {
             swcJsLoader: true,
@@ -39,17 +28,9 @@ const config: Config = {
     },
     plugins: [
         'docusaurus-plugin-sass',
-        async function tailwindPlugin(context, options) {
-            return {
-                name: 'docusaurus-tailwindcss',
-                configurePostCss(postcssOptions) {
-                    postcssOptions.plugins.push(require('tailwindcss'));
-                    postcssOptions.plugins.push(require('autoprefixer'));
-                    return postcssOptions;
-                },
-                customPostCssPlugin,
-            };
-        },
+        path.resolve(__dirname, './plugins/tailwind-plugin.js'),
+        path.resolve(__dirname, './plugins/webpack-plugin.js')
+        
 
     ],
 
@@ -126,6 +107,7 @@ const config: Config = {
                         './src/css/custom.css',
                         './src/css/tailwind.css',
                         './src/css/fix-footer.css',
+                        './src/css/shadcn.css',
                     ],
                 },
             } satisfies Preset.Options,
@@ -271,7 +253,8 @@ const config: Config = {
                     ],
                 }
             ],
-            copyright: `Copyright © ${new Date().getFullYear()} Aqua-Blog, Inc. Built with Docusaurus.`,
+            copyright:
+                `Copyright © ${new Date().getFullYear() + 1} Aqua-Blog, Inc. Built with Docusaurus.`,
         },
 
         docs: {},

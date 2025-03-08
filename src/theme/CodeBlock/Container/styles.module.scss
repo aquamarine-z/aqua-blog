@@ -1,10 +1,17 @@
  .codeBlockContainer {
-  //background: var(--prism-background-color);
-  color: var(--prism-color);
-  margin-bottom: var(--ifm-leading);
-  box-shadow: var(--ifm-global-shadow-lw);
-  border-radius: var(--ifm-code-border-radius);
-  *{
+   //background: var(--prism-background-color);
+   color: var(--prism-color);
+   margin-bottom: var(--ifm-leading);
+   box-shadow: var(--ifm-global-shadow-lw);
+   border-radius: var(--ifm-code-border-radius);
+
+
+ }
+
+ :root[data-component-style='glass'] .codeBlockContainer * {
     background: transparent !important;
   }
-}
+
+ :root[data-component-style='default'] .codeBlockContainer pre code {
+   background: var(--ifm-code-background);
+ }
