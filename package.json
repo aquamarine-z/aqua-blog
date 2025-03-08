@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "docusaurus start --locale zh-cn",
+    "start": "docusaurus start --locale zh-cn --host 0.0.0.0",
     "start-en": "docusaurus start --locale en",
     "start-jp": "docusaurus start --locale jp",
     "build": "docusaurus build",

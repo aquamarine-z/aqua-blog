@@ -27,6 +27,8 @@ function BlogPostPageContent({
 }): JSX.Element {
     const {metadata, toc} = useBlogPost();
     const {nextItem, prevItem, frontMatter} = metadata;
+    //console.log(frontMatter);
+    
     const {
         hide_table_of_contents: hideTableOfContents,
         toc_min_heading_level: tocMinHeadingLevel,
